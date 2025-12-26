@@ -9,7 +9,7 @@ export interface CardServerResponse {
     id: number;
     nickname: string;
     profileImageUrl: string;
-  };
+  } | null;
   imageUrl: string;
   teamId: string;
   columnId: number;
@@ -24,19 +24,21 @@ export interface GetCardsResponse {
 }
 
 
+
+
 // 클라이언트 타입
 export interface CardModalUI {
   title: string;
   description: string;
   tags: string[];
   dueDateText: string;
-  assigneeName: string;
-  assigneeProfileUrl: string;
+  assigneeName: string | null;
+  assigneeProfileUrl: string | null;
   imageUrl?: string;
 }
 
 
-// 최종 타입 매핑 함수
+// 데이터 매핑 함수
 export function mapCardToModalUI(
   card: CardServerResponse
 ): CardModalUI {
@@ -44,9 +46,10 @@ export function mapCardToModalUI(
     title: card.title,
     description: card.description,
     tags: card.tags,
-    dueDateText: card.dueDate,
-    assigneeName: card.assignee.nickname,
-    assigneeProfileUrl: card.assignee.profileImageUrl,
+    dueDateText: card.dueDate ?? null,
+    assigneeName: card.assignee?.nickname ?? null,
+    assigneeProfileUrl: card.assignee?.profileImageUrl ?? null,
     imageUrl: card.imageUrl,
   };
 }
+

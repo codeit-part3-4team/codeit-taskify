@@ -1,19 +1,19 @@
-import { CardModalUI } from './cardmodal.types';
+'use client';
+
+import { CardModalUI } from './CardModal.types';
 
 interface CardModalProps {
-  cardData: CardModalUI;
+  cardData: CardModalUI | null;
   modalIsOpen: boolean;
   onClose: () => void;
 }
 
-export default async function CardModal({ cardData, modalIsOpen, onClose }: CardModalProps) {
+export default function CardModal({ cardData, modalIsOpen, onClose }: CardModalProps) {
   if (!modalIsOpen) return null;
   return (
     <>
-      <div>{cardData.title}</div>
-      <div>{cardData.description}</div>
-      <div>{cardData.dueDateText}</div>
-      <div>{cardData.assigneeName}</div>
+      <div>{cardData?.title}</div>
+      <div>{cardData?.description}</div>
       <button onClick={onClose}></button>
     </>
   );
