@@ -1,6 +1,17 @@
 'use client';
 import '@/components/design.css';
 
-export default function Modal() {
-  return <div className="text-3xl-bold">테스트</div>;
+type CommonModalProps = {
+  modalIsOpen: boolean;
+  onClose: () => void;
+};
+
+export default function Modal({ modalIsOpen, onClose }: CommonModalProps) {
+  if (!modalIsOpen) return null;
+  return (
+    <>
+      <div>모달입니다.</div>
+      <button onClick={onClose}>닫기</button>
+    </>
+  );
 }

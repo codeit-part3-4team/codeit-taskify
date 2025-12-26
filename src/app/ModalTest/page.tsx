@@ -1,11 +1,15 @@
+'use client';
 import '@/styles/reset.css';
-
 import Modal from '@/components/Modals/Modal';
+import { useState } from 'react';
 
-export default async function ModalTest() {
+export default function ModalTest() {
+  const [modalIsOpen, setModalIsOpen] = useState<boolean>(false);
+
   return (
-    <div>
-      <Modal />
-    </div>
+    <>
+      <button onClick={() => setModalIsOpen((prev) => !prev)}>모달 버튼</button>
+      <Modal modalIsOpen={modalIsOpen} onClose={() => setModalIsOpen(false)} />
+    </>
   );
 }
