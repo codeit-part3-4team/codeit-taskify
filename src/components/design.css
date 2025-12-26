@@ -1,0 +1,242 @@
+/* Font Family */
+:root {
+  --font-pretendard: "Pretendard", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
+}
+
+/* ========== Text-3xl (32 / 42) ========== */
+.text-3xl-bold {
+  font-family: var(--font-pretendard);
+  font-size: 32px;
+  line-height: 42px;
+  font-weight: 700;
+}
+
+.text-3xl-semibold {
+  font-family: var(--font-pretendard);
+  font-size: 32px;
+  line-height: 42px;
+  font-weight: 600;
+}
+
+/* ========== Text-2xl (24 / 32) ========== */
+.text-2xl-bold {
+  font-family: var(--font-pretendard);
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: 700;
+}
+
+.text-2xl-semibold {
+  font-family: var(--font-pretendard);
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: 600;
+}
+
+.text-2xl-medium {
+  font-family: var(--font-pretendard);
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: 500;
+}
+
+.text-2xl-regular {
+  font-family: var(--font-pretendard);
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: 400;
+}
+
+/* ========== Text-xl (20 / 32) ========== */
+.text-xl-bold {
+  font-family: var(--font-pretendard);
+  font-size: 20px;
+  line-height: 32px;
+  font-weight: 700;
+}
+
+.text-xl-semibold {
+  font-family: var(--font-pretendard);
+  font-size: 20px;
+  line-height: 32px;
+  font-weight: 600;
+}
+
+.text-xl-medium {
+  font-family: var(--font-pretendard);
+  font-size: 20px;
+  line-height: 32px;
+  font-weight: 500;
+}
+
+.text-xl-regular {
+  font-family: var(--font-pretendard);
+  font-size: 20px;
+  line-height: 32px;
+  font-weight: 400;
+}
+
+/* ========== Text-2lg (18 / 26) ========== */
+.text-2lg-bold {
+  font-family: var(--font-pretendard);
+  font-size: 18px;
+  line-height: 26px;
+  font-weight: 700;
+}
+
+.text-2lg-semibold {
+  font-family: var(--font-pretendard);
+  font-size: 18px;
+  line-height: 26px;
+  font-weight: 600;
+}
+
+.text-2lg-medium {
+  font-family: var(--font-pretendard);
+  font-size: 18px;
+  line-height: 26px;
+  font-weight: 500;
+}
+
+.text-2lg-regular {
+  font-family: var(--font-pretendard);
+  font-size: 18px;
+  line-height: 26px;
+  font-weight: 400;
+}
+
+/* ========== Text-lg (16 / 26) ========== */
+.text-lg-bold {
+  font-family: var(--font-pretendard);
+  font-size: 16px;
+  line-height: 26px;
+  font-weight: 700;
+}
+
+.text-lg-semibold {
+  font-family: var(--font-pretendard);
+  font-size: 16px;
+  line-height: 26px;
+  font-weight: 600;
+}
+
+.text-lg-medium {
+  font-family: var(--font-pretendard);
+  font-size: 16px;
+  line-height: 26px;
+  font-weight: 500;
+}
+
+.text-lg-regular {
+  font-family: var(--font-pretendard);
+  font-size: 16px;
+  line-height: 26px;
+  font-weight: 400;
+}
+
+/* ========== Text-md (14 / 24) ========== */
+.text-md-bold {
+  font-family: var(--font-pretendard);
+  font-size: 14px;
+  line-height: 24px;
+  font-weight: 700;
+}
+
+.text-md-semibold {
+  font-family: var(--font-pretendard);
+  font-size: 14px;
+  line-height: 24px;
+  font-weight: 600;
+}
+
+.text-md-medium {
+  font-family: var(--font-pretendard);
+  font-size: 14px;
+  line-height: 24px;
+  font-weight: 500;
+}
+
+.text-md-regular {
+  font-family: var(--font-pretendard);
+  font-size: 14px;
+  line-height: 24px;
+  font-weight: 400;
+}
+
+/* ========== Text-sm (13 / 22) ========== */
+.text-sm-semibold {
+  font-family: var(--font-pretendard);
+  font-size: 13px;
+  line-height: 22px;
+  font-weight: 600;
+}
+
+.text-sm-medium {
+  font-family: var(--font-pretendard);
+  font-size: 13px;
+  line-height: 22px;
+  font-weight: 500;
+}
+
+/* ========== Text-xs (12) ========== */
+.text-xs-semibold {
+  font-family: var(--font-pretendard);
+  font-size: 12px;
+  line-height: 20px;
+  font-weight: 600;
+}
+
+.text-xs-medium {
+  font-family: var(--font-pretendard);
+  font-size: 12px;
+  line-height: 18px;
+  font-weight: 500;
+}
+
+.text-xs-regular {
+  font-family: var(--font-pretendard);
+  font-size: 12px;
+  line-height: 18px;
+  font-weight: 400;
+}
+
+:root {
+  /* Black */
+  --black-000000: #000000;
+  --black-171717: #171717;
+  --black-333236: #333236;
+  --black-4b4b4b: #4b4b4b;
+
+  /* White */
+  --white-ffffff: #ffffff;
+
+  /* Gray */
+  --gray-787486: #787486;
+  --gray-9fa6b2: #9fa6b2;
+  --gray-d9d9d9: #d9d9d9;
+  --gray-eeeeee: #eeeeee;
+  --gray-fafafa: #fafafa;
+
+  /* Violet */
+  --violet-5534da: #5534da;
+  --violet-8p: #f1effd; /* violet 8% */
+
+  /* Purple */
+  --purple-760dde: #760dde;
+
+  /* Red */
+  --red-d6173a: #d6173a;
+
+  /* Green */
+  --green-7ac555: #7ac555;
+
+  /* Blue */
+  --blue-76a5ea: #76a5ea;
+
+  /* Orange */
+  --orange-ffa500: #ffa500;
+
+  /* Pink */
+  --pink-e876ea: #e876ea;
+}
