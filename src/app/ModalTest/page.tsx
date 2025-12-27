@@ -1,12 +1,10 @@
 'use client';
 import '@/styles/reset.css';
 import { useEffect, useState } from 'react';
-import CardModal from '@/components/Modals/CardModal/CardModal';
+import CardModalContent from '@/components/Modals/CardModal/CardModalContent';
 import { getCardsByColumn } from './api';
-import {
-  CardModalUI,
-  mapCardToModalUI,
-} from '@/components/Modals/CardModal/CardModal.types';
+import { CardModalUI, mapCardToModalUI } from '@/components/Modals/CardModal/CardModal.types';
+import Modal from '@/components/Modals/Modal';
 
 export default function ModalTest() {
   const [modalIsOpen, setModalIsOpen] = useState<boolean>(false);
@@ -29,11 +27,13 @@ export default function ModalTest() {
   return (
     <>
       <button onClick={() => setModalIsOpen((prev) => !prev)}>모달 버튼</button>
-      <CardModal
-        cardData={cardData}
-        modalIsOpen={modalIsOpen}
-        onClose={() => setModalIsOpen(false)}
-      />
+      <Modal modalIsOpen={modalIsOpen} onClose={() => setModalIsOpen(false)}>
+        <CardModalContent
+          cardData={cardData}
+          modalIsOpen={modalIsOpen}
+          onClose={() => setModalIsOpen(false)}
+        />
+      </Modal>
     </>
   );
 }

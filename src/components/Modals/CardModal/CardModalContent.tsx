@@ -8,7 +8,7 @@ interface CardModalProps {
   onClose: () => void;
 }
 
-export default function CardModal({ cardData, modalIsOpen, onClose }: CardModalProps) {
+export default function CardModalContent({ cardData, modalIsOpen, onClose }: CardModalProps) {
   if (!modalIsOpen) return null;
   return (
     <>
