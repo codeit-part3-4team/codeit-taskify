@@ -14,7 +14,7 @@ export default function CardModalContent({ cardData, modalIsOpen, onClose }: Car
     <>
       <div>{cardData?.title}</div>
       <div>{cardData?.description}</div>
-      <button onClick={onClose}></button>
+      <button onClick={onClose}>닫기</button>
     </>
   );
 }
