@@ -1,8 +1,11 @@
+import { useRouter } from 'next/navigation';
+
 type DefaultModalProps = {
   title?: string;
   message?: string;
   actionsButton?: React.ReactNode;
   children?: React.ReactNode;
+  closeButton?: boolean;
 };
 
 export default function DefaultModal({
@@ -10,7 +13,10 @@ export default function DefaultModal({
   message,
   children,
   actionsButton,
+  closeButton,
 }: DefaultModalProps) {
+  const router = useRouter();
+
   return (
     <>
       {title && <h2>{title}</h2>}
@@ -18,6 +24,7 @@ export default function DefaultModal({
       {children}
       {/* 버튼컴포넌트 올 자리 */}
       {actionsButton && <div>{actionsButton}</div>}
+      {closeButton && <button onClick={() => router.back()}>닫기</button>}
     </>
   );
 }
