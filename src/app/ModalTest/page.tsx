@@ -1,5 +1,6 @@
 import Modal from '@/components/Modals/Modal';
 import { getCardsByColumn } from './api';
+import ModalProvider from '@/components/Modals/ModalProvider';
 
 export default async function ModalTest() {
   const data = await getCardsByColumn(

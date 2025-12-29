@@ -1,10 +1,11 @@
 'use client';
 
-import { useState } from 'react';
 import { CardServerResponse, mapCardToModalUI } from './CardModal/CardModal.types';
 import ModalLayout from './ModalLayout';
 import CardModalContent from './CardModal/CardModalContent';
 import ModifyCardModal from './CardModal/ModifyCardModal';
+import { ModalContext } from './ModalProvider';
+import { useContext } from 'react';
 
 type ModalType = 'CARD_CREATE' | 'CARD_EDIT';
 
@@ -14,16 +15,18 @@ type ModalProps = {
 };
 
 export default function Modal({ serverCardData, type }: ModalProps) {
-  const [isOpen, setIsOpen] = useState(false);
+  const context = useContext(ModalContext);
+  if (!context) return null;
+
+  const { isOpen, open, close } = context;
 
   const modalUIData = mapCardToModalUI(serverCardData);
-  console.log(modalUIData);
   function renderContent() {
     switch (type) {
       case 'CARD_CREATE':
-        return <CardModalContent cardData={modalUIData} onClose={() => setIsOpen(false)} />;
+        return <CardModalContent cardData={modalUIData} onClose={close} />;
       case 'CARD_EDIT':
-        return <ModifyCardModal onClose={() => setIsOpen(false)} />;
+        return <ModifyCardModal onClose={close} />;
       default:
         return null;
     }
@@ -31,7 +34,7 @@ export default function Modal({ serverCardData, type }: ModalProps) {
 
   return (
     <>
-      <button onClick={() => setIsOpen(true)}>Open Modal</button>
+      <button onClick={open}>Open Modal</button>
       <ModalLayout modalIsOpen={isOpen}>{renderContent()}</ModalLayout>
     </>
   );
