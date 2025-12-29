@@ -1,0 +1,71 @@
+/* Base Button Styles */
+.button {
+  font-family: var(--font-pretendard);
+  cursor: pointer;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border: none;
+}
+
+.button:disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+/* Size Variants */
+.desktop {
+  width: 84px;
+  height: 32px;
+  font-size: 14px;
+  line-height: 24px;
+}
+
+.tablet {
+  width: 72px;
+  height: 30px;
+  font-size: 14px;
+  line-height: 24px;
+}
+
+.mobile {
+  width: 109px;
+  height: 32px;
+  font-size: 12px;
+  line-height: 18px;
+}
+
+/* Variant Styles */
+.confirm {
+  background-color: var(--violet-5534da);
+  color: var(--white-ffffff);
+}
+
+.confirm:hover:not(:disabled) {
+  background-color: #6545e0;
+}
+
+.confirm:active:not(:disabled) {
+  background-color: #4423c9;
+}
+
+.deny {
+  background-color: var(--white-ffffff);
+  color: var(--violet-5534da);
+  border: 1px solid #d9d9d9;
+}
+
+.deny:hover:not(:disabled) {
+  background-color: var(--violet-8p);
+  border-color: var(--violet-5534da);
+}
+
+.deny:active:not(:disabled) {
+  background-color: #e5dff9;
+}
+
