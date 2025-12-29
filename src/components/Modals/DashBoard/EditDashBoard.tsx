@@ -1,30 +1,21 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
-import DefaultModal from './DefualtModal';
+import DefaultModal from '../DefualtModal';
+import { EditDashBoardProps } from './dashboard';
 import { useState } from 'react';
 
-export type CreateDashboardPayload = {
-  title: string;
-  color: string;
-};
-
-export default function CreateDashBoard() {
+export default function EditDashBoard({ initialTitle, initialColor }: EditDashBoardProps) {
   const router = useRouter();
 
-  const [title, setTitle] = useState('');
-  const [color, setColor] = useState('#AbDA7D');
+  const [title, setTitle] = useState(initialTitle);
+  const [color, setColor] = useState(initialColor);
 
-  async function requestCreateDashboard(payload: CreateDashboardPayload): Promise<void> {
-    // TODO: 나중에 API 붙이면 여기만 수정
-    console.log('create dashboard payload:', payload);
-  }
-
-  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  async function handleUpdate(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
-    await requestCreateDashboard({ title, color });
-
+    // ✅ PATCH 요청
+    await updateCard();
     router.refresh(); // 페이지에서 (GET) 다시 실행
     router.back();
   }
@@ -32,20 +23,22 @@ export default function CreateDashBoard() {
   return (
     <>
       <DefaultModal
-        title="새로운 대시보드"
+        title="대시보드 수정"
         actionsButton={
           <>
             {/* 버튼 컴포넌트 추가 */}
             <button type="button" onClick={() => router.back()}>
               취소
             </button>
-            <button type="submit">생성</button>
+            <button type="submit" form="dashboard-edit-form">
+              수정
+            </button>
           </>
         }
       >
         {/* children */}
         {/* 컴포넌트로 변경 */}
-        <form onSubmit={handleSubmit}>
+        <form id="dashboard-edit-form" onSubmit={handleUpdate}>
           <input
             value={title}
             onChange={(e) => setTitle(e.target.value)}
