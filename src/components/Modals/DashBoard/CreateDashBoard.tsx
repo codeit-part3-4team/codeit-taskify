@@ -3,7 +3,7 @@
 import { useRouter } from 'next/navigation';
 import DefaultModal from '../DefualtModal';
 import { useState } from 'react';
-import { DashboardUpsertRequest } from './dashboard';
+import { DashboardCreateRequest } from './dashboard';
 
 export default function CreateDashBoard() {
   const router = useRouter();
@@ -11,7 +11,7 @@ export default function CreateDashBoard() {
   const [title, setTitle] = useState('');
   const [color, setColor] = useState('#AbDA7D');
 
-  async function requestCreateDashboard(payload: DashboardUpsertRequest): Promise<void> {
+  async function requestCreateDashboard(payload: DashboardCreateRequest): Promise<void> {
     // TODO: 나중에 API 붙이면 여기만 수정
     console.log('create dashboard payload:', payload);
   }

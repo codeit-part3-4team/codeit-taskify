@@ -2,10 +2,10 @@
 
 import { useRouter } from 'next/navigation';
 import DefaultModal from '../DefualtModal';
-import { EditDashBoardProps } from './dashboard';
+import { DashBoardUpdateRequest } from './dashboard';
 import { useState } from 'react';
 
-export default function EditDashBoard({ initialTitle, initialColor }: EditDashBoardProps) {
+export default function EditDashBoard({ initialTitle, initialColor }: DashBoardUpdateRequest) {
   const router = useRouter();
 
   const [title, setTitle] = useState(initialTitle);

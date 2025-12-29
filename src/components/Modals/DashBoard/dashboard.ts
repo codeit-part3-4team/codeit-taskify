@@ -14,12 +14,12 @@ export type DashboardListResponse = {
   cursorId: number | null;
 };
 
-export type DashboardUpsertRequest = {
+export type DashboardCreateRequest = {
   title: string;
   color: string;
 };
 
-export type EditDashBoardProps = {
+export type DashBoardUpdateRequest = {
   initialTitle: string;
   initialColor: string;
 };
