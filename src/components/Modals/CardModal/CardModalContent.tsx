@@ -3,19 +3,16 @@
 import { CardModalUI } from './CardModal.types';
 
 interface CardModalProps {
-  cardData: CardModalUI | null;
-  // modalIsOpen: boolean;
-  onClose: () => void;
+  cardData?: CardModalUI | null;
 }
 
-export default function CardModalContent({ cardData, modalIsOpen, onClose }: CardModalProps) {
+export default function CardModalContent({ cardData }: CardModalProps) {
   console.log(cardData);
-  // if (!modalIsOpen) return null;
   return (
     <>
+      안녕하세요
       <div>{cardData?.title}</div>
       <div>{cardData?.description}</div>
-      <button onClick={onClose}>닫기</button>
     </>
   );
 }

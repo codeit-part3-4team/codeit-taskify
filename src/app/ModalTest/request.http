@@ -27,9 +27,10 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjQ4NywidGVhb
 {
   "dashboardId": 17226,
   "columnId": 58140,
-  "title": "카드 테스트",
-  "description": "컬럼에 카드 생성"
+  "title": "카드 테스트-2",
+  "description": "컬럼에 카드 생성-2"
 }
+
 
 ###
 POST https://sp-taskify-api.vercel.app/20-4/users

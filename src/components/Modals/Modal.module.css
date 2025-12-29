@@ -1,4 +1,5 @@
 .overlay {
+  display: none;
   position: fixed;
   inset: 0;
   background: rgba(0, 0, 0, 0.5);
@@ -17,16 +18,4 @@
 
   min-width: 320px;
   max-width: 90%;
-
-  transform: translateY(20px);
-  opacity: 0;
-
-  transition:
-    transform 0.5s ease,
-    opacity 0.5s ease;
-}
-
-.modalOpen {
-  transform: translateY(0);
-  opacity: 1;
 }

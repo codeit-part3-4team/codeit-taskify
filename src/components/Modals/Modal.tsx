@@ -1,41 +1,23 @@
 'use client';
 
-import { CardServerResponse, mapCardToModalUI } from './CardModal/CardModal.types';
-import ModalLayout from './ModalLayout';
-import CardModalContent from './CardModal/CardModalContent';
-import ModifyCardModal from './CardModal/ModifyCardModal';
-import { ModalContext } from './ModalProvider';
-import { useContext } from 'react';
-
-type ModalType = 'CARD_CREATE' | 'CARD_EDIT';
+import { useRouter } from 'next/navigation';
+import styles from './Modal.module.css';
 
 type ModalProps = {
-  type: ModalType;
-  serverCardData: CardServerResponse;
+  children: React.ReactNode;
 };
 
-export default function Modal({ serverCardData, type }: ModalProps) {
-  const context = useContext(ModalContext);
-  if (!context) return null;
-
-  const { isOpen, open, close } = context;
-
-  const modalUIData = mapCardToModalUI(serverCardData);
-  function renderContent() {
-    switch (type) {
-      case 'CARD_CREATE':
-        return <CardModalContent cardData={modalUIData} onClose={close} />;
-      case 'CARD_EDIT':
-        return <ModifyCardModal onClose={close} />;
-      default:
-        return null;
-    }
-  }
+export default function Modal({ children }: ModalProps) {
+  const router = useRouter();
 
   return (
     <>
-      <button onClick={open}>Open Modal</button>
-      <ModalLayout modalIsOpen={isOpen}>{renderContent()}</ModalLayout>
+      <div className={styles.overlay}>
+        <div className={styles.modal}>
+          <button onClick={() => router.back()}>닫기</button>
+          <div>{children}</div>
+        </div>
+      </div>
     </>
   );
 }
