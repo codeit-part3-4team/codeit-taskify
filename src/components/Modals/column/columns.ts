@@ -19,4 +19,4 @@ export type ColumnCreateRequest = {
 
 export type ColumnUpdateRequest = {
   initialTitle: string;
-};
+}; 

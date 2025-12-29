@@ -1,4 +1,4 @@
-import { mapCardToModalUI } from '@/components/Modals/CardModal/CardModal.types';
+import { mapCardToModalUI } from '@/components/Modals/Card/CardModal.types';
 import { getCardsByColumn } from './card.api';
 
 export default async function CardModalPage({

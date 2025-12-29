@@ -25,7 +25,6 @@ export interface GetCardsResponse {
 
 
 
-
 // 클라이언트 타입
 export interface CardModalUI {
   title: string;
@@ -52,4 +51,16 @@ export function mapCardToModalUI(
     imageUrl: card.imageUrl,
   };
 }
+
+
+export type CardCreateRequest = {
+  assigneeUserId: number;
+  dashboardId: number;
+  columnId: number;
+  title: string;
+  description: string;
+  dueDate: string;
+  tags: string[];
+  imageUrl: string;
+};
 

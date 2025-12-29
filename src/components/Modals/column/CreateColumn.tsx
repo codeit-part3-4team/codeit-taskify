@@ -5,7 +5,11 @@ import DefaultModal from '../DefualtModal';
 import { useState } from 'react';
 import { ColumnCreateRequest } from './columns';
 
-export default function CreateColumn() {
+type CreateColumnProps = {
+  dashboardId: number;
+};
+
+export default function CreateColumn({ dashboardId }: CreateColumnProps) {
   const router = useRouter();
 
   const [title, setTitle] = useState('');
