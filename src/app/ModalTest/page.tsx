@@ -26,6 +26,8 @@ export default function ModalTest() {
     fetchCards();
   }, []);
 
+  console.log(cardData);
+
   // 밖 클릭 시 닫기
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
