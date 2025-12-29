@@ -12,7 +12,9 @@ export default async function ModalTest() {
 
   return (
     <>
-      <Modal type="CARD_EDIT" serverCardData={serverCardData} />
+      <ModalProvider>
+        <Modal type="CARD_EDIT" serverCardData={serverCardData} />
+      </ModalProvider>
     </>
   );
 }
