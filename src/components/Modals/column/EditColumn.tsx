@@ -36,7 +36,7 @@ export default function EditColumn({ initialTitle }: ColumnUpdateRequest) {
     e.preventDefault();
 
     // ✅ PATCH 요청
-    await updateCard();
+    // await updateCard();
     router.refresh(); // 페이지에서 (GET) 다시 실행
     router.back();
   }

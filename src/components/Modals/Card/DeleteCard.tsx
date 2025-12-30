@@ -31,7 +31,7 @@ export default function DeleteCard() {
     e.preventDefault();
 
     // ✅ DELETE 요청
-    await deleteCard();
+    // await deleteCard();
     router.refresh(); // 페이지에서 (GET) 다시 실행
     router.back();
   }
