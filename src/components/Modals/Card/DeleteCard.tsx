@@ -4,7 +4,7 @@ import { useRouter } from 'next/navigation';
 import DefaultModal from '../DefualtModal';
 import ModalButton from '@/components/Buttons/ModalButton/ModalButton';
 
-export default function DeleteDashBoard() {
+export default function DeleteCard() {
   const router = useRouter();
 
   async function handleDelete(e: React.FormEvent<HTMLFormElement>) {
@@ -19,20 +19,19 @@ export default function DeleteDashBoard() {
   return (
     <>
       <DefaultModal
-        message="이 대시보드를 정말 삭제하시겠습니까?"
+        message="이 카드를 정말 삭제하시겠습니까?"
         actionsButton={
           <>
-            {/* 버튼 컴포넌트 추가 */}
             <ModalButton variant="secondary" onClick={() => router.back()}>
               취소
             </ModalButton>
-            <ModalButton type="submit" form="dashboard-delete-form">
+            <ModalButton type="submit" form="card-delete-form">
               삭제
             </ModalButton>
           </>
         }
       >
-        <form id="dashboard-delete-form" onSubmit={handleDelete}></form>
+        <form id="card-delete-form" onSubmit={handleDelete}></form>
       </DefaultModal>
     </>
   );

@@ -3,44 +3,44 @@
 import { useRouter } from 'next/navigation';
 import DefaultModal from '../DefualtModal';
 import { useState } from 'react';
-import { CardCreateRequest } from './Card';
+import { CardServerResponse, UpdateCardRequest } from './Card';
 import ModalButton from '@/components/Buttons/ModalButton/ModalButton';
 import TextInput from '@/components/Input/TextInput/TextInput';
 import DateInput from '@/components/Input/DateInput/DateInput';
 import TagInput from '@/components/Input/TagInput/TagInput';
 
-type CreateCardProps = {
-  dashboardId: number;
-  columnId: number;
+type EditCardProps = {
+  cardData: CardServerResponse;
 };
 
-export default function CreateCard({ dashboardId, columnId }: CreateCardProps) {
+export default function EditCard({ cardData: initialValue }: EditCardProps) {
   const router = useRouter();
 
-  const [assigneeUserId, setAssigneeUserId] = useState<number>(0);
-  const [title, setTitle] = useState('');
-  const [description, setDescription] = useState('');
-  const [dueDate, setDueDate] = useState('');
-  const [tags, setTags] = useState<string[]>([]);
+  const [assigneeUserId, setAssigneeUserId] = useState<number | null>(
+    initialValue.assignee?.id ?? null,
+  );
+  const [title, setTitle] = useState(initialValue.title);
+  const [description, setDescription] = useState(initialValue.description);
+  const [dueDate, setDueDate] = useState(initialValue.dueDate);
+  const [tags, setTags] = useState<string[]>(initialValue.tags ?? []);
   const [imageFile, setImageFile] = useState<File | null>(null);
 
-  async function requestCreateCard(payload: CardCreateRequest): Promise<void> {
+  async function requestUpdateCard(payload: UpdateCardRequest): Promise<void> {
     // TODO: 나중에 API 붙이면 여기만 수정
-    console.log('create card payload:', payload);
+    console.log('update card payload:', payload);
   }
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
-    await requestCreateCard({
+    await requestUpdateCard({
       title,
-      assigneeUserId,
-      dashboardId,
-      columnId,
       description,
-      dueDate,
+      columnId: initialValue.columnId,
+      assigneeUserId: assigneeUserId ?? undefined,
+      dueDate: dueDate || undefined,
       tags,
-      imageUrl: imageFile ? imageFile.name : '',
+      imageUrl: imageFile ? imageFile.name : undefined,
     });
 
     router.refresh(); // 페이지에서 (GET) 다시 실행
@@ -70,7 +70,7 @@ export default function CreateCard({ dashboardId, columnId }: CreateCardProps) {
           <TextInput
             label="담당자"
             placeholder="이름을 입력해 주세요"
-            value={assigneeUserId}
+            value={assigneeUserId ?? ''}
             onChange={(e) => setTitle(e.target.value)}
           />
           <TextInput
@@ -87,11 +87,11 @@ export default function CreateCard({ dashboardId, columnId }: CreateCardProps) {
             onChange={(e) => setDescription(e.target.value)}
             required
           />
-          {/* 추후 datepicker */}
+          {/* 추후 datepicker로?? */}
           <DateInput
             label="마감일"
             placeholder="날짜를 입력해 주세요"
-            value={dueDate}
+            value={dueDate ?? ''}
             onChange={(e) => setDueDate(e.target.value)}
           />
           <TagInput label="태그" placeholder="입력 후 Enter" tags={tags} onTagsChange={setTags} />

@@ -4,6 +4,8 @@ import { useRouter } from 'next/navigation';
 import DefaultModal from '../DefualtModal';
 import { ColumnUpdateRequest } from './columns';
 import { useState } from 'react';
+import ModalButton from '@/components/Buttons/ModalButton/ModalButton';
+import TextInput from '@/components/Input/TextInput/TextInput';
 
 export default function EditColumn({ initialTitle }: ColumnUpdateRequest) {
   const router = useRouter();
@@ -25,24 +27,22 @@ export default function EditColumn({ initialTitle }: ColumnUpdateRequest) {
         title="컬럼 관리"
         actionsButton={
           <>
-            {/* 버튼 컴포넌트 추가 */}
-            <button type="button" onClick={() => router.back()}>
+            <ModalButton variant="secondary" onClick={() => router.back()}>
               취소
-            </button>
-            <button type="submit" form="column-edit-form">
+            </ModalButton>
+            <ModalButton type="submit" form="column-edit-form">
               수정
-            </button>
+            </ModalButton>
           </>
         }
       >
         {/* children */}
-        {/* 컴포넌트로 변경 */}
         <form id="column-edit-form" onSubmit={handleUpdate}>
-          <input
+          <TextInput
+            label="이름"
+            placeholder="새로운 프로젝트"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
-            placeholder="대시보드 이름"
-            required
           />
         </form>
       </DefaultModal>

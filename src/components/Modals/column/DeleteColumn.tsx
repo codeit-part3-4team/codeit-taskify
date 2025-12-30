@@ -2,6 +2,7 @@
 
 import { useRouter } from 'next/navigation';
 import DefaultModal from '../DefualtModal';
+import ModalButton from '@/components/Buttons/ModalButton/ModalButton';
 
 export default function DeleteColumn() {
   const router = useRouter();
@@ -21,13 +22,12 @@ export default function DeleteColumn() {
         message="컬럼의 모든 카드가 삭제됩니다."
         actionsButton={
           <>
-            {/* 버튼 컴포넌트 추가 */}
-            <button type="button" onClick={() => router.back()}>
+            <ModalButton variant="secondary" onClick={() => router.back()}>
               취소
-            </button>
-            <button type="submit" form="column-delete-form">
+            </ModalButton>
+            <ModalButton type="submit" form="column-delete-form">
               삭제
-            </button>
+            </ModalButton>
           </>
         }
       >

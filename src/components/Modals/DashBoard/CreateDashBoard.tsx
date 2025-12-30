@@ -4,6 +4,8 @@ import { useRouter } from 'next/navigation';
 import DefaultModal from '../DefualtModal';
 import { useState } from 'react';
 import { DashboardCreateRequest } from './dashboard';
+import TextInput from '@/components/Input/TextInput/TextInput';
+import ModalButton from '@/components/Buttons/ModalButton/ModalButton';
 
 export default function CreateDashBoard() {
   const router = useRouter();
@@ -18,7 +20,6 @@ export default function CreateDashBoard() {
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-
     await requestCreateDashboard({ title, color });
 
     router.refresh(); // 페이지에서 (GET) 다시 실행
@@ -31,27 +32,24 @@ export default function CreateDashBoard() {
         title="새로운 대시보드"
         actionsButton={
           <>
-            {/* 버튼 컴포넌트 추가 */}
-            <button type="button" onClick={() => router.back()}>
+            <ModalButton variant="secondary" onClick={() => router.back()}>
               취소
-            </button>
-            <button type="submit" form="dashboard-create-form">
+            </ModalButton>
+            <ModalButton type="submit" form="dashboard-create-form">
               생성
-            </button>
+            </ModalButton>
           </>
         }
       >
-        {/* children */}
-        {/* 컴포넌트로 변경 */}
         <form id="dashboard-create-form" onSubmit={handleSubmit}>
-          <input
+          <TextInput
+            label="대시보드 이름"
+            placeholder="새로운 프로젝트"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
-            placeholder="대시보드 이름"
-            required
           />
-
-          <input type="color" value={color} onChange={(e) => setColor(e.target.value)} />
+          {/* 컴포넌트로 변경 */}
+          <input type="color" value={color} onChange={(e) => setColor(e.target.value)} />{' '}
         </form>
       </DefaultModal>
     </>

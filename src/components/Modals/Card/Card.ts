@@ -3,14 +3,14 @@ export interface CardServerResponse {
   id: number;
   title: string;
   description: string;
-  tags: string[];
-  dueDate: string;
+  tags: string[] | null;
+  dueDate: string | null;
   assignee: {
     id: number;
     nickname: string;
     profileImageUrl: string;
   } | null;
-  imageUrl: string;
+  imageUrl: string | null;
   teamId: string;
   columnId: number;
   createdAt: string;
@@ -29,11 +29,11 @@ export interface GetCardsResponse {
 export interface CardModalUI {
   title: string;
   description: string;
-  tags: string[];
-  dueDateText: string;
+  tags: string[] | null;
+  dueDateText: string | null;
   assigneeName: string | null;
   assigneeProfileUrl: string | null;
-  imageUrl?: string;
+  imageUrl?: string | null;
 }
 
 
@@ -44,23 +44,33 @@ export function mapCardToModalUI(
   return {
     title: card.title,
     description: card.description,
-    tags: card.tags,
+    tags: card.tags ?? null,
     dueDateText: card.dueDate ?? null,
     assigneeName: card.assignee?.nickname ?? null,
     assigneeProfileUrl: card.assignee?.profileImageUrl ?? null,
-    imageUrl: card.imageUrl,
+    imageUrl: card.imageUrl ?? null,
   };
 }
 
 
 export type CardCreateRequest = {
-  assigneeUserId: number;
+  assigneeUserId?: number;
   dashboardId: number;
   columnId: number;
   title: string;
   description: string;
-  dueDate: string;
-  tags: string[];
-  imageUrl: string;
+  dueDate?: string;
+  tags?: string[];
+  imageUrl?: string;
+};
+
+export type UpdateCardRequest = {
+  columnId?: number;
+  assigneeUserId?: number;
+  title?: string;
+  description?: string;
+  dueDate?: string;
+  tags?: string[];
+  imageUrl?: string;
 };
 

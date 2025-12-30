@@ -4,6 +4,8 @@ import { useRouter } from 'next/navigation';
 import DefaultModal from '../DefualtModal';
 import { DashBoardUpdateRequest } from './dashboard';
 import { useState } from 'react';
+import ModalButton from '@/components/Buttons/ModalButton/ModalButton';
+import TextInput from '@/components/Input/TextInput/TextInput';
 
 export default function EditDashBoard({ initialTitle, initialColor }: DashBoardUpdateRequest) {
   const router = useRouter();
@@ -26,27 +28,24 @@ export default function EditDashBoard({ initialTitle, initialColor }: DashBoardU
         title="대시보드 수정"
         actionsButton={
           <>
-            {/* 버튼 컴포넌트 추가 */}
-            <button type="button" onClick={() => router.back()}>
+            <ModalButton variant="secondary" onClick={() => router.back()}>
               취소
-            </button>
-            <button type="submit" form="dashboard-edit-form">
+            </ModalButton>
+            <ModalButton type="submit" form="dashboard-edit-form">
               수정
-            </button>
+            </ModalButton>
           </>
         }
       >
-        {/* children */}
-        {/* 컴포넌트로 변경 */}
         <form id="dashboard-edit-form" onSubmit={handleUpdate}>
-          <input
+          <TextInput
+            label="대시보드 이름"
+            placeholder="새로운 프로젝트"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
-            placeholder="대시보드 이름"
-            required
           />
-
-          <input type="color" value={color} onChange={(e) => setColor(e.target.value)} />
+          {/* 컴포넌트로 변경 */}
+          <input type="color" value={color} onChange={(e) => setColor(e.target.value)} />{' '}
         </form>
       </DefaultModal>
     </>

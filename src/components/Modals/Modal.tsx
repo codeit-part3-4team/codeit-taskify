@@ -11,12 +11,19 @@ import styles from './Modal.module.css';
 import { useRouter } from 'next/navigation';
 
 type ModalProps = {
-  size?: 'default' | 'custom';
+  type?: 'default' | 'alim';
+  size?: 'default' | 'large' | 'custom';
   width?: number | string;
   children: React.ReactNode;
 } & React.ComponentPropsWithoutRef<'div'>;
 
-export default function Modal({ children, size = 'default', width, className = '' }: ModalProps) {
+export default function Modal({
+  type = 'default',
+  children,
+  size = 'default',
+  width,
+  className = '',
+}: ModalProps) {
   const router = useRouter();
   const [mounted, setMounted] = useState(false);
   const overlayRef = useRef<HTMLDivElement>(null);
@@ -59,7 +66,9 @@ export default function Modal({ children, size = 'default', width, className = '
     e.stopPropagation();
   };
 
+  const isAlim = type === 'alim' ? styles.alim : '';
   const style = size === 'custom' ? { width } : undefined;
+  const large = size === 'large' ? styles.large : '';
 
   return (
     <>
@@ -72,7 +81,11 @@ export default function Modal({ children, size = 'default', width, className = '
         tabIndex={0}
         className={`${styles.overlay} ${mounted ? styles.open : ''} ${className}`}
       >
-        <div style={style} className={styles.modal} onClick={stopPropagation}>
+        <div
+          style={style}
+          className={`${styles.modal} ${large} ${isAlim}`}
+          onClick={stopPropagation}
+        >
           {children}
         </div>
       </div>

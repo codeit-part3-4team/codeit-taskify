@@ -1,5 +1,6 @@
 'use client';
 import { useRouter } from 'next/navigation';
+import styles from './Modal.module.css';
 
 type DefaultModalProps = {
   title?: string;
@@ -21,11 +22,11 @@ export default function DefaultModal({
 
   return (
     <>
-      {title && <h2>{title}</h2>}
-      {message && <div>{message}</div>}
+      {title && <h2 className={styles.modalTitle}>{title}</h2>}
+      {message && <p className={styles.modalMessage}>{message}</p>}
       {children}
       {/* 버튼컴포넌트 올 자리 */}
-      {actionsButton && <div>{actionsButton}</div>}
+      {actionsButton && <div className={styles.buttonBox}>{actionsButton}</div>}
       {closeButton && <button onClick={() => router.back()}>닫기</button>}
     </>
   );
