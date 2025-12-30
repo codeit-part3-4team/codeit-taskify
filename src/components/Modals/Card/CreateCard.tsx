@@ -1,5 +1,23 @@
 'use client';
 
+/**
+ * CreateCard 컴포넌트
+ *
+ * @description
+ * 특정 대시보드와 컬럼에 속한 카드를 생성하기 위한 모달 컴포넌트 입니다.
+ * Parallel Routes의 `@modal` 슬롯에서 `Modal` 내부에 렌더링되며,
+ * 카드 생성에 필요한 입력값을 수집해 생성 요청을 트리거 합니다.
+ *
+ * 생성이 완료되면 현재 라우트를 갱신한 뒤
+ * `router.back()`을 통해 모달을 닫고 이전 화면(route)으로 복귀 합니다.
+ *
+ * @example
+ * <Modal size="large">
+ *   <CreateCard />
+ * </Modal>
+ *
+ */
+
 import { useRouter } from 'next/navigation';
 import DefaultModal from '../DefualtModal';
 import { useState } from 'react';
@@ -8,6 +26,7 @@ import ModalButton from '@/components/Buttons/ModalButton/ModalButton';
 import TextInput from '@/components/Input/TextInput/TextInput';
 import DateInput from '@/components/Input/DateInput/DateInput';
 import TagInput from '@/components/Input/TagInput/TagInput';
+import styles from '../Modal.module.css';
 
 type CreateCardProps = {
   dashboardId: number;
@@ -65,7 +84,7 @@ export default function CreateCard({ dashboardId, columnId }: CreateCardProps) {
       >
         {/* children */}
         {/* 컴포넌트로 변경 */}
-        <form id="card-create-form" onSubmit={handleSubmit}>
+        <form id="card-create-form" onSubmit={handleSubmit} className={styles.cardForm}>
           {/* 담당자 dropdown으로 변경 */}
           <TextInput
             label="담당자"

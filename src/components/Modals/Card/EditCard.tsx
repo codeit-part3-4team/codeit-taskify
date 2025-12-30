@@ -1,5 +1,23 @@
 'use client';
 
+/**
+ * EditCard 컴포넌트
+ *
+ * @description
+ * 카드를 수정하기 위한 모달 컴포넌트 입니다.
+ * Parallel Routes의 `@modal` 슬롯에서 `Modal` 내부에 렌더링되며,
+ * 카드 수정에 필요한 입력값을 수집해 수정 요청을 트리거 합니다.
+ *
+ * 수정이 완료되면 현재 라우트를 갱신한 뒤
+ * `router.back()`을 통해 모달을 닫고 이전 화면(route)으로 복귀 합니다.
+ *
+ * @example
+ * <Modal size="large">
+ *   <EditCard />
+ * </Modal>
+ *
+ */
+
 import { useRouter } from 'next/navigation';
 import DefaultModal from '../DefualtModal';
 import { useState } from 'react';
@@ -8,21 +26,20 @@ import ModalButton from '@/components/Buttons/ModalButton/ModalButton';
 import TextInput from '@/components/Input/TextInput/TextInput';
 import DateInput from '@/components/Input/DateInput/DateInput';
 import TagInput from '@/components/Input/TagInput/TagInput';
+import styles from '../Modal.module.css';
 
 type EditCardProps = {
-  cardData: CardServerResponse;
+  cardData?: CardServerResponse;
 };
 
-export default function EditCard({ cardData: initialValue }: EditCardProps) {
+export default function EditCard({}: EditCardProps) {
   const router = useRouter();
 
-  const [assigneeUserId, setAssigneeUserId] = useState<number | null>(
-    initialValue.assignee?.id ?? null,
-  );
-  const [title, setTitle] = useState(initialValue.title);
-  const [description, setDescription] = useState(initialValue.description);
-  const [dueDate, setDueDate] = useState(initialValue.dueDate);
-  const [tags, setTags] = useState<string[]>(initialValue.tags ?? []);
+  const [assigneeUserId, setAssigneeUserId] = useState<number | null>('');
+  const [title, setTitle] = useState('');
+  const [description, setDescription] = useState('');
+  const [dueDate, setDueDate] = useState('');
+  const [tags, setTags] = useState<string[]>([]);
   const [imageFile, setImageFile] = useState<File | null>(null);
 
   async function requestUpdateCard(payload: UpdateCardRequest): Promise<void> {
@@ -36,7 +53,7 @@ export default function EditCard({ cardData: initialValue }: EditCardProps) {
     await requestUpdateCard({
       title,
       description,
-      columnId: initialValue.columnId,
+      columnId,
       assigneeUserId: assigneeUserId ?? undefined,
       dueDate: dueDate || undefined,
       tags,
@@ -50,22 +67,22 @@ export default function EditCard({ cardData: initialValue }: EditCardProps) {
   return (
     <>
       <DefaultModal
-        title="할 일 생성"
+        title="할 일 수정"
         actionsButton={
           <>
             {/* 버튼 컴포넌트 추가 */}
             <ModalButton variant="secondary" onClick={() => router.back()}>
               취소
             </ModalButton>
-            <ModalButton type="submit" form="card-create-form">
-              생성
+            <ModalButton type="submit" form="card-edit-form">
+              수정
             </ModalButton>
           </>
         }
       >
         {/* children */}
         {/* 컴포넌트로 변경 */}
-        <form id="card-create-form" onSubmit={handleSubmit}>
+        <form id="card-edit-form" onSubmit={handleSubmit} className={styles.cardForm}>
           {/* 담당자 dropdown으로 변경 */}
           <TextInput
             label="담당자"
