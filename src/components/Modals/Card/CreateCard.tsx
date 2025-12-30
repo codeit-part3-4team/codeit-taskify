@@ -51,16 +51,19 @@ export default function CreateCard({ dashboardId, columnId }: CreateCardProps) {
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
-    await requestCreateCard({
-      title,
-      assigneeUserId,
+    const payload: CardCreateRequest = {
       dashboardId,
       columnId,
+      title,
       description,
-      dueDate,
-      tags,
-      imageUrl: imageFile ? imageFile.name : '',
-    });
+    };
+
+    if (assigneeUserId) payload.assigneeUserId = assigneeUserId;
+    if (dueDate) payload.dueDate = dueDate;
+    if (tags.length > 0) payload.tags = tags;
+    if (imageFile) payload.imageUrl = imageFile.name;
+
+    await requestCreateCard(payload);
 
     router.refresh(); // 페이지에서 (GET) 다시 실행
     router.back();

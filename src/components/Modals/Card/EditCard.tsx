@@ -28,19 +28,34 @@ import DateInput from '@/components/Input/DateInput/DateInput';
 import TagInput from '@/components/Input/TagInput/TagInput';
 import styles from '../Modal.module.css';
 
-type EditCardProps = {
-  cardData?: CardServerResponse;
+const dummyCard: CardServerResponse = {
+  id: 14842,
+  title: '카드 테스트',
+  dashboardId: 17226,
+  description: '컬럼에 카드 생성',
+  tags: [],
+  dueDate: null,
+  assignee: null,
+  imageUrl: null,
+  teamId: '20-4',
+  columnId: 58140,
+  createdAt: '2025-12-26T19:37:00.789Z',
+  updatedAt: '2025-12-26T19:37:00.789Z',
 };
 
-export default function EditCard({}: EditCardProps) {
+export default function EditCard({ cards }: { cards?: CardServerResponse }) {
   const router = useRouter();
 
-  const [assigneeUserId, setAssigneeUserId] = useState<number | null>('');
-  const [title, setTitle] = useState('');
-  const [description, setDescription] = useState('');
-  const [dueDate, setDueDate] = useState('');
-  const [tags, setTags] = useState<string[]>([]);
-  const [imageFile, setImageFile] = useState<File | null>(null);
+  const initialCard = cards ?? dummyCard;
+
+  const [assigneeUserId, setAssigneeUserId] = useState<number | null>(
+    initialCard.assignee?.id ?? null,
+  );
+  const [title, setTitle] = useState(initialCard.title);
+  const [description, setDescription] = useState(initialCard.description);
+  const [dueDate, setDueDate] = useState(initialCard.dueDate ?? '');
+  const [tags, setTags] = useState<string[]>(initialCard.tags ?? []);
+  const [imageFile, setImageFile] = useState<string | null>(initialCard.imageUrl);
 
   async function requestUpdateCard(payload: UpdateCardRequest): Promise<void> {
     // TODO: 나중에 API 붙이면 여기만 수정
@@ -50,15 +65,21 @@ export default function EditCard({}: EditCardProps) {
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
-    await requestUpdateCard({
+    // 여기서 에러 UI 띄워볼 수도(required 값)
+    if (!title.trim()) return;
+    if (!description.trim()) return;
+
+    const payload: UpdateCardRequest = {
       title,
       description,
-      columnId,
-      assigneeUserId: assigneeUserId ?? undefined,
-      dueDate: dueDate || undefined,
-      tags,
-      imageUrl: imageFile ? imageFile.name : undefined,
-    });
+    };
+
+    if (assigneeUserId) payload.assigneeUserId = assigneeUserId;
+    if (dueDate) payload.dueDate = dueDate;
+    if (tags.length > 0) payload.tags = tags;
+    if (imageFile) payload.imageUrl = imageFile;
+
+    await requestUpdateCard(payload);
 
     router.refresh(); // 페이지에서 (GET) 다시 실행
     router.back();
@@ -108,7 +129,7 @@ export default function EditCard({}: EditCardProps) {
           <DateInput
             label="마감일"
             placeholder="날짜를 입력해 주세요"
-            value={dueDate ?? ''}
+            value={dueDate}
             onChange={(e) => setDueDate(e.target.value)}
           />
           <TagInput label="태그" placeholder="입력 후 Enter" tags={tags} onTagsChange={setTags} />

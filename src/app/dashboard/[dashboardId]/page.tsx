@@ -30,8 +30,8 @@ export default async function DashboardDetailPage({ params }: { params: { dashbo
         ))}
       </ul>
 
-      <Link href={`/cards/new`}>생성하러가기</Link>
-      <Link href={`/cards/edit`}>수정하러가기</Link>
+      {/* <Link href={`/cards/new`}>생성하러가기</Link>
+      <Link href={`/cards/edit`}>수정하러가기</Link> */}
 
       {cardsByColumn.map((item) => (
         <section key={item.columnId}>

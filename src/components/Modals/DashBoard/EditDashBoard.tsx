@@ -27,7 +27,15 @@ import { useState } from 'react';
 import ModalButton from '@/components/Buttons/ModalButton/ModalButton';
 import TextInput from '@/components/Input/TextInput/TextInput';
 
-export default function EditDashBoard({ initialTitle, initialColor }: DashBoardUpdateRequest) {
+type EditDashBoardProps = {
+  title: string;
+  color: string;
+};
+
+export default function EditDashBoard({
+  title: initialTitle,
+  color: initialColor,
+}: EditDashBoardProps) {
   const router = useRouter();
 
   const [title, setTitle] = useState(initialTitle);

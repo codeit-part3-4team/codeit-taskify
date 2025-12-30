@@ -2,6 +2,7 @@
 export interface CardServerResponse {
   id: number;
   title: string;
+  dashboardId: number
   description: string;
   tags: string[] | null;
   dueDate: string | null;
@@ -16,6 +17,9 @@ export interface CardServerResponse {
   createdAt: string;
   updatedAt: string;
 }
+
+
+
 
 export interface GetCardsResponse {
   cursorId: number;
@@ -54,21 +58,20 @@ export function mapCardToModalUI(
 
 
 export type CardCreateRequest = {
-  assigneeUserId?: number;
   dashboardId: number;
   columnId: number;
   title: string;
   description: string;
+  assigneeUserId?: number;
   dueDate?: string;
   tags?: string[];
   imageUrl?: string;
 };
 
 export type UpdateCardRequest = {
-  columnId?: number;
-  assigneeUserId?: number;
   title?: string;
   description?: string;
+  assigneeUserId?: number;
   dueDate?: string;
   tags?: string[];
   imageUrl?: string;
