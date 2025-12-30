@@ -1,7 +1,7 @@
 import DefaultModal from '@/components/Modals/DefualtModal';
 import Modal from '@/components/Modals/Modal';
 
-export default function Page() {
+export default function ModalTest() {
   return (
     <>
       <h1>TEST PAGE</h1>
