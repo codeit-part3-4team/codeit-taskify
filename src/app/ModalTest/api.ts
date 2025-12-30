@@ -1,4 +1,4 @@
-import { GetCardsResponse } from "@/components/Modals/Card/CardModal.types";
+import { GetCardsResponse } from "@/components/Modals/CardModal/CardModal.types";
 
 const API_URL = "https://sp-taskify-api.vercel.app/20-4/cards";
 

@@ -1,60 +1,17 @@
 'use client';
+import '@/components/design.css';
 
-import { KeyboardEvent, MouseEvent, useEffect, useRef, useState } from 'react';
-import styles from './Modal.module.css';
-import { useRouter } from 'next/navigation';
-
-type ModalProps = {
-  children: React.ReactNode;
+type CommonModalProps = {
+  modalIsOpen: boolean;
+  onClose: () => void;
 };
 
-export default function Modal({ children }: ModalProps) {
-  const router = useRouter();
-  const [mounted, setMounted] = useState(false);
-  const overlayRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    requestAnimationFrame(() => {
-      setMounted(true);
-    });
-  }, []);
-
-  useEffect(() => {
-    if (mounted) {
-      overlayRef.current?.focus();
-    }
-  }, [mounted]);
-
-  const closeModal = () => {
-    router.back();
-  };
-
-  const handleOverlayKeyDown = (e: KeyboardEvent<HTMLDivElement>) => {
-    if (e.key === 'Enter' || e.key === ' ') {
-      e.preventDefault();
-      closeModal();
-    }
-  };
-
-  const stopPropagation = (e: MouseEvent) => {
-    e.stopPropagation();
-  };
-
+export default function Modal({ modalIsOpen, onClose }: CommonModalProps) {
+  if (!modalIsOpen) return null;
   return (
     <>
-      <div
-        ref={overlayRef}
-        className={`${styles.overlay} ${mounted ? styles.open : ''}`}
-        onClick={closeModal}
-        onKeyDown={handleOverlayKeyDown}
-        role="button"
-        aria-label="모달 닫기"
-        tabIndex={0}
-      >
-        <div className={styles.modal} onClick={stopPropagation}>
-          {children}
-        </div>
-      </div>
+      <div>모달입니다.</div>
+      <button onClick={onClose}>닫기</button>
     </>
   );
 }
