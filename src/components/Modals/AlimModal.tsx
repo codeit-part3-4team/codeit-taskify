@@ -28,7 +28,6 @@
 import { useRouter } from 'next/navigation';
 import ModalButton from '@/components/Buttons/ModalButton/ModalButton';
 import DefaultModal from '@/components/Modals/DefualtModal';
-import Modal from '@/components/Modals/Modal';
 
 type AlimModalProps = {
   message: string;
