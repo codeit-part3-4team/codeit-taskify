@@ -1,27 +1,22 @@
 .overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.5);
-
+  background: rgba(0, 0, 0, 0.7);
+  padding: 24px;
   display: flex;
   align-items: center;
   justify-content: center;
-
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.3s ease;
-
   z-index: 1000;
 }
 
 .modal {
+  width: 568px;
   background: #fff;
   border-radius: 8px;
   padding: 24px;
-
-  min-width: 320px;
-  max-width: 90%;
-
   transform: translateY(30px);
   opacity: 0;
   transition:
@@ -37,4 +32,11 @@
 .overlay.open .modal {
   transform: translateY(0);
   opacity: 1;
+}
+
+@media (max-width: 743px) {
+  .modal {
+    width: 100%;
+    padding: 16px 24px;
+  }
 }

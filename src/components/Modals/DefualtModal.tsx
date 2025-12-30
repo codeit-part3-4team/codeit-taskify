@@ -1,3 +1,4 @@
+'use client';
 import { useRouter } from 'next/navigation';
 
 type DefaultModalProps = {
@@ -6,7 +7,7 @@ type DefaultModalProps = {
   actionsButton?: React.ReactNode;
   children?: React.ReactNode;
   closeButton?: boolean;
-};
+} & React.HTMLAttributes<HTMLDivElement>;
 
 export default function DefaultModal({
   title,
@@ -14,6 +15,7 @@ export default function DefaultModal({
   children,
   actionsButton,
   closeButton,
+  className = '',
 }: DefaultModalProps) {
   const router = useRouter();
 

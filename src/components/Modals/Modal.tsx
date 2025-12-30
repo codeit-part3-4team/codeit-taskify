@@ -1,14 +1,22 @@
 'use client';
 
-import { KeyboardEvent, MouseEvent, useEffect, useRef, useState } from 'react';
+import {
+  KeyboardEvent as ReactKeyboardEvent,
+  MouseEvent,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 import styles from './Modal.module.css';
 import { useRouter } from 'next/navigation';
 
 type ModalProps = {
+  size?: 'default' | 'custom';
+  width?: number | string;
   children: React.ReactNode;
-};
+} & React.ComponentPropsWithoutRef<'div'>;
 
-export default function Modal({ children }: ModalProps) {
+export default function Modal({ children, size = 'default', width, className = '' }: ModalProps) {
   const router = useRouter();
   const [mounted, setMounted] = useState(false);
   const overlayRef = useRef<HTMLDivElement>(null);
@@ -29,29 +37,42 @@ export default function Modal({ children }: ModalProps) {
     router.back();
   };
 
-  const handleOverlayKeyDown = (e: KeyboardEvent<HTMLDivElement>) => {
+  const handleOverlayKeyDown = (e: ReactKeyboardEvent<HTMLDivElement>) => {
     if (e.key === 'Enter' || e.key === ' ') {
       e.preventDefault();
       closeModal();
     }
   };
 
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        closeModal();
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, []);
+
   const stopPropagation = (e: MouseEvent) => {
     e.stopPropagation();
   };
+
+  const style = size === 'custom' ? { width } : undefined;
 
   return (
     <>
       <div
         ref={overlayRef}
-        className={`${styles.overlay} ${mounted ? styles.open : ''}`}
         onClick={closeModal}
         onKeyDown={handleOverlayKeyDown}
-        role="button"
+        role="dialog"
         aria-label="모달 닫기"
         tabIndex={0}
+        className={`${styles.overlay} ${mounted ? styles.open : ''} ${className}`}
       >
-        <div className={styles.modal} onClick={stopPropagation}>
+        <div style={style} className={styles.modal} onClick={stopPropagation}>
           {children}
         </div>
       </div>

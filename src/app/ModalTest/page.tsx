@@ -1,11 +1,14 @@
-// app/Test/page.tsx
-import Link from 'next/link';
+import DefaultModal from '@/components/Modals/DefualtModal';
+import Modal from '@/components/Modals/Modal';
 
 export default function Page() {
   return (
     <>
       <h1>TEST PAGE</h1>
-      <Link href="/login">로그인 모달 열기</Link>
+      <Modal size="default" width={500}>
+        안녕
+        <DefaultModal />
+      </Modal>
     </>
   );
 }
