@@ -42,9 +42,9 @@ export default function TableMembers({
     <section className={`${styles.card} ${className}`}>
       {/* Header */}
       <header className={styles.header}>
-        <h2 className={`${typo.base} ${typo.text2xl} ${typo.bold}`}>{title}</h2>
+        <h2 className={`${typo.base} ${typo.text2xl} ${typo.bold} ${styles.title}`}>{title}</h2>
 
-        <div className={styles.headerRight}>
+        <div className={styles.headerRight} >
           <span className={`${typo.base} ${typo.textMd} ${typo.regular} ${styles.pageText}`}>
             {page} 페이지 중 {totalPages}
           </span>
@@ -53,7 +53,7 @@ export default function TableMembers({
           <div className={styles.pager} role="group" aria-label="페이지 이동">
             <button
               type="button"
-              className={`${styles.pagerBtn} ${styles.pagerLeft}`}
+              className={`${styles.pagerBtn} ${styles.pagerLeft} ${styles.pagerBtn2}`}
               onClick={onPrev}
               disabled={!canPrev}
               aria-label="이전 페이지"
@@ -92,11 +92,11 @@ export default function TableMembers({
 
             <button
               type="button"
-              className={styles.removeBtn}
+              className={`${styles.removeBtn} ${styles.removeBtn2}`}
               onClick={() => onRemove?.(m.id)}
               disabled={!onRemove}
             >
-              <span className={`${typo.base} ${typo.textMd} ${typo.regular}`}>삭제</span>
+              <span className={`${typo.base} ${typo.textMd} ${typo.regular} ${styles.deleteBtn}`}>삭제</span>
             </button>
           </li>
         ))}

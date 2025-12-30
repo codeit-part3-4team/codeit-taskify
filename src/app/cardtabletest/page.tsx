@@ -11,7 +11,7 @@ const members = [
 
 export default function Page() {
   return (
-    <main style={{ minHeight: "100vh", padding: 40, background: "#2f2f2f" }}>
+    <main style={{ minHeight: "100vh", padding: 40 }}>
       <div style={{ width: 620 }}>
         <TableMembers
           members={members}
