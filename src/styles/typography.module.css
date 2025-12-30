@@ -1,0 +1,20 @@
+.base {
+  font-family: var(--font-pretendard);
+}
+
+/* 사이즈 */
+.text3xl { font-size: 32px; line-height: 42px; }
+.text2xl { font-size: 24px; line-height: 32px; }
+.textXl  { font-size: 20px; line-height: 32px; }
+.text2lg { font-size: 18px; line-height: 26px; }
+.textLg  { font-size: 16px; line-height: 26px; }
+.textMd  { font-size: 14px; line-height: 24px; }
+.textSm  { font-size: 13px; line-height: 22px; }
+.textXs20 { font-size: 12px; line-height: 20px; }
+.textXs18 { font-size: 12px; line-height: 18px; }
+
+/* 굵기 */
+.bold { font-weight: 700; }
+.semibold { font-weight: 600; }
+.medium { font-weight: 500; }
+.regular { font-weight: 400; }
