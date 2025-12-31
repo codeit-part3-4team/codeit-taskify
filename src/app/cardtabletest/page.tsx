@@ -76,23 +76,53 @@
 //   );
 // }
 
-import TableInvitedDashboards from "@/components/CardTables/TableInvitedDashboards/TableInvitedDashboards";
+// import TableInvitedDashboards from "@/components/CardTables/TableInvitedDashboards/TableInvitedDashboards";
+
+// export default function Page() {
+//   return (
+//     <div style={{ padding: 24, display: "flex", justifyContent: "center" }}>
+//       <TableInvitedDashboards
+//         items={[
+//           { id: 1, name: "프로덕트 디자인", inviter: "손동희" },
+//           { id: 2, name: "새로운 기획 문서", inviter: "안귀영" },
+//           { id: 3, name: "유닛 A", inviter: "장혁" },
+//           { id: 4, name: "유닛 B", inviter: "강나무" },
+//           { id: 5, name: "유닛 C", inviter: "김태현" },
+//           { id: 6, name: "유닛 D", inviter: "김태현" },
+//         ]}
+//       />
+//     </div>
+//   );
+// }
+
+
+import { useState } from "react";
+import ProfileSettingCard from "@/components/CardTables/ProfileSettingCard/ProfileSettingCard";
 
 export default function Page() {
+  const [email, setEmail] = useState("");
+  const [nickname, setNickname] = useState("");
+
   return (
-    <div style={{ padding: 24, display: "flex", justifyContent: "center" }}>
-      <TableInvitedDashboards
-        items={[
-          { id: 1, name: "프로덕트 디자인", inviter: "손동희" },
-          { id: 2, name: "새로운 기획 문서", inviter: "안귀영" },
-          { id: 3, name: "유닛 A", inviter: "장혁" },
-          { id: 4, name: "유닛 B", inviter: "강나무" },
-          { id: 5, name: "유닛 C", inviter: "김태현" },
-          { id: 6, name: "유닛 D", inviter: "김태현" },
-        ]}
+    <main
+      style={{
+        minHeight: "100vh",
+        padding: 40,
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "flex-start",
+      }}
+    >
+      <ProfileSettingCard
+        title="프로필"
+        emailValue={email}
+        nicknameValue={nickname}
+        onChangeEmail={setEmail}
+        onChangeNickname={setNickname}
+        onUpload={() => alert("업로드 클릭")}
+        onSave={() => alert(`저장\nemail: ${email}\nnickname: ${nickname}`)}
       />
-    </div>
+    </main>
   );
 }
-
 
