@@ -26,36 +26,52 @@
 //   );
 // }
 
-import TableInvitations from "@/components/CardTables/TableInvitations/TableInvitations";
+// import TableInvitations from "@/components/CardTables/TableInvitations/TableInvitations";
 
-const invitations = [
-  { id: 1, email: "codeitA@codeit.com" },
-  { id: 2, email: "codeitB@codeit.com" },
-  { id: 3, email: "codeitC@codeit.com" },
-  { id: 4, email: "codeitD@codeit.com" },
-  { id: 5, email: "codeitE@codeit.com" },
-];
+// const invitations = [
+//   { id: 1, email: "codeitA@codeit.com" },
+//   { id: 2, email: "codeitB@codeit.com" },
+//   { id: 3, email: "codeitC@codeit.com" },
+//   { id: 4, email: "codeitD@codeit.com" },
+//   { id: 5, email: "codeitE@codeit.com" },
+// ];
 
-export default function InvitationsTestPage() {
+// export default function InvitationsTestPage() {
+//   return (
+//     <main
+//       style={{
+//         minHeight: "100vh",
+//         display: "flex",
+//         alignItems: "center",
+//         justifyContent: "center",
+//         padding: 40,
+//       }}
+//     >
+//       <TableInvitations
+//         invitations={invitations}
+//         page={1}
+//         totalPages={1}
+//         onPrev={() => console.log("prev")}
+//         onNext={() => console.log("next")}
+//         onInvite={() => alert("초대하기 클릭")}
+//         onCancel={(id) => alert(`취소 클릭: ${id}`)}
+//       />
+//     </main>
+//   );
+// }
+
+import InvitedDashboardEmptyCard from "@/components/CardTables/InvitedDashboardEmptyCard/InvitedDashboardEmptyCard";
+
+export default function Page() {
   return (
-    <main
+    <div
       style={{
-        minHeight: "100vh",
+        padding: "40px",
         display: "flex",
-        alignItems: "center",
         justifyContent: "center",
-        padding: 40,
       }}
     >
-      <TableInvitations
-        invitations={invitations}
-        page={1}
-        totalPages={1}
-        onPrev={() => console.log("prev")}
-        onNext={() => console.log("next")}
-        onInvite={() => alert("초대하기 클릭")}
-        onCancel={(id) => alert(`취소 클릭: ${id}`)}
-      />
-    </main>
+      <InvitedDashboardEmptyCard />
+    </div>
   );
 }
