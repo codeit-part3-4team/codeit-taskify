@@ -60,18 +60,39 @@
 //   );
 // }
 
-import InvitedDashboardEmptyCard from "@/components/CardTables/InvitedDashboardEmptyCard/InvitedDashboardEmptyCard";
+// import InvitedDashboardEmptyCard from "@/components/CardTables/InvitedDashboardEmptyCard/InvitedDashboardEmptyCard";
+
+// export default function Page() {
+//   return (
+//     <div
+//       style={{
+//         padding: "40px",
+//         display: "flex",
+//         justifyContent: "center",
+//       }}
+//     >
+//       <InvitedDashboardEmptyCard />
+//     </div>
+//   );
+// }
+
+import TableInvitedDashboards from "@/components/CardTables/TableInvitedDashboards/TableInvitedDashboards";
 
 export default function Page() {
   return (
-    <div
-      style={{
-        padding: "40px",
-        display: "flex",
-        justifyContent: "center",
-      }}
-    >
-      <InvitedDashboardEmptyCard />
+    <div style={{ padding: 24, display: "flex", justifyContent: "center" }}>
+      <TableInvitedDashboards
+        items={[
+          { id: 1, name: "프로덕트 디자인", inviter: "손동희" },
+          { id: 2, name: "새로운 기획 문서", inviter: "안귀영" },
+          { id: 3, name: "유닛 A", inviter: "장혁" },
+          { id: 4, name: "유닛 B", inviter: "강나무" },
+          { id: 5, name: "유닛 C", inviter: "김태현" },
+          { id: 6, name: "유닛 D", inviter: "김태현" },
+        ]}
+      />
     </div>
   );
 }
+
+
