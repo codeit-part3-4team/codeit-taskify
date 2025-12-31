@@ -96,12 +96,43 @@
 // }
 
 
+// import { useState } from "react";
+// import ProfileSettingCard from "@/components/CardTables/ProfileSettingCard/ProfileSettingCard";
+
+// export default function Page() {
+//   const [email, setEmail] = useState("");
+//   const [nickname, setNickname] = useState("");
+
+//   return (
+//     <main
+//       style={{
+//         minHeight: "100vh",
+//         padding: 40,
+//         display: "flex",
+//         justifyContent: "center",
+//         alignItems: "flex-start",
+//       }}
+//     >
+//       <ProfileSettingCard
+//         title="프로필"
+//         emailValue={email}
+//         nicknameValue={nickname}
+//         onChangeEmail={setEmail}
+//         onChangeNickname={setNickname}
+//         onUpload={() => alert("업로드 클릭")}
+//         onSave={() => alert(`저장\nemail: ${email}\nnickname: ${nickname}`)}
+//       />
+//     </main>
+//   );
+// }
+
 import { useState } from "react";
-import ProfileSettingCard from "@/components/CardTables/ProfileSettingCard/ProfileSettingCard";
+import PasswordChangeCard from "@/components/CardTables/PasswordChangeCard/PasswordChangeCard";
 
 export default function Page() {
-  const [email, setEmail] = useState("");
-  const [nickname, setNickname] = useState("");
+  const [currentPw, setCurrentPw] = useState("");
+  const [newPw, setNewPw] = useState("");
+  const [confirmPw, setConfirmPw] = useState("");
 
   return (
     <main
@@ -113,14 +144,18 @@ export default function Page() {
         alignItems: "flex-start",
       }}
     >
-      <ProfileSettingCard
-        title="프로필"
-        emailValue={email}
-        nicknameValue={nickname}
-        onChangeEmail={setEmail}
-        onChangeNickname={setNickname}
-        onUpload={() => alert("업로드 클릭")}
-        onSave={() => alert(`저장\nemail: ${email}\nnickname: ${nickname}`)}
+      <PasswordChangeCard
+        currentValue={currentPw}
+        newValue={newPw}
+        confirmValue={confirmPw}
+        onChangeCurrent={setCurrentPw}
+        onChangeNew={setNewPw}
+        onChangeConfirm={setConfirmPw}
+        onSubmit={() => {
+          alert(
+            `변경 클릭\n현재: ${currentPw}\n새 비번: ${newPw}\n새 비번 확인: ${confirmPw}`
+          );
+        }}
       />
     </main>
   );
