@@ -1,4 +1,10 @@
-/* 카드 컨테이너 */
+/* 카드 래퍼 */
+.cardWrapper {
+  display: flex;
+  justify-content: center;
+}
+
+/* 카드 */
 .card {
   width: 622px;
   background: var(--white-ffffff);
@@ -8,30 +14,25 @@
   padding-bottom: 4px;
 }
 
-
 /* Header */
 .header {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 12px;
-  margin-bottom: 15px;
-}
-
-.headerRight {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}
-
-.header,
-.tableHead {
+  margin-bottom: 12px;
   padding-left: 28px;
   padding-right: 28px;
 }
 
 .title {
   color: var(--black-333236);
+}
+
+.headerRight {
+  display: flex;
+  align-items: center;
+  gap: 16px;
 }
 
 .pageText {
@@ -70,6 +71,22 @@
   cursor: not-allowed;
 }
 
+/* SubHeader: "이메일" + (모바일)초대하기 */
+.subHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 28px;
+  padding-right: 28px;
+  padding-top: 12px;
+  padding-bottom: 8px;
+}
+
+/* Table head 텍스트 */
+.tableHead {
+  color: var(--gray-9fa6b2);
+}
+
 /* 초대하기 버튼 */
 .inviteBtn {
   height: 32px;
@@ -101,11 +118,9 @@
   font-size: 10px;
 }
 
-/* Table head */
-.tableHead {
-  padding-top: 12px;
-  padding-bottom: 1px;
-  color: var(--gray-9fa6b2);
+/* ✅ 기본: PC에서는 subHeader의 초대하기 버튼 숨김 */
+.inviteBtnMobile {
+  display: none;
 }
 
 /* Rows */
@@ -156,62 +171,37 @@
   margin: 0;
   color: var(--gray-787486);
 }
-.cardWrapper {
-  display: flex;
-  justify-content: center;
-}
 
 /* =========================
-   Mobile scale (<= 360px)
+   Mobile (<= 360px)
    ========================= */
 @media (max-width: 360px) {
-  /* .cardWrapper {
-    transform: scale(0.46);
-    transform-origin: top center;
-  } */
-
   .card {
     width: 286px;
-    /* 모바일에서 높이 고정 필요하면 아래 유지, 아니면 auto 추천 */
-    /* height: 406px; */
   }
-  h2.title {
-    font-size: 20px !important;
-    line-height: 28px !important;
-    white-space: nowrap;
-    flex-shrink: 0;
-    margin-top: 5px;
-}
 
-}
-  /* header 좌우 패딩 모바일 */
   .header {
     padding-left: 16px;
     padding-right: 16px;
-    margin-bottom: 12px;
-    align-items: flex-start; 
+    align-items: flex-start;
+    margin-bottom: 6px;
   }
 
-  /* ✅ 핵심: headerRight를 2줄로 줄바꿈 */
+  /* 타이틀 줄바꿈 방지 + 크기 */
+  .title {
+    white-space: nowrap;
+    font-size: 20px !important;
+    padding-top: 5px;;
+  }
+
+  /* 오른쪽: 페이지 텍스트 + 페이저만 (PC용 초대하기는 숨김) */
   .headerRight {
-    display: flex;
-    flex-wrap: wrap;          /* 줄바꿈 허용 */
-    justify-content: flex-end; /* 오른쪽 정렬 */
-    gap: 12px;            /* row-gap / col-gap */
-    width: 168px;             /* 피그마에서 오른쪽 영역 폭 느낌(필요 없으면 삭제 가능) */
+    gap: 10px;
   }
 
-  /* 1줄(상단): 페이지 텍스트 + 페이저가 한 줄로 */
   .pageText {
-    order: 1;
     font-size: 12px !important;
     line-height: 18px !important;
-    white-space: nowrap;
-  }
-
-  .pager {
-    order: 2;
-    border-radius: 6px;
   }
 
   .pagerBtn {
@@ -220,53 +210,48 @@
     font-size: 16px;
   }
 
-  /* 2줄(하단): 초대하기 버튼이 아래로 내려가서 오른쪽에 */
-  .inviteBtn {
-    order: 4;
-    height: 36px;
-    padding: 0 14px;
-    border-radius: 4px;
-    margin-top: 6px;      /* 윗줄과 간격 */
-    margin-left: auto;    /* 오른쪽으로 붙이기 */
+  /* ✅ 모바일: header 안의 초대하기 버튼 숨김 */
+  .inviteBtnDesktop {
+    display: none;
   }
 
-  .inviteBtn,
-  .inviteBtn * {
-    font-size: 14px !important; /* 타이포가 먹어버릴 때 대비 */
-    line-height: 24px !important;
-  }
-
-  /* ✅ "이메일"은 헤더 아래(2번째 줄 왼쪽)처럼 보이게 해야 함 */
-  .tableHead {
+  /* ✅ 모바일: subHeader에서 "이메일" + "초대하기" 한 줄 */
+  .subHeader {
     padding-left: 16px;
     padding-right: 16px;
-
-    /* 헤더 바로 아래로 붙는 느낌 */
-    margin-top: 4px;
-    padding-top: 0;
-    padding-bottom: 8px;
-
-    font-size: 14px !important;
-    line-height: 24px !important;
-    color: var(--gray-9fa6b2);
+    padding-top: 6px;
+    padding-bottom: 10px;
   }
 
-  /* 모바일 rows 패딩 */
+  .tableHead {
+    font-size: 14px !important;
+    line-height: 24px !important;
+  }
+
+  .inviteBtnMobile {
+    display: inline-flex;
+    height: 26px;
+    padding: 0 12px;
+  }
+
+  .inviteBtnMobile,
+  .inviteBtnMobile * {
+    font-size: 12px !important;
+    line-height: 24px !important;
+  }
+
   .row {
     padding: 16px 16px;
   }
 
-  /* 취소 버튼 모바일 */
   .cancelBtn {
-    width: 84px;
-    height: 32px;
-    border-radius: 4px;
     font-size: 14px !important;
     line-height: 24px !important;
+    width: 52px;;
   }
 
-  /* 이메일 텍스트 모바일 */
   .email {
-    font-size: 16px !important;
+    font-size: 14px !important;
     line-height: 26px !important;
   }
+}
