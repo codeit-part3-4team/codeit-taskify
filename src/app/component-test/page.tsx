@@ -1,21 +1,21 @@
 'use client';
 
 import { useState } from 'react';
-import ActionButton from '@/components/Buttons/ActionButton/ActionButton';
-import AddColumnButton from '@/components/Buttons/AddColumnButton/AddColumnButton';
-import AddDashboardButton from '@/components/Buttons/AddDashboardButton/AddDashboardButton';
-import AddTodoButton from '@/components/Buttons/AddTodoButton/AddTodoButton';
-import DashboardButton from '@/components/Buttons/DashboardButton/DashboardButton';
-import DeleteDashboardButton from '@/components/Buttons/DeleteDashboardButton/DeleteDashboardButton';
-import LoginButton from '@/components/Buttons/LoginButton/LoginButton';
-import ModalButton from '@/components/Buttons/ModalButton/ModalButton';
-import PaginationButton from '@/components/Buttons/PaginationButton/PaginationButton';
-import TextButton from '@/components/Buttons/TextButton/TextButton';
-import CommentInput from '@/components/Input/CommentInput/CommentInput';
-import DateInput from '@/components/Input/DateInput/DateInput';
-import LoginInput from '@/components/Input/LoginInput/LoginInput';
-import TagInput from '@/components/Input/TagInput/TagInput';
-import TextInput from '@/components/Input/TextInput/TextInput';
+import ActionButton from '@/components/Buttons/shared/ActionButton/ActionButton';
+import AddColumnButton from '@/components/Buttons/domains/dashboard/AddColumnButton/AddColumnButton';
+import AddDashboardButton from '@/components/Buttons/domains/dashboard/AddDashboardButton/AddDashboardButton';
+import AddTodoButton from '@/components/Buttons/domains/dashboard/AddTodoButton/AddTodoButton';
+import DashboardButton from '@/components/Buttons/domains/dashboard/DashboardButton/DashboardButton';
+import DeleteDashboardButton from '@/components/Buttons/domains/dashboard/DeleteDashboardButton/DeleteDashboardButton';
+import LoginButton from '@/components/Buttons/domains/login/LoginButton/LoginButton';
+import ModalButton from '@/components/Buttons/shared/ModalButton/ModalButton';
+import PaginationButton from '@/components/Buttons/shared/PaginationButton/PaginationButton';
+import TextButton from '@/components/Buttons/shared/TextButton/TextButton';
+import CommentInput from '@/components/Input/domains/todo/CommentInput/CommentInput';
+import DateInput from '@/components/Input/domains/todo/DateInput/DateInput';
+import LoginInput from '@/components/Input/domains/login/LoginInput/LoginInput';
+import TagInput from '@/components/Input/domains/todo/TagInput/TagInput';
+import TextInput from '@/components/Input/domains/todo/TextInput/TextInput';
 import IcX from '@/assets/icons/IcX';
 
 export default function ComponentTestPage() {

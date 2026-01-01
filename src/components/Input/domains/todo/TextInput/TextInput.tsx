@@ -12,7 +12,7 @@ interface TextInputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'si
 
 /**
  * TextInput 컴포넌트 (제목, 설명 등 텍스트 입력용)
- * 
+ *
  * @example
  * <TextInput
  *   label="제목"
@@ -30,18 +30,12 @@ const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
           {label}
           {required && <span className={styles.required}>*</span>}
         </label>
-        <input
-          ref={ref}
-          type="text"
-          className={styles.input}
-          {...props}
-        />
+        <input ref={ref} type="text" className={styles.input} {...props} />
       </div>
     );
-  }
+  },
 );
 
 TextInput.displayName = 'TextInput';
 
 export default TextInput;
-
