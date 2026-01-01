@@ -1,5 +1,12 @@
 'use client';
 
+import { useRouter } from 'next/navigation';
+import DefaultModal from '@/components/Modals/DefualtModal';
+import { useState } from 'react';
+import { DashboardCreateRequest } from '@/components/Modals/dsmains/DashBoard/Dashboard';
+import TextInput from '@/components/Input/TextInput/TextInput';
+import ModalButton from '@/components/Buttons/ModalButton/ModalButton';
+
 /**
  * CreateDashBoard 컴포넌트
  *
@@ -19,13 +26,6 @@
  * </Modal>
  *
  */
-
-import { useRouter } from 'next/navigation';
-import DefaultModal from '../DefualtModal';
-import { useState } from 'react';
-import { DashboardCreateRequest } from './dashboard';
-import TextInput from '@/components/Input/TextInput/TextInput';
-import ModalButton from '@/components/Buttons/ModalButton/ModalButton';
 
 export default function CreateDashBoard() {
   const router = useRouter();

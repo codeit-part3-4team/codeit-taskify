@@ -1,5 +1,22 @@
 'use client';
 
+import {
+  KeyboardEvent as ReactKeyboardEvent,
+  MouseEvent,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
+import styles from '@/components/Modals/Modal.module.css';
+import { useRouter } from 'next/navigation';
+
+type ModalProps = {
+  type?: 'default' | 'alim';
+  size?: 'default' | 'large' | 'custom';
+  width?: number | string;
+  children: React.ReactNode;
+} & React.ComponentPropsWithoutRef<'div'>;
+
 /**
  * Modal 컴포넌트
  *
@@ -51,23 +68,6 @@
  * ```
  *
  */
-
-import {
-  KeyboardEvent as ReactKeyboardEvent,
-  MouseEvent,
-  useEffect,
-  useRef,
-  useState,
-} from 'react';
-import styles from './Modal.module.css';
-import { useRouter } from 'next/navigation';
-
-type ModalProps = {
-  type?: 'default' | 'alim';
-  size?: 'default' | 'large' | 'custom';
-  width?: number | string;
-  children: React.ReactNode;
-} & React.ComponentPropsWithoutRef<'div'>;
 
 export default function Modal({
   type = 'default',

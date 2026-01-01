@@ -1,5 +1,20 @@
 'use client';
 
+import { useRouter } from 'next/navigation';
+import DefaultModal from '@/components/Modals/DefualtModal';
+import { useState } from 'react';
+import { CardCreateRequest } from '@/components/Modals/dsmains/Card/Card';
+import ModalButton from '@/components/Buttons/ModalButton/ModalButton';
+import TextInput from '@/components/Input/TextInput/TextInput';
+import DateInput from '@/components/Input/DateInput/DateInput';
+import TagInput from '@/components/Input/TagInput/TagInput';
+import styles from '@/components/Modals/Modal.module.css';
+
+type CreateCardProps = {
+  dashboardId: number;
+  columnId: number;
+};
+
 /**
  * CreateCard 컴포넌트
  *
@@ -17,21 +32,6 @@
  * </Modal>
  *
  */
-
-import { useRouter } from 'next/navigation';
-import DefaultModal from '../DefualtModal';
-import { useState } from 'react';
-import { CardCreateRequest } from './Card';
-import ModalButton from '@/components/Buttons/ModalButton/ModalButton';
-import TextInput from '@/components/Input/TextInput/TextInput';
-import DateInput from '@/components/Input/DateInput/DateInput';
-import TagInput from '@/components/Input/TagInput/TagInput';
-import styles from '../Modal.module.css';
-
-type CreateCardProps = {
-  dashboardId: number;
-  columnId: number;
-};
 
 export default function CreateCard({ dashboardId, columnId }: CreateCardProps) {
   const router = useRouter();

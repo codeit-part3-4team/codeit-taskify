@@ -1,5 +1,16 @@
 'use client';
 
+import { useRouter } from 'next/navigation';
+import DefaultModal from '@/components/Modals/DefualtModal';
+import { useState } from 'react';
+import { ColumnCreateRequest } from '@/components/Modals/dsmains/Column/Columns';
+import ModalButton from '@/components/Buttons/ModalButton/ModalButton';
+import TextInput from '@/components/Input/TextInput/TextInput';
+
+type CreateColumnProps = {
+  dashboardId: number;
+};
+
 /**
  * CreateColumn 컴포넌트
  *
@@ -19,17 +30,6 @@
  * </Modal>
  *
  */
-
-import { useRouter } from 'next/navigation';
-import DefaultModal from '../DefualtModal';
-import { useState } from 'react';
-import { ColumnCreateRequest } from './columns';
-import ModalButton from '@/components/Buttons/ModalButton/ModalButton';
-import TextInput from '@/components/Input/TextInput/TextInput';
-
-type CreateColumnProps = {
-  dashboardId: number;
-};
 
 export default function CreateColumn({ dashboardId }: CreateColumnProps) {
   const router = useRouter();

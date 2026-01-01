@@ -1,5 +1,9 @@
 'use client';
 
+import { useRouter } from 'next/navigation';
+import DefaultModal from '@/components/Modals/DefualtModal';
+import ModalButton from '@/components/Buttons/ModalButton/ModalButton';
+
 /**
  * DeleteCard 컴포넌트
  *
@@ -19,10 +23,6 @@
  * </Modal>
  *
  */
-
-import { useRouter } from 'next/navigation';
-import DefaultModal from '../DefualtModal';
-import ModalButton from '@/components/Buttons/ModalButton/ModalButton';
 
 export default function DeleteCard() {
   const router = useRouter();

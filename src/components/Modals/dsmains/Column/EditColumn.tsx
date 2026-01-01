@@ -1,5 +1,12 @@
 'use client';
 
+import { useRouter } from 'next/navigation';
+import DefaultModal from '@/components/Modals/DefualtModal';
+import { ColumnUpdateRequest } from '@/components/Modals/dsmains/Column/Columns';
+import { useState } from 'react';
+import ModalButton from '@/components/Buttons/ModalButton/ModalButton';
+import TextInput from '@/components/Input/TextInput/TextInput';
+
 /**
  * EditColumn 컴포넌트
  *
@@ -19,13 +26,6 @@
  * </Modal>
  *
  */
-
-import { useRouter } from 'next/navigation';
-import DefaultModal from '../DefualtModal';
-import { ColumnUpdateRequest } from './columns';
-import { useState } from 'react';
-import ModalButton from '@/components/Buttons/ModalButton/ModalButton';
-import TextInput from '@/components/Input/TextInput/TextInput';
 
 export default function EditColumn({ initialTitle }: ColumnUpdateRequest) {
   const router = useRouter();

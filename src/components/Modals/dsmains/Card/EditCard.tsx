@@ -1,5 +1,30 @@
 'use client';
 
+import { useRouter } from 'next/navigation';
+import DefaultModal from '@/components/Modals/DefualtModal';
+import { useState } from 'react';
+import { CardServerResponse, UpdateCardRequest } from './Card';
+import ModalButton from '@/components/Buttons/ModalButton/ModalButton';
+import TextInput from '@/components/Input/TextInput/TextInput';
+import DateInput from '@/components/Input/DateInput/DateInput';
+import TagInput from '@/components/Input/TagInput/TagInput';
+import styles from '@/components/Modals/Modal.module.css';
+
+const dummyCard: CardServerResponse = {
+  id: 14842,
+  title: '카드 테스트',
+  dashboardId: 17226,
+  description: '컬럼에 카드 생성',
+  tags: [],
+  dueDate: null,
+  assignee: null,
+  imageUrl: null,
+  teamId: '20-4',
+  columnId: 58140,
+  createdAt: '2025-12-26T19:37:00.789Z',
+  updatedAt: '2025-12-26T19:37:00.789Z',
+};
+
 /**
  * EditCard 컴포넌트
  *
@@ -17,31 +42,6 @@
  * </Modal>
  *
  */
-
-import { useRouter } from 'next/navigation';
-import DefaultModal from '../DefualtModal';
-import { useState } from 'react';
-import { CardServerResponse, UpdateCardRequest } from './Card';
-import ModalButton from '@/components/Buttons/ModalButton/ModalButton';
-import TextInput from '@/components/Input/TextInput/TextInput';
-import DateInput from '@/components/Input/DateInput/DateInput';
-import TagInput from '@/components/Input/TagInput/TagInput';
-import styles from '../Modal.module.css';
-
-const dummyCard: CardServerResponse = {
-  id: 14842,
-  title: '카드 테스트',
-  dashboardId: 17226,
-  description: '컬럼에 카드 생성',
-  tags: [],
-  dueDate: null,
-  assignee: null,
-  imageUrl: null,
-  teamId: '20-4',
-  columnId: 58140,
-  createdAt: '2025-12-26T19:37:00.789Z',
-  updatedAt: '2025-12-26T19:37:00.789Z',
-};
 
 export default function EditCard({ cards }: { cards?: CardServerResponse }) {
   const router = useRouter();

@@ -1,5 +1,16 @@
 'use client';
 
+import { useRouter } from 'next/navigation';
+import DefaultModal from '@/components/Modals/DefualtModal';
+import { useState } from 'react';
+import ModalButton from '@/components/Buttons/ModalButton/ModalButton';
+import TextInput from '@/components/Input/TextInput/TextInput';
+
+type EditDashBoardProps = {
+  title: string;
+  color: string;
+};
+
 /**
  * EditDashBoard 컴포넌트
  *
@@ -19,17 +30,6 @@
  * </Modal>
  *
  */
-
-import { useRouter } from 'next/navigation';
-import DefaultModal from '../DefualtModal';
-import { useState } from 'react';
-import ModalButton from '@/components/Buttons/ModalButton/ModalButton';
-import TextInput from '@/components/Input/TextInput/TextInput';
-
-type EditDashBoardProps = {
-  title: string;
-  color: string;
-};
 
 export default function EditDashBoard({
   title: initialTitle,

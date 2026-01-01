@@ -1,5 +1,14 @@
 'use client';
 
+import { useRouter } from 'next/navigation';
+import ModalButton from '@/components/Buttons/ModalButton/ModalButton';
+import DefaultModal from '@/components/Modals/DefualtModal';
+
+type AlimModalProps = {
+  message: string;
+  buttonText?: string;
+};
+
 /**
  * AlimModal 컴포넌트
  *
@@ -24,15 +33,6 @@
  * </Modal>
  * ```
  */
-
-import { useRouter } from 'next/navigation';
-import ModalButton from '@/components/Buttons/ModalButton/ModalButton';
-import DefaultModal from '@/components/Modals/DefualtModal';
-
-type AlimModalProps = {
-  message: string;
-  buttonText?: string;
-};
 
 export default function AlimModal({ message, buttonText = '확인' }: AlimModalProps) {
   const router = useRouter();

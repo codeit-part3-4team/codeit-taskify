@@ -1,5 +1,16 @@
 'use client';
 
+import { useRouter } from 'next/navigation';
+import styles from '@/components/Modals/Modal.module.css';
+
+type DefaultModalProps = {
+  title?: string;
+  message?: string;
+  actionsButton?: React.ReactNode;
+  children?: React.ReactNode;
+  closeButton?: boolean;
+} & React.HTMLAttributes<HTMLDivElement>;
+
 /**
  * DefaultModal 컴포넌트
  *
@@ -34,17 +45,6 @@
  * </DefaultModal>
  * ```
  */
-
-import { useRouter } from 'next/navigation';
-import styles from './Modal.module.css';
-
-type DefaultModalProps = {
-  title?: string;
-  message?: string;
-  actionsButton?: React.ReactNode;
-  children?: React.ReactNode;
-  closeButton?: boolean;
-} & React.HTMLAttributes<HTMLDivElement>;
 
 export default function DefaultModal({
   title,
