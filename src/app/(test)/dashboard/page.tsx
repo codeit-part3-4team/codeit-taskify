@@ -9,7 +9,7 @@ export default async function DashboardPage() {
   return (
     <main>
       <h1>Dashboard List</h1>
-      <Link href={`/dashboard/create`}>대시보드 크리에이트 열기</Link>
+      <Link href={`/dashboard/create`}>대시보드 생성 모달 열기</Link>
       <ul>
         {dashboards.map((dashboard) => (
           <li key={dashboard.id}>

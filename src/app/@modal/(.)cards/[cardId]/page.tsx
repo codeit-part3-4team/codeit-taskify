@@ -9,7 +9,7 @@ export default async function CardDetailPage({ params }: { params: { cardId: str
   return (
     <div>
       <Modal>
-        {cardId}
+        카드 상세 모달창 테스트
         <DefaultModal />
       </Modal>
     </div>
