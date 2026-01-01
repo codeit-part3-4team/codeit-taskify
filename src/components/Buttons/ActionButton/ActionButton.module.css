@@ -57,7 +57,7 @@
 .deny {
   background-color: var(--white-ffffff);
   color: var(--violet-5534da);
-  border: 1px solid #d9d9d9;
+  border: 1px solid var(--gray-d9d9d9);
 }
 
 .deny:hover:not(:disabled) {
@@ -66,6 +66,6 @@
 }
 
 .deny:active:not(:disabled) {
-  background-color: #e5dff9;
+  background-color: var(--violet-8p);
 }
 

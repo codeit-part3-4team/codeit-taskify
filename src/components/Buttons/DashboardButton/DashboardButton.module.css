@@ -2,7 +2,7 @@
 .button {
   font-family: var(--font-pretendard);
   background-color: var(--white-ffffff);
-  border: 1px solid #d9d9d9;
+  border: 1px solid var(--gray-d9d9d9);
   border-radius: 8px;
   cursor: pointer;
   transition: all 0.2s ease;
@@ -14,12 +14,12 @@
 }
 
 .button:hover:not(:disabled) {
-  background-color: #fafafa;
+  background-color: var(--gray-fafafa);
   border-color: var(--violet-5534da);
 }
 
 .button:active:not(:disabled) {
-  background-color: #f0f0f0;
+  background-color: var(--gray-eeeeee);
 }
 
 .button:disabled {
@@ -89,23 +89,23 @@
 }
 
 .dot-green {
-  background-color: #7ac555;
+  background-color: var(--green-7ac555);
 }
 
 .dot-purple {
-  background-color: #760dde;
+  background-color: var(--purple-760dde);
 }
 
 .dot-orange {
-  background-color: #ffa500;
+  background-color: var(--orange-ffa500);
 }
 
 .dot-blue {
-  background-color: #76a5ea;
+  background-color: var(--blue-76a6ea);
 }
 
 .dot-pink {
-  background-color: #e876ea;
+  background-color: var(--pink-e876ea);
 }
 
 /* Text */

@@ -24,7 +24,7 @@
   height: 32px;
   padding: 7px 29px;
   font-size: 14px;
-  line-height: 18px;
+  line-height: 24px;
 }
 
 /* Size Variants - Small */
@@ -33,7 +33,7 @@
   height: 32px;
   padding: 7px 9px;
   font-size: 12px;
-  line-height: 18px;
+  line-height: 20px;
 }
 
 .small.comment {
@@ -41,7 +41,7 @@
   height: 28px;
   padding: 7px 31px;
   font-size: 12px;
-  line-height: 14px;
+  line-height: 20px;
 }
 
 /* Variant Styles - All Same Color */
@@ -58,5 +58,5 @@
 
 .delete:active:not(:disabled),
 .comment:active:not(:disabled) {
-  background-color: #e5dff9;
+  background-color: var(--violet-8p);
 }
