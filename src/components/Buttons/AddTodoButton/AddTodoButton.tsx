@@ -1,5 +1,14 @@
 'use client';
 
+import '@/components/design.css';
+import styles from './AddTodoButton.module.css';
+import Image from 'next/image';
+
+type AddTodoButtonProps = {
+  /** 버튼 크기 (desktop: 314x40, tablet: 544x40, mobile: 284x32) */
+  size?: 'desktop' | 'tablet' | 'mobile';
+} & React.ButtonHTMLAttributes<HTMLButtonElement>;
+
 /**
  * Add Todo Button 컴포넌트
  *
@@ -23,16 +32,6 @@
  * />
  * ```
  */
-
-import '@/components/design.css';
-import styles from './AddTodoButton.module.css';
-import Image from 'next/image';
-
-type AddTodoButtonProps = {
-  /** 버튼 크기 (desktop: 314x40, tablet: 544x40, mobile: 284x32) */
-  size?: 'desktop' | 'tablet' | 'mobile';
-} & React.ButtonHTMLAttributes<HTMLButtonElement>;
-
 export default function AddTodoButton({
   size = 'desktop',
   className = '',

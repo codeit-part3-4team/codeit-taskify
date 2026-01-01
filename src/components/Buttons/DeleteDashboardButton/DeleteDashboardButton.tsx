@@ -1,5 +1,13 @@
 'use client';
 
+import '@/components/design.css';
+import styles from './DeleteDashboardButton.module.css';
+
+type DeleteDashboardButtonProps = {
+  /** 버튼 크기 (desktop: 320x62, tablet: 320x62, mobile: 284x52) */
+  size?: 'desktop' | 'tablet' | 'mobile';
+} & React.ButtonHTMLAttributes<HTMLButtonElement>;
+
 /**
  * Delete Dashboard Button 컴포넌트
  *
@@ -23,15 +31,6 @@
  * />
  * ```
  */
-
-import '@/components/design.css';
-import styles from './DeleteDashboardButton.module.css';
-
-type DeleteDashboardButtonProps = {
-  /** 버튼 크기 (desktop: 320x62, tablet: 320x62, mobile: 284x52) */
-  size?: 'desktop' | 'tablet' | 'mobile';
-} & React.ButtonHTMLAttributes<HTMLButtonElement>;
-
 export default function DeleteDashboardButton({
   size = 'desktop',
   className = '',

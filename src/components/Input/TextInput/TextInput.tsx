@@ -3,6 +3,13 @@
 import { InputHTMLAttributes, forwardRef } from 'react';
 import styles from './TextInput.module.css';
 
+interface TextInputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> {
+  /** Input 상단에 표시될 라벨 */
+  label: string;
+  /** 필수 입력 여부 (라벨 옆에 * 표시) */
+  required?: boolean;
+}
+
 /**
  * TextInput 컴포넌트 (제목, 설명 등 텍스트 입력용)
  * 
@@ -15,14 +22,6 @@ import styles from './TextInput.module.css';
  *   onChange={(e) => setTitle(e.target.value)}
  * />
  */
-
-interface TextInputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> {
-  /** Input 상단에 표시될 라벨 */
-  label: string;
-  /** 필수 입력 여부 (라벨 옆에 * 표시) */
-  required?: boolean;
-}
-
 const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
   ({ label, required, className, ...props }, ref) => {
     return (

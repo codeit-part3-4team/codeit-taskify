@@ -1,5 +1,14 @@
 'use client';
 
+import '@/components/design.css';
+import styles from './AddColumnButton.module.css';
+import Image from 'next/image';
+
+type AddColumnButtonProps = {
+  /** 버튼 크기 (desktop: 354x70, tablet: 544x70, mobile: 284x66) */
+  size?: 'desktop' | 'tablet' | 'mobile';
+} & React.ButtonHTMLAttributes<HTMLButtonElement>;
+
 /**
  * Add Column Button 컴포넌트
  *
@@ -23,16 +32,6 @@
  * />
  * ```
  */
-
-import '@/components/design.css';
-import styles from './AddColumnButton.module.css';
-import Image from 'next/image';
-
-type AddColumnButtonProps = {
-  /** 버튼 크기 (desktop: 354x70, tablet: 544x70, mobile: 284x66) */
-  size?: 'desktop' | 'tablet' | 'mobile';
-} & React.ButtonHTMLAttributes<HTMLButtonElement>;
-
 export default function AddColumnButton({
   size = 'desktop',
   className = '',

@@ -1,5 +1,17 @@
 'use client';
 
+import '@/components/design.css';
+import styles from './TextButton.module.css';
+
+type TextButtonProps = {
+  /** 버튼 크기 */
+  size?: 'large' | 'small';
+  /** 버튼 타입 (delete: 삭제, comment: 입력) */
+  variant?: 'delete' | 'comment';
+  /** 버튼 내용 */
+  children: React.ReactNode;
+} & React.ButtonHTMLAttributes<HTMLButtonElement>;
+
 /**
  * Text Button 컴포넌트
  *
@@ -30,19 +42,6 @@
  * </TextButton>
  * ```
  */
-
-import '@/components/design.css';
-import styles from './TextButton.module.css';
-
-type TextButtonProps = {
-  /** 버튼 크기 */
-  size?: 'large' | 'small';
-  /** 버튼 타입 (delete: 삭제, comment: 입력) */
-  variant?: 'delete' | 'comment';
-  /** 버튼 내용 */
-  children: React.ReactNode;
-} & React.ButtonHTMLAttributes<HTMLButtonElement>;
-
 export default function TextButton({
   size = 'large',
   variant = 'comment',

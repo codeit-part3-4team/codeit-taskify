@@ -1,5 +1,24 @@
 'use client';
 
+import '@/components/design.css';
+import styles from './PaginationButton.module.css';
+import IcArrowRight from '@/assets/icons/IcArrowRight';
+
+type PaginationButtonProps = {
+  /** 버튼 크기 (large: 40px, small: 36px) */
+  size?: 'large' | 'small';
+  /** 이전 버튼 비활성화 */
+  prevDisabled?: boolean;
+  /** 다음 버튼 비활성화 */
+  nextDisabled?: boolean;
+  /** 이전 버튼 클릭 이벤트 */
+  onPrevClick?: () => void;
+  /** 다음 버튼 클릭 이벤트 */
+  onNextClick?: () => void;
+  /** 추가 className */
+  className?: string;
+};
+
 /**
  * Pagination Button 컴포넌트
  * 
@@ -39,26 +58,6 @@
  * />
  * ```
  */
-
-import '@/components/design.css';
-import styles from './PaginationButton.module.css';
-import IcArrowRight from '@/assets/icons/IcArrowRight';
-
-type PaginationButtonProps = {
-  /** 버튼 크기 (large: 40px, small: 36px) */
-  size?: 'large' | 'small';
-  /** 이전 버튼 비활성화 */
-  prevDisabled?: boolean;
-  /** 다음 버튼 비활성화 */
-  nextDisabled?: boolean;
-  /** 이전 버튼 클릭 이벤트 */
-  onPrevClick?: () => void;
-  /** 다음 버튼 클릭 이벤트 */
-  onNextClick?: () => void;
-  /** 추가 className */
-  className?: string;
-};
-
 export default function PaginationButton({
   size = 'large',
   prevDisabled = false,

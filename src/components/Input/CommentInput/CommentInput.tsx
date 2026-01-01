@@ -3,6 +3,13 @@
 import { TextareaHTMLAttributes, forwardRef } from 'react';
 import styles from './CommentInput.module.css';
 
+interface CommentInputProps extends Omit<TextareaHTMLAttributes<HTMLTextAreaElement>, 'size'> {
+  /** 입력창 크기 */
+  size: 'large' | 'small';
+  /** 입력 버튼 클릭 핸들러 */
+  onSubmit?: () => void;
+}
+
 /**
  * CommentInput 컴포넌트 (댓글 입력용)
  *
@@ -24,14 +31,6 @@ import styles from './CommentInput.module.css';
  *   onSubmit={() => handleSubmit()}
  * />
  */
-
-interface CommentInputProps extends Omit<TextareaHTMLAttributes<HTMLTextAreaElement>, 'size'> {
-  /** 입력창 크기 */
-  size: 'large' | 'small';
-  /** 입력 버튼 클릭 핸들러 */
-  onSubmit?: () => void;
-}
-
 const CommentInput = forwardRef<HTMLTextAreaElement, CommentInputProps>(
   ({ size, onSubmit, className, ...props }, ref) => {
     return (

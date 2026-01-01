@@ -1,5 +1,21 @@
 'use client';
 
+import '@/components/design.css';
+import styles from './DashboardButton.module.css';
+import IcArrowRight from '@/assets/icons/IcArrowRight';
+import IcCrown from '@/assets/icons/IcCrown';
+
+type DashboardButtonProps = {
+  /** 버튼 크기 */
+  size?: 'desktop' | 'tablet' | 'mobile';
+  /** 점 색상 */
+  color?: 'green' | 'purple' | 'orange' | 'blue' | 'pink';
+  /** 왕관 표시 여부 */
+  showCrown?: boolean;
+  /** 대시보드 이름 */
+  children: React.ReactNode;
+} & React.ButtonHTMLAttributes<HTMLButtonElement>;
+
 /**
  * Dashboard Button 컴포넌트
  *
@@ -36,23 +52,6 @@
  * </DashboardButton>
  * ```
  */
-
-import '@/components/design.css';
-import styles from './DashboardButton.module.css';
-import IcArrowRight from '@/assets/icons/IcArrowRight';
-import IcCrown from '@/assets/icons/IcCrown';
-
-type DashboardButtonProps = {
-  /** 버튼 크기 */
-  size?: 'desktop' | 'tablet' | 'mobile';
-  /** 점 색상 */
-  color?: 'green' | 'purple' | 'orange' | 'blue' | 'pink';
-  /** 왕관 표시 여부 */
-  showCrown?: boolean;
-  /** 대시보드 이름 */
-  children: React.ReactNode;
-} & React.ButtonHTMLAttributes<HTMLButtonElement>;
-
 export default function DashboardButton({
   size = 'desktop',
   color = 'green',

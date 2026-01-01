@@ -1,5 +1,14 @@
 'use client';
 
+import '@/components/design.css';
+import styles from './AddDashboardButton.module.css';
+import Image from 'next/image';
+
+type AddDashboardButtonProps = {
+  /** 버튼 크기 (desktop: 332x70, tablet: 247x68, mobile: 260x58) */
+  size?: 'desktop' | 'tablet' | 'mobile';
+} & React.ButtonHTMLAttributes<HTMLButtonElement>;
+
 /**
  * Add Dashboard Button 컴포넌트
  *
@@ -23,16 +32,6 @@
  * />
  * ```
  */
-
-import '@/components/design.css';
-import styles from './AddDashboardButton.module.css';
-import Image from 'next/image';
-
-type AddDashboardButtonProps = {
-  /** 버튼 크기 (desktop: 332x70, tablet: 247x68, mobile: 260x58) */
-  size?: 'desktop' | 'tablet' | 'mobile';
-} & React.ButtonHTMLAttributes<HTMLButtonElement>;
-
 export default function AddDashboardButton({
   size = 'desktop',
   className = '',

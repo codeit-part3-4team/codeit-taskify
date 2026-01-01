@@ -5,6 +5,15 @@ import IcEyeOn from '@/assets/icons/IcEyeOn';
 import IcEyeOff from '@/assets/icons/IcEyeOff';
 import styles from './LoginInput.module.css';
 
+interface LoginInputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> {
+  /** Input 상단에 표시될 라벨 */
+  label: string;
+  /** Input 타입 */
+  type?: 'text' | 'email' | 'password';
+  /** 에러 메시지 (있으면 에러 상태 표시) */
+  error?: string;
+}
+
 /**
  * LoginInput 컴포넌트 (로그인/회원가입 페이지 전용)
  * 
@@ -29,16 +38,6 @@ import styles from './LoginInput.module.css';
  *   error="8자 이상 입력해 주세요."
  * />
  */
-
-interface LoginInputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> {
-  /** Input 상단에 표시될 라벨 */
-  label: string;
-  /** Input 타입 */
-  type?: 'text' | 'email' | 'password';
-  /** 에러 메시지 (있으면 에러 상태 표시) */
-  error?: string;
-}
-
 const LoginInput = forwardRef<HTMLInputElement, LoginInputProps>(
   ({ label, type = 'text', error, className, ...props }, ref) => {
     const [showPassword, setShowPassword] = useState(false);

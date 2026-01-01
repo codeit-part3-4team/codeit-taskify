@@ -3,18 +3,6 @@
 import { useState, KeyboardEvent, forwardRef, useImperativeHandle, useRef } from 'react';
 import styles from './TagInput.module.css';
 
-/**
- * TagInput 컴포넌트 (태그 입력용)
- * 
- * @example
- * <TagInput
- *   label="태그"
- *   placeholder="입력 후 Enter"
- *   tags={tags}
- *   onTagsChange={setTags}
- * />
- */
-
 interface TagInputProps {
   /** Input 상단에 표시될 라벨 */
   label: string;
@@ -32,6 +20,17 @@ export interface TagInputRef {
   focus: () => void;
 }
 
+/**
+ * TagInput 컴포넌트 (태그 입력용)
+ *
+ * @example
+ * <TagInput
+ *   label="태그"
+ *   placeholder="입력 후 Enter"
+ *   tags={tags}
+ *   onTagsChange={setTags}
+ * />
+ */
 const TagInput = forwardRef<TagInputRef, TagInputProps>(
   ({ label, placeholder, tags, onTagsChange, className }, ref) => {
     const [inputValue, setInputValue] = useState('');
@@ -79,10 +78,9 @@ const TagInput = forwardRef<TagInputRef, TagInputProps>(
         )}
       </div>
     );
-  }
+  },
 );
 
 TagInput.displayName = 'TagInput';
 
 export default TagInput;
-

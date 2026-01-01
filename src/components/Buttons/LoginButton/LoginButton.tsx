@@ -1,5 +1,19 @@
 'use client';
 
+import '@/components/design.css';
+import styles from './LoginButton.module.css';
+
+type LoginButtonProps = {
+  /** 버튼 크기 (large: 520px, small: 351px) */
+  size?: 'large' | 'small';
+  /** 버튼 색상 상태 (active: 활성, inactive: 비활성) */
+  variant?: 'active' | 'inactive';
+  /** 전체 너비 사용 여부 */
+  fullWidth?: boolean;
+  /** 버튼 내용 */
+  children: React.ReactNode;
+} & React.ButtonHTMLAttributes<HTMLButtonElement>;
+
 /**
  * Login Button 컴포넌트
  *
@@ -30,21 +44,6 @@
  * </LoginButton>
  * ```
  */
-
-import '@/components/design.css';
-import styles from './LoginButton.module.css';
-
-type LoginButtonProps = {
-  /** 버튼 크기 (large: 520px, small: 351px) */
-  size?: 'large' | 'small';
-  /** 버튼 색상 상태 (active: 활성, inactive: 비활성) */
-  variant?: 'active' | 'inactive';
-  /** 전체 너비 사용 여부 */
-  fullWidth?: boolean;
-  /** 버튼 내용 */
-  children: React.ReactNode;
-} & React.ButtonHTMLAttributes<HTMLButtonElement>;
-
 export default function LoginButton({
   size = 'large',
   variant = 'active',

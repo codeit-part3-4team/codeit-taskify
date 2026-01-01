@@ -1,5 +1,17 @@
 'use client';
 
+import '@/components/design.css';
+import styles from './ModalButton.module.css';
+
+type ModalButtonProps = {
+  /** 버튼 스타일 (primary: 확인, secondary: 취소) */
+  variant?: 'primary' | 'secondary';
+  /** 버튼 크기 (large: 120px, small: 84px) */
+  size?: 'large' | 'small';
+  /** 버튼 내용 */
+  children: React.ReactNode;
+} & React.ButtonHTMLAttributes<HTMLButtonElement>;
+
 /**
  * Modal Button 컴포넌트
  *
@@ -31,19 +43,6 @@
  * </div>
  * ```
  */
-
-import '@/components/design.css';
-import styles from './ModalButton.module.css';
-
-type ModalButtonProps = {
-  /** 버튼 스타일 (primary: 확인, secondary: 취소) */
-  variant?: 'primary' | 'secondary';
-  /** 버튼 크기 (large: 120px, small: 84px) */
-  size?: 'large' | 'small';
-  /** 버튼 내용 */
-  children: React.ReactNode;
-} & React.ButtonHTMLAttributes<HTMLButtonElement>;
-
 export default function ModalButton({
   variant = 'primary',
   size = 'large',

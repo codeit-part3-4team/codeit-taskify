@@ -4,6 +4,11 @@ import { InputHTMLAttributes, forwardRef } from 'react';
 import IcCalender from '@/assets/icons/IcCalender';
 import styles from './DateInput.module.css';
 
+interface DateInputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size' | 'type'> {
+  /** Input 상단에 표시될 라벨 */
+  label: string;
+}
+
 /**
  * DateInput 컴포넌트 (마감일 입력용)
  * 
@@ -15,12 +20,6 @@ import styles from './DateInput.module.css';
  *   onChange={(e) => setDueDate(e.target.value)}
  * />
  */
-
-interface DateInputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size' | 'type'> {
-  /** Input 상단에 표시될 라벨 */
-  label: string;
-}
-
 const DateInput = forwardRef<HTMLInputElement, DateInputProps>(
   ({ label, className, value, ...props }, ref) => {
     const hasValue = value !== undefined && value !== '';
