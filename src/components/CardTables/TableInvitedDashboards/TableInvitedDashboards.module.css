@@ -1,0 +1,281 @@
+
+ /* Base = PC 고정 버전 */
+
+.card {
+  width: 1022px; 
+  background: var(--white-ffffff);
+  border: 1px solid var(--gray-eeeeee);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* ✅ Desktop에서만 유연하게 */
+@media (min-width: 1023px) {
+  .card {
+    width: 100%;
+    max-width: 1022px;
+  }
+}
+
+/* Header */
+.header {
+  padding: 32px 40px 16px 40px;
+}
+
+.title {
+  margin: 0;
+  color: var(--black-333236);
+}
+
+/* Search */
+.searchWrap {
+  padding: 0 40px 28px 40px;
+}
+
+.searchBox {
+  width: 100%;
+  height: 52px;
+  border-radius: 6px;
+  border: 1px solid var(--gray-d9d9d9);
+  background: var(--white-ffffff);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 16px;
+}
+
+.searchIcon {
+  position: relative;
+  width: 22px;
+  height: 22px;
+  flex: 0 0 auto;
+}
+
+.searchInput {
+  width: 100%;
+  border: 0;
+  outline: none;
+  background: transparent;
+  color: var(--black-333236);
+}
+
+.searchInput::placeholder {
+  color: var(--gray-9fa6b2);
+}
+
+/* PC/데스크탑 테이블 (기본)*/
+
+.tableHead {
+  display: grid;
+  grid-template-columns: 1fr 1fr 240px;
+  align-items: center;
+  padding: 14px 40px;
+  color: var(--gray-9fa6b2);
+}
+
+
+@media (min-width: 720px) {
+  .tableHead {
+    padding-left: 76px;
+    padding-right: 76px;
+  }
+}
+
+
+.th {
+  color: var(--gray-9fa6b2);
+  white-space: nowrap;
+  word-break: keep-all;
+}
+
+/* 수락 여부 헤더 전용 */
+.actionsHead {
+  justify-self: center;  
+  text-align: center;
+  white-space: nowrap;
+}
+
+
+.rows {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 240px;
+  align-items: center;
+  padding: 18px 40px;
+  border-top: 1px solid var(--gray-eeeeee);
+}
+
+/* 마지막 행 아래 선 추가 */
+.row:last-child {
+  border-bottom: 1px solid var(--gray-eeeeee);
+  margin-bottom: 32px;
+}
+
+
+
+@media (min-width: 720px) {
+  .row {
+    padding-left: 76px;
+    padding-right: 76px;
+  }
+}
+
+
+.td {
+  color: var(--black-333236);
+
+  white-space: nowrap;
+  word-break: keep-all;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 0;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-start;
+  gap: 12px;
+}
+
+.primaryBtn {
+  height: 40px;
+  width: 112px;
+  border: 0;
+  border-radius: 6px;
+  background: var(--violet-5534da);
+  color: var(--white-ffffff);
+  cursor: pointer;
+}
+
+.ghostBtn {
+  height: 40px;
+  width: 112px;
+  border-radius: 6px;
+  border: 1px solid var(--gray-d9d9d9);
+  background: var(--white-ffffff);
+  color: var(--violet-5534da);
+  cursor: pointer;
+}
+
+
+.mobileBlock {
+  display: none;
+}
+
+
+@media (max-width: 360px) {
+  .card {
+    width: 312px;
+    border-radius: 8px;
+  }
+
+  .header {
+    padding: 24px 20px 10px 20px;
+  }
+
+  .title {
+    font-size: 20px !important;
+    line-height: 32px !important;
+  }
+
+  .searchWrap {
+    padding: 0 20px 14px 20px;
+  }
+
+  .searchBox {
+    height: 48px;
+    border-radius: 8px;
+    padding: 0 14px;
+  }
+
+  .searchIcon {
+    width: 20px;
+    height: 20px;
+  }
+
+
+  .tableHead {
+    display: none;
+  }
+
+ 
+  .row {
+    display: block;
+    padding: 18px 20px;
+  }
+
+  .row:last-child {
+  border-bottom: 1px solid var(--gray-eeeeee);
+  margin-bottom: 18px;
+}
+
+  
+  .td,
+  .actions {
+    display: none;
+  }
+
+  
+  .mobileBlock {
+    display: block;
+  }
+
+ 
+  .mobileTwoCol {
+    display: grid;
+    grid-template-columns: 74px 1fr;
+    column-gap: 20px;
+    align-items: start;
+    margin-bottom: 14px;
+  }
+
+  .mobileCol {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .mobileLabel {
+    color: var(--gray-9fa6b2);
+  }
+
+  .mobileValue {
+    color: var(--black-333236);
+    white-space: nowrap;
+    word-break: keep-all;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  
+  .mobileActions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .mobilePrimaryBtn {
+    height: 44px;
+    border: 0;
+    border-radius: 8px;
+    background: var(--violet-5534da);
+    color: var(--white-ffffff);
+    cursor: pointer;
+  }
+
+  .mobileGhostBtn {
+    height: 44px;
+    border-radius: 8px;
+    border: 1px solid var(--gray-d9d9d9);
+    background: var(--white-ffffff);
+    color: var(--violet-5534da);
+    cursor: pointer;
+  }
+}

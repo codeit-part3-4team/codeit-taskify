@@ -1,0 +1,257 @@
+/* 카드 래퍼 */
+.cardWrapper {
+  display: flex;
+  justify-content: center;
+}
+
+/* 카드 */
+.card {
+  width: 622px;
+  background: var(--white-ffffff);
+  border: 1px solid var(--gray-eeeeee);
+  border-radius: 8px;
+  padding-top: 26px;
+  padding-bottom: 4px;
+}
+
+/* Header */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+  padding-left: 28px;
+  padding-right: 28px;
+}
+
+.title {
+  color: var(--black-333236);
+}
+
+.headerRight {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.pageText {
+  white-space: nowrap;
+  color: var(--black-333236);
+}
+
+/* Pager */
+.pager {
+  display: inline-flex;
+  border: 1px solid var(--gray-d9d9d9);
+  border-radius: 4px;
+  overflow: hidden;
+  background: var(--white-ffffff);
+}
+
+.pagerBtn {
+  width: 40px;
+  height: 40px;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  color: var(--gray-787486);
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pagerLeft {
+  border-right: 1px solid var(--gray-d9d9d9);
+}
+
+.pagerBtn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+/* SubHeader: "이메일" + (모바일)초대하기 */
+.subHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 28px;
+  padding-right: 28px;
+  padding-top: 12px;
+  padding-bottom: 8px;
+}
+
+/* Table head 텍스트 */
+.tableHead {
+  color: var(--gray-9fa6b2);
+}
+
+/* 초대하기 버튼 */
+.inviteBtn {
+  height: 32px;
+  padding: 0 18px;
+  border: 0;
+  border-radius: 4px;
+  background: var(--violet-5534da);
+  color: var(--white-ffffff);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.inviteBtn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.inviteIcon {
+  width: 11px;
+  height: 11px;
+  border-radius: 1px;
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  font-size: 10px;
+}
+
+/* ✅ 기본: PC에서는 subHeader의 초대하기 버튼 숨김 */
+.inviteBtnMobile {
+  display: none;
+}
+
+/* Rows */
+.rows {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 28px;
+  border-bottom: 1px solid var(--gray-eeeeee);
+}
+
+.row:last-child {
+  border-bottom: none;
+}
+
+.email {
+  color: var(--black-333236);
+}
+
+/* 취소 버튼 */
+.cancelBtn {
+  width: 84px;
+  height: 32px;
+  border-radius: 4px;
+  border: 1px solid var(--gray-d9d9d9);
+  background: var(--white-ffffff);
+  color: var(--violet-5534da);
+  cursor: pointer;
+}
+
+.cancelBtn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* empty */
+.emptyRow {
+  padding: 24px 28px;
+}
+
+.emptyText {
+  margin: 0;
+  color: var(--gray-787486);
+}
+
+/* =========================
+   Mobile (<= 360px)
+   ========================= */
+@media (max-width: 360px) {
+  .card {
+    width: 286px;
+  }
+
+  .header {
+    padding-left: 16px;
+    padding-right: 16px;
+    align-items: flex-start;
+    margin-bottom: 6px;
+  }
+
+  /* 타이틀 줄바꿈 방지 + 크기 */
+  .title {
+    white-space: nowrap;
+    font-size: 20px !important;
+    padding-top: 5px;;
+  }
+
+  /* 오른쪽: 페이지 텍스트 + 페이저만 (PC용 초대하기는 숨김) */
+  .headerRight {
+    gap: 10px;
+  }
+
+  .pageText {
+    font-size: 12px !important;
+    line-height: 18px !important;
+  }
+
+  .pagerBtn {
+    width: 36px;
+    height: 36px;
+    font-size: 16px;
+  }
+
+  /* ✅ 모바일: header 안의 초대하기 버튼 숨김 */
+  .inviteBtnDesktop {
+    display: none;
+  }
+
+  /* ✅ 모바일: subHeader에서 "이메일" + "초대하기" 한 줄 */
+  .subHeader {
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-top: 6px;
+    padding-bottom: 10px;
+  }
+
+  .tableHead {
+    font-size: 14px !important;
+    line-height: 24px !important;
+  }
+
+  .inviteBtnMobile {
+    display: inline-flex;
+    height: 26px;
+    padding: 0 12px;
+  }
+
+  .inviteBtnMobile,
+  .inviteBtnMobile * {
+    font-size: 12px !important;
+    line-height: 24px !important;
+  }
+
+  .row {
+    padding: 16px 16px;
+  }
+
+  .cancelBtn {
+    font-size: 14px !important;
+    line-height: 24px !important;
+    width: 52px;;
+  }
+
+  .email {
+    font-size: 14px !important;
+    line-height: 26px !important;
+  }
+}
