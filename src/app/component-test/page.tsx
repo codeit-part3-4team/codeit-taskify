@@ -16,6 +16,7 @@ import DateInput from '@/components/Input/DateInput/DateInput';
 import LoginInput from '@/components/Input/LoginInput/LoginInput';
 import TagInput from '@/components/Input/TagInput/TagInput';
 import TextInput from '@/components/Input/TextInput/TextInput';
+import IcX from '@/assets/icons/IcX';
 
 export default function ComponentTestPage() {
   const [comment, setComment] = useState('');
@@ -316,6 +317,70 @@ export default function ComponentTestPage() {
             onChange={(e) => setTitle(e.target.value)}
           />
           <TextInput label="설명" placeholder="설명을 입력해 주세요" />
+        </div>
+      </section>
+
+      <hr style={{ margin: '60px 0', border: 'none', borderTop: '2px solid #eeeeee' }} />
+
+      {/* X Icon */}
+      <section style={{ marginBottom: '60px' }}>
+        <h2 style={{ fontSize: '24px', fontWeight: '600', marginBottom: '20px' }}>
+          X (닫기) 아이콘
+        </h2>
+        <div style={{ display: 'flex', gap: '20px', alignItems: 'center', flexWrap: 'wrap' }}>
+          <div
+            style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}
+          >
+            <IcX width={16} height={16} />
+            <p style={{ fontSize: '12px', color: '#787486' }}>16x16</p>
+          </div>
+          <div
+            style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}
+          >
+            <IcX width={20} height={20} />
+            <p style={{ fontSize: '12px', color: '#787486' }}>20x20</p>
+          </div>
+          <div
+            style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}
+          >
+            <IcX width={24} height={24} />
+            <p style={{ fontSize: '12px', color: '#787486' }}>24x24 (기본)</p>
+          </div>
+          <div
+            style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}
+          >
+            <IcX width={32} height={32} />
+            <p style={{ fontSize: '12px', color: '#787486' }}>32x32</p>
+          </div>
+          <div
+            style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}
+          >
+            <IcX width={24} height={24} color="#5534da" />
+            <p style={{ fontSize: '12px', color: '#787486' }}>보라색</p>
+          </div>
+          <div
+            style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}
+          >
+            <IcX width={24} height={24} color="#d6173a" />
+            <p style={{ fontSize: '12px', color: '#787486' }}>빨간색</p>
+          </div>
+          <div
+            style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}
+          >
+            <button
+              style={{
+                padding: '8px',
+                border: '1px solid #d9d9d9',
+                borderRadius: '4px',
+                background: '#fff',
+                cursor: 'pointer',
+              }}
+              onClick={() => alert('닫기!')}
+            >
+              <IcX width={20} height={20} />
+            </button>
+            <p style={{ fontSize: '12px', color: '#787486' }}>버튼 안</p>
+          </div>
         </div>
       </section>
     </div>
