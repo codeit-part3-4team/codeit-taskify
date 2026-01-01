@@ -22,7 +22,7 @@
 }
 
 .button:active:not(:disabled) {
-  background-color: var(--gray-fafafa);
+  background-color: var(--gray-eeeeee);
 }
 
 .button:disabled {
