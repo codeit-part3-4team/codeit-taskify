@@ -68,4 +68,3 @@
 .deny:active:not(:disabled) {
   background-color: var(--violet-8p);
 }
-

@@ -89,10 +89,9 @@
   color: var(--red-d6173a);
 }
 
-/* 반응형: 모바일 */
-@media (max-width: 743px) {
+/* Responsive: Mobile (max-width: 767px) */
+@media (max-width: 767px) {
   .container {
     max-width: 351px;
   }
 }
-

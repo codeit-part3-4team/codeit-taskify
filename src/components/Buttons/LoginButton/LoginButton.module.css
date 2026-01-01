@@ -63,7 +63,7 @@
   width: 100% !important;
 }
 
-/* Responsive */
+/* Responsive: Mobile (max-width: 767px) */
 @media (max-width: 767px) {
   .button {
     width: 100%;
