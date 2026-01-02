@@ -1,0 +1,24 @@
+.cardItem {
+}
+
+.cardItem .imgBox {
+  position: relative;
+  width: 274px;
+  height: 160px;
+}
+.cardItem .cardContent {
+}
+.cardItem .cardContent .cardTitle {
+}
+.cardItem .cardContent .tagBox {
+}
+.cardItem .cardContent .tagBox .tag {
+}
+
+.cardItem .cardContent .dueDate {
+}
+.cardItem .cardContent .profileImageBox {
+  position: relative;
+  width: 24px;
+  height: 24px;
+}
