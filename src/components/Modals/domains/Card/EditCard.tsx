@@ -1,7 +1,7 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
-import DefaultModal from '@/components/Modals/DefualtModal';
+import DefaultModal from '@/components/Modals/DefaultModal';
 import { useState } from 'react';
 import { CardServerResponse, UpdateCardRequest } from './Card';
 import ModalButton from '@/components/Buttons/shared/ModalButton/ModalButton';

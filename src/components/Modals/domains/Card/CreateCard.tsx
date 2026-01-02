@@ -1,7 +1,7 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
-import DefaultModal from '@/components/Modals/DefualtModal';
+import DefaultModal from '@/components/Modals/DefaultModal';
 import { useState } from 'react';
 import { CardCreateRequest } from '@/components/Modals/domains/Card/Card';
 import ModalButton from '@/components/Buttons/shared/ModalButton/ModalButton';
@@ -93,7 +93,7 @@ export default function CreateCard({ dashboardId, columnId }: CreateCardProps) {
             label="담당자"
             placeholder="이름을 입력해 주세요"
             value={assigneeUserId}
-            onChange={(e) => setTitle(e.target.value)}
+            onChange={(e) => setAssigneeUserId(Number(e.target.value))}
           />
           <TextInput
             label="제목"

@@ -1,7 +1,7 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
-import DefaultModal from '@/components/Modals/DefualtModal';
+import DefaultModal from '@/components/Modals/DefaultModal';
 import { ColumnUpdateRequest } from '@/components/Modals/domains/Column/Columns';
 import { useState } from 'react';
 import ModalButton from '@/components/Buttons/shared/ModalButton/ModalButton';
