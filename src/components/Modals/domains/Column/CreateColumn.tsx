@@ -3,9 +3,9 @@
 import { useRouter } from 'next/navigation';
 import DefaultModal from '@/components/Modals/DefualtModal';
 import { useState } from 'react';
-import { ColumnCreateRequest } from '@/components/Modals/dsmains/Column/Columns';
-import ModalButton from '@/components/Buttons/ModalButton/ModalButton';
-import TextInput from '@/components/Input/TextInput/TextInput';
+import { ColumnCreateRequest } from '@/components/Modals/domains/Column/Columns';
+import ModalButton from '@/components/Buttons/shared/ModalButton/ModalButton';
+import TextInput from '@/components/Input/domains/todo/TextInput/TextInput';
 
 type CreateColumnProps = {
   dashboardId: number;

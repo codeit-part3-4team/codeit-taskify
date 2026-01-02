@@ -1,7 +1,7 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
-import ModalButton from '@/components/Buttons/ModalButton/ModalButton';
+import ModalButton from '@/components/Buttons/shared/ModalButton/ModalButton';
 import DefaultModal from '@/components/Modals/DefualtModal';
 
 type AlimModalProps = {

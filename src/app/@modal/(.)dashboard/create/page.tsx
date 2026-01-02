@@ -1,6 +1,6 @@
 'use client';
 
-import CreateDashBoard from '@/components/Modals/dsmains/DashBoard/CreateDashBoard';
+import CreateDashBoard from '@/components/Modals/domains/DashBoard/CreateDashBoard';
 import Modal from '@/components/Modals/Modal';
 
 export default function page() {

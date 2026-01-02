@@ -3,57 +3,73 @@
 import { useRouter } from 'next/navigation';
 import DefaultModal from '@/components/Modals/DefualtModal';
 import { useState } from 'react';
-import { CardCreateRequest } from '@/components/Modals/dsmains/Card/Card';
-import ModalButton from '@/components/Buttons/ModalButton/ModalButton';
-import TextInput from '@/components/Input/TextInput/TextInput';
-import DateInput from '@/components/Input/DateInput/DateInput';
-import TagInput from '@/components/Input/TagInput/TagInput';
+import { CardServerResponse, UpdateCardRequest } from './Card';
+import ModalButton from '@/components/Buttons/shared/ModalButton/ModalButton';
+import TextInput from '@/components/Input/domains/todo/TextInput/TextInput';
+import DateInput from '@/components/Input/domains/todo/DateInput/DateInput';
+import TagInput from '@/components/Input/domains/todo/TagInput/TagInput';
 import styles from '@/components/Modals/Modal.module.css';
 
-type CreateCardProps = {
-  dashboardId: number;
-  columnId: number;
+const dummyCard: CardServerResponse = {
+  id: 14842,
+  title: '카드 테스트',
+  dashboardId: 17226,
+  description: '컬럼에 카드 생성',
+  tags: [],
+  dueDate: null,
+  assignee: null,
+  imageUrl: null,
+  teamId: '20-4',
+  columnId: 58140,
+  createdAt: '2025-12-26T19:37:00.789Z',
+  updatedAt: '2025-12-26T19:37:00.789Z',
 };
 
 /**
- * CreateCard 컴포넌트
+ * EditCard 컴포넌트
  *
  * @description
- * 특정 대시보드와 컬럼에 속한 카드를 생성하기 위한 모달 컴포넌트 입니다.
+ * 카드를 수정하기 위한 모달 컴포넌트 입니다.
  * Parallel Routes의 `@modal` 슬롯에서 `Modal` 내부에 렌더링되며,
- * 카드 생성에 필요한 입력값을 수집해 생성 요청을 트리거 합니다.
+ * 카드 수정에 필요한 입력값을 수집해 수정 요청을 트리거 합니다.
  *
- * 생성이 완료되면 현재 라우트를 갱신한 뒤
+ * 수정이 완료되면 현재 라우트를 갱신한 뒤
  * `router.back()`을 통해 모달을 닫고 이전 화면(route)으로 복귀 합니다.
  *
  * @example
  * <Modal size="large">
- *   <CreateCard />
+ *   <EditCard />
  * </Modal>
  *
  */
 
-export default function CreateCard({ dashboardId, columnId }: CreateCardProps) {
+export default function EditCard({ cards }: { cards?: CardServerResponse }) {
   const router = useRouter();
 
-  const [assigneeUserId, setAssigneeUserId] = useState<number>(0);
-  const [title, setTitle] = useState('');
-  const [description, setDescription] = useState('');
-  const [dueDate, setDueDate] = useState('');
-  const [tags, setTags] = useState<string[]>([]);
-  const [imageFile, setImageFile] = useState<File | null>(null);
+  const initialCard = cards ?? dummyCard;
 
-  async function requestCreateCard(payload: CardCreateRequest): Promise<void> {
+  const [assigneeUserId, setAssigneeUserId] = useState<number | null>(
+    initialCard.assignee?.id ?? null,
+  );
+  const [title, setTitle] = useState(initialCard.title);
+  const [description, setDescription] = useState(initialCard.description);
+  const [dueDate, setDueDate] = useState(initialCard.dueDate ?? '');
+  const [tags, setTags] = useState<string[]>(initialCard.tags ?? []);
+  const [imageFile, setImageFile] = useState<string | null>(initialCard.imageUrl);
+
+  async function requestUpdateCard(payload: UpdateCardRequest): Promise<void> {
     // TODO: 나중에 API 붙이면 여기만 수정
-    console.log('create card payload:', payload);
+    console.log('update card payload:', payload);
   }
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
-    const payload: CardCreateRequest = {
-      dashboardId,
-      columnId,
+    // 여기서 에러 UI 띄워볼 수도(required 값)
+    if (!title.trim()) return;
+    if (!description.trim()) return;
+
+    const payload: UpdateCardRequest = {
       title,
       description,
     };
@@ -61,9 +77,9 @@ export default function CreateCard({ dashboardId, columnId }: CreateCardProps) {
     if (assigneeUserId) payload.assigneeUserId = assigneeUserId;
     if (dueDate) payload.dueDate = dueDate;
     if (tags.length > 0) payload.tags = tags;
-    if (imageFile) payload.imageUrl = imageFile.name;
+    if (imageFile) payload.imageUrl = imageFile;
 
-    await requestCreateCard(payload);
+    await requestUpdateCard(payload);
 
     router.refresh(); // 페이지에서 (GET) 다시 실행
     router.back();
@@ -72,27 +88,27 @@ export default function CreateCard({ dashboardId, columnId }: CreateCardProps) {
   return (
     <>
       <DefaultModal
-        title="할 일 생성"
+        title="할 일 수정"
         actionsButton={
           <>
             {/* 버튼 컴포넌트 추가 */}
             <ModalButton variant="secondary" onClick={() => router.back()}>
               취소
             </ModalButton>
-            <ModalButton type="submit" form="card-create-form">
-              생성
+            <ModalButton type="submit" form="card-edit-form">
+              수정
             </ModalButton>
           </>
         }
       >
         {/* children */}
         {/* 컴포넌트로 변경 */}
-        <form id="card-create-form" onSubmit={handleSubmit} className={styles.cardForm}>
+        <form id="card-edit-form" onSubmit={handleSubmit} className={styles.cardForm}>
           {/* 담당자 dropdown으로 변경 */}
           <TextInput
             label="담당자"
             placeholder="이름을 입력해 주세요"
-            value={assigneeUserId}
+            value={assigneeUserId ?? ''}
             onChange={(e) => setTitle(e.target.value)}
           />
           <TextInput
@@ -109,7 +125,7 @@ export default function CreateCard({ dashboardId, columnId }: CreateCardProps) {
             onChange={(e) => setDescription(e.target.value)}
             required
           />
-          {/* 추후 datepicker */}
+          {/* 추후 datepicker로?? */}
           <DateInput
             label="마감일"
             placeholder="날짜를 입력해 주세요"
