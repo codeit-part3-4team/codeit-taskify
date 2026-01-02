@@ -1,0 +1,97 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-width: 280px;
+  max-width: 520px;
+}
+
+.label {
+  font-family: var(--font-pretendard);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 26px;
+  color: var(--black-333236);
+  margin-bottom: 8px;
+}
+
+.inputWrapper {
+  position: relative;
+  width: 100%;
+}
+
+.input {
+  width: 100%;
+  height: 50px;
+  padding: 15px 16px;
+  border: 1px solid var(--gray-d9d9d9);
+  border-radius: 8px;
+  font-family: var(--font-pretendard);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 26px;
+  color: var(--black-333236);
+  background: var(--white-ffffff);
+  transition: border-color 0.2s;
+}
+
+.input::placeholder {
+  color: var(--gray-9fa6b2);
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--violet-5534da);
+}
+
+.input.error {
+  border-color: var(--red-d6173a);
+}
+
+.input.error:focus {
+  border-color: var(--red-d6173a);
+}
+
+/* 비밀번호 입력 시 오른쪽 패딩 추가 (눈 아이콘 공간 확보) */
+.input[type='password'],
+.inputWrapper:has(.eyeButton) .input {
+  padding-right: 50px;
+}
+
+.eyeButton {
+  position: absolute;
+  right: 13px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.eyeIcon {
+  width: 24px;
+  height: 24px;
+  color: var(--gray-9fa6b2);
+}
+
+.errorMessage {
+  margin-top: 8px;
+  font-family: var(--font-pretendard);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 24px;
+  color: var(--red-d6173a);
+}
+
+/* Responsive: Mobile (max-width: 767px) */
+@media (max-width: 767px) {
+  .container {
+    max-width: 351px;
+  }
+}
