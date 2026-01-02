@@ -1,0 +1,145 @@
+/* Overlay (배경 + 열림 상태) */
+.overlay {
+  font-family: var(--font-pretendard);
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 24px;
+  background: rgba(0, 0, 0, 0.7);
+
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.overlay.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Modal 기본 구조 + 애니메이션 */
+.modal {
+  width: 568px;
+  padding: 24px;
+
+  background: #fff;
+  border-radius: 16px;
+
+  transform: translateY(30px);
+  opacity: 0;
+  transition:
+    transform 0.3s ease,
+    opacity 0.3s ease;
+}
+
+.overlay.open .modal {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* Modal 사이즈 및 타입 변형 */
+.modal.large {
+  width: 584px;
+}
+
+.modal.alim {
+  width: 368px;
+  padding: 40px;
+}
+
+.modal.alim .buttonBox > :only-child {
+  flex: 0 0 240px;
+}
+
+/* Modal 내부 간격 규칙 */
+.modal > * {
+  margin-top: 16px;
+}
+
+.modal > *:first-child {
+  margin-top: 0;
+}
+
+/* Modal 컨텐츠 요소 */
+.modalTitle {
+  font-family: var(--font-pretendard);
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--black-333236);
+}
+
+.modalMessage {
+  margin-top: 16px;
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--black-333236);
+  text-align: center;
+}
+
+.modal .buttonBox {
+  display: flex;
+  margin-top: 24px;
+  justify-content: center;
+  gap: 8px;
+}
+
+.modal .buttonBox > * {
+  flex: 1;
+  height: 54px;
+}
+
+/* ButtonBox 간격 예외 케이스들 */
+.modalMessage + .buttonBox {
+  margin-top: 40px;
+}
+
+.modal > p + form + .buttonBox {
+  margin-top: 40px;
+}
+
+.modal > form + .buttonBox {
+  margin-top: 32px;
+}
+
+/* Form 내부 간격 */
+.cardForm > * {
+  margin-top: 32px;
+}
+
+/* Mobile 대응 (743px 이하) */
+@media (max-width: 743px) {
+  .modal {
+    width: 100%;
+    padding: 24px 16px;
+  }
+
+  .modalTitle {
+    font-size: 20px;
+  }
+
+  .modal label {
+    font-size: 16px;
+  }
+
+  .modalMessage {
+    font-size: 16px;
+  }
+
+  .modalMessage + .buttonBox {
+    margin-top: 32px;
+  }
+
+  .modal.alim {
+    width: 272px;
+    padding: 32px;
+  }
+
+  .modal.alim .buttonBox > :only-child {
+    flex: 0 0 192px;
+  }
+}
