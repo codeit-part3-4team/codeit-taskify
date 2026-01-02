@@ -1,6 +1,7 @@
 "use client";
 
-import DropdownMenu, { DropdownItem } from "../../components/Dropdown/dropdown";
+import DropdownMenu, { DropdownItem } from "@/components/Dropdown/dropdown-menu/dropdownmenu";
+
 
 export default function DropdownMenuTest() {
   const items: DropdownItem[] = [
@@ -13,7 +14,7 @@ export default function DropdownMenuTest() {
       <DropdownMenu
         items={items}
         highlightedId="edit"
-        triggerLabel="dropdown"
+        triggerLabel="•••"
         align="left"
         onSelect={(item) => {
           console.log("selected:", item);
