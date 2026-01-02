@@ -5,28 +5,28 @@ import DefaultModal from '@/components/Modals/DefualtModal';
 import ModalButton from '@/components/Buttons/shared/ModalButton/ModalButton';
 
 /**
- * DeleteDashBoard 컴포넌트
+ * Renders a confirmation modal that deletes the current dashboard.
  *
- * @description
- * 대시보드 삭제를 담당하는 모달 컴포넌트 입니다.
- * Parallel Routes의 `@modal` 슬롯을 통해 렌더링되며,
- * 사용자로부터 삭제 요청을 트리거 합니다.
- *
- * 삭제가 완료되면 현재 라우트를 갱신한 뒤
- * `router.back()`을 통해 모달을 닫고 이전 화면(route)로 복귀합니다.
- *
+ * Triggers a dashboard deletion flow when submitted, then refreshes the current route and navigates back to close the modal. Intended to be rendered inside a Parallel Routes `@modal` slot.
  *
  * @example
- * // @modal 슬롯에서 Modal 레이아웃 내부에 포함되어 렌더링
+ * // Rendered inside a modal layout via the `@modal` slot
  * <Modal>
- *    <DeleteDashBoard />
+ *   <DeleteDashBoard />
  * </Modal>
- *
  */
 
 export default function DeleteDashBoard() {
   const router = useRouter();
 
+  /**
+   * Handle submission of the dashboard delete form, refresh the page, and close the modal.
+   *
+   * Prevents the form's default submission, (optionally) performs the delete request, refreshes
+   * the current route to reflect changes, and navigates back to close the modal.
+   *
+   * @param e - The form submission event for the dashboard delete action
+   */
   async function handleDelete(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
 

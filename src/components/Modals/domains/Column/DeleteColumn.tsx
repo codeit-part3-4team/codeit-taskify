@@ -5,28 +5,23 @@ import DefaultModal from '@/components/Modals/DefualtModal';
 import ModalButton from '@/components/Buttons/shared/ModalButton/ModalButton';
 
 /**
- * DeleteColumn 컴포넌트
+ * Render a confirmation modal that triggers deletion of a column.
  *
- * @description
- * 컬럼을 삭제하기 위한 모달 컴포넌트 입니다.
- * Parallel Routes의 `@modal` 슬롯에서 `Modal` 내부에 렌더링되며,
- * 사용자로부터 삭제 요청을 트리거합니다.
+ * This component is intended to be rendered inside a Parallel Routes `@modal` slot.
+ * Submitting the modal triggers the delete flow, refreshes the current route, and then
+ * closes the modal by navigating back.
  *
- * 삭제가 완료되면 현재 라우트를 갱신한 뒤
- * `router.back()`을 통해 모달을 닫고 이전 화면(route)으로 복귀합니다.
- *
- *
- * @example
- * // @modal 슬롯에서 Modal 레이아웃 내부에 포함되어 렌더링
- * <Modal>
- *    <DeleteColumn />
- * </Modal>
- *
+ * @returns A React element representing the delete-confirmation modal for a column.
  */
 
 export default function DeleteColumn() {
   const router = useRouter();
 
+  /**
+   * Handle the column-delete form submission by preventing default behavior, issuing the delete action, refreshing the current route, and navigating back to close the modal.
+   *
+   * @param e - The form submission event
+   */
   async function handleDelete(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
 

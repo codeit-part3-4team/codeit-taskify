@@ -12,38 +12,15 @@ type DefaultModalProps = {
 } & React.HTMLAttributes<HTMLDivElement>;
 
 /**
- * DefaultModal 컴포넌트
+ * Render a reusable modal layout containing an optional title, message, body content, action buttons, and an optional close control.
  *
- * @description
- * 모달 내부에서 공통으로 사용되는 기본 레이아웃 컴포넌트 입니다.
- * 제목, 메시지, 콘텐츠(children), 액션 버튼 영역을 조합해 렌더링하며,
- * 실제 모달의 열림/닫힘 제어는 상위 라우팅(@modal) 또는 부모 컴포넌트가 담당합니다.
- *
- * 이 컴포넌트는 레이아웃과 구조만 책임지고,
- * 데이터 처리나 상태 제어 로직은 포함하지 않습니다.
- *
- * @example
- * ```tsx
- * <DefaultModal
- *   title="제목 입력"
- *   message="메세지 입력"
- *   actionsButton={
- *     <>
- *       <ModalButton variant="secondary" onClick={onClose}>
- *         취소
- *       </ModalButton>
- *       <ModalButton type="submit" form="card-form">
- *         생성
- *       </ModalButton>
- *     </>
- *   }
- * >
- *   { children 영역 }
- *   <form id="card-form">
- *     <TextInput label="제목" />
- *   </form>
- * </DefaultModal>
- * ```
+ * @param title - Optional heading text displayed at the top of the modal.
+ * @param message - Optional descriptive text displayed beneath the title.
+ * @param children - Modal body content to be rendered between message and actions.
+ * @param actionsButton - Optional action button elements rendered in the modal's action area.
+ * @param closeButton - If true, render a close button that navigates back when clicked.
+ * @param className - Additional CSS class names applied to the modal container.
+ * @returns The composed modal layout as JSX elements.
  */
 
 export default function DefaultModal({

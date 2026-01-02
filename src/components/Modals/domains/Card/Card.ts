@@ -41,7 +41,12 @@ export interface CardModalUI {
 }
 
 
-// 데이터 매핑 함수
+/**
+ * Map a server-side card object to the UI model used by the card modal.
+ *
+ * @param card - Server card data to convert
+ * @returns A CardModalUI whose fields are populated from `card`; missing or undefined server values are mapped to `null` for `tags`, `dueDateText`, `assigneeName`, `assigneeProfileUrl`, and `imageUrl`
+ */
 export function mapCardToModalUI(
   card: CardServerResponse
 ): CardModalUI {
@@ -76,4 +81,3 @@ export type UpdateCardRequest = {
   tags?: string[];
   imageUrl?: string;
 };
-

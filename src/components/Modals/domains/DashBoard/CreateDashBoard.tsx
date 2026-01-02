@@ -8,23 +8,11 @@ import TextInput from '@/components/Input/domains/todo/TextInput/TextInput';
 import ModalButton from '@/components/Buttons/shared/ModalButton/ModalButton';
 
 /**
- * CreateDashBoard 컴포넌트
+ * Renders a modal UI for creating a new dashboard.
  *
- * @description
- * 대시보드 생성을 담당하는 모달 컴포넌트 입니다.
- * Parallel Routes의 `@modal` 슬롯을 통해 렌더링되며,
- * 사용자 입력을 수집해 생성 요청을 트리거 합니다.
+ * Collects a dashboard title and color, triggers a creation request, refreshes the current route, and closes the modal by navigating back.
  *
- * 생성이 완료되면 현재 라우트를 갱신한 뒤
- * `router.back()`을 통해 모달을 닫고 이전 화면(route)로 복귀합니다.
- *
- *
- * @example
- * // @modal 슬롯에서 Modal 레이아웃 내부에 포함되어 렌더링
- * <Modal size="large">
- *    <CreateDashBoard />
- * </Modal>
- *
+ * This component is intended to be rendered inside a Parallel Routes `@modal` slot.
  */
 
 export default function CreateDashBoard() {
@@ -33,11 +21,24 @@ export default function CreateDashBoard() {
   const [title, setTitle] = useState('');
   const [color, setColor] = useState('#AbDA7D');
 
+  /**
+   * Submit a dashboard creation request.
+   *
+   * Currently a placeholder that logs the provided payload; replace this with an API call
+   * that creates a dashboard on the server.
+   *
+   * @param payload - Data for the new dashboard (e.g., title and color)
+   */
   async function requestCreateDashboard(payload: DashboardCreateRequest): Promise<void> {
     // TODO: 나중에 API 붙이면 여기만 수정
     console.log('create dashboard payload:', payload);
   }
 
+  /**
+   * Handle form submission to create a new dashboard, refresh current route data, and close the modal.
+   *
+   * @returns void
+   */
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     await requestCreateDashboard({ title, color });

@@ -12,23 +12,12 @@ type EditDashBoardProps = {
 };
 
 /**
- * EditDashBoard 컴포넌트
+ * Modal for editing a dashboard.
  *
- * @description
- * 대시보드 수정을 담당하는 모달 컴포넌트 입니다.
- * Parallel Routes의 `@modal` 슬롯을 통해 렌더링되며,
- * 사용자 입력을 수집해 수정 요청을 트리거 합니다.
+ * Renders a modal that lets the user edit a dashboard's title and color. On form submission it triggers the update flow (PATCH), refreshes the current route, and closes the modal by navigating back.
  *
- * 수정이 완료되면 현재 라우트를 갱신한 뒤
- * `router.back()`을 통해 모달을 닫고 이전 화면(route)로 복귀합니다.
- *
- *
- * @example
- * // @modal 슬롯에서 Modal 레이아웃 내부에 포함되어 렌더링
- * <Modal size="large">
- *    <EditDashBoard />
- * </Modal>
- *
+ * @param initialTitle - Initial value for the dashboard title shown in the form
+ * @param initialColor - Initial value for the dashboard color (hex color string) shown in the color input
  */
 
 export default function EditDashBoard({
@@ -40,6 +29,14 @@ export default function EditDashBoard({
   const [title, setTitle] = useState(initialTitle);
   const [color, setColor] = useState(initialColor);
 
+  /**
+   * Handle dashboard edit form submission by refreshing route data and closing the modal.
+   *
+   * Prevents the form's default submit behavior, refreshes the current route so updated
+   * data is re-fetched, and navigates back to close the modal.
+   *
+   * @param e - The form submission event
+   */
   async function handleUpdate(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
 

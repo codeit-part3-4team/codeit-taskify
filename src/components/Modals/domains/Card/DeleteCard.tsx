@@ -5,28 +5,22 @@ import DefaultModal from '@/components/Modals/DefualtModal';
 import ModalButton from '@/components/Buttons/shared/ModalButton/ModalButton';
 
 /**
- * DeleteCard 컴포넌트
+ * Renders a confirmation modal to delete a card and closes the modal after deletion.
  *
- * @description
- * 카드를 삭제하기 위한 모달 컴포넌트 입니다.
- * Parallel Routes의 `@modal` 슬롯에서 `Modal` 내부에 렌더링되며,
- * 사용자로부터 삭제 요청을 트리거합니다.
+ * Displays a message asking the user to confirm deletion and provides "취소" and "삭제" actions.
+ * When confirmed, performs the deletion (placeholder), refreshes the current route, and navigates back to close the modal.
  *
- * 삭제가 완료되면 현재 라우트를 갱신한 뒤
- * `router.back()`을 통해 모달을 닫고 이전 화면(route)으로 복귀합니다.
- *
- *
- * @example
- * // @modal 슬롯에서 Modal 레이아웃 내부에 포함되어 렌더링
- * <Modal>
- *    <DeleteCard />
- * </Modal>
- *
+ * @returns The modal's React element.
  */
 
 export default function DeleteCard() {
   const router = useRouter();
 
+  /**
+   * Handle submission of the delete confirmation form: prevents default submission, performs the card deletion request, refreshes the page data, and closes the modal by navigating back.
+   *
+   * @param e - The form submit event from the delete confirmation form
+   */
   async function handleDelete(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
 

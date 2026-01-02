@@ -36,11 +36,25 @@ export default function CreateColumn({ dashboardId }: CreateColumnProps) {
 
   const [title, setTitle] = useState('');
 
+  /**
+   * Send a column creation payload to the backend API.
+   *
+   * Currently logs the payload to the console as a placeholder until the API integration is implemented.
+   *
+   * @param payload - The column creation payload (e.g., title and dashboardId)
+   */
   async function requestCreateColumn(payload: ColumnCreateRequest): Promise<void> {
     // TODO: 나중에 API 붙이면 여기만 수정
     console.log('create dashboard payload:', payload);
   }
 
+  /**
+   * Handle the column creation form submission by creating a new column, refreshing the current route, and closing the modal.
+   *
+   * Prevents the form's default submission, sends a create request using the component's `title` and `dashboardId`, refreshes the page data, and navigates back to close the modal.
+   *
+   * @param e - The form submission event
+   */
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
 

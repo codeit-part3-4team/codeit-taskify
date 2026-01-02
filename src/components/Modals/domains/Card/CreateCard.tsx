@@ -43,11 +43,25 @@ export default function CreateCard({ dashboardId, columnId }: CreateCardProps) {
   const [tags, setTags] = useState<string[]>([]);
   const [imageFile, setImageFile] = useState<File | null>(null);
 
+  /**
+   * Sends a request to create a card using the provided payload.
+   *
+   * Currently logs the payload to the console and serves as a placeholder for the API integration.
+   *
+   * @param payload - Card creation data including dashboardId, columnId, title, and optional fields such as assigneeUserId, dueDate, tags, and imageUrl
+   */
   async function requestCreateCard(payload: CardCreateRequest): Promise<void> {
     // TODO: 나중에 API 붙이면 여기만 수정
     console.log('create card payload:', payload);
   }
 
+  /**
+   * Handle the card-create form submission by building a create payload, sending it to the backend, refreshing the current page, and closing the modal.
+   *
+   * The payload includes the required dashboardId, columnId, title, and description, and will include assigneeUserId, dueDate, tags, and imageUrl when those fields are set.
+   *
+   * @param e - The form submit event from the card-create form
+   */
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
 

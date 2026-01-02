@@ -26,21 +26,13 @@ const dummyCard: CardServerResponse = {
 };
 
 /**
- * EditCard 컴포넌트
+ * Renders a modal form for editing a card's properties.
  *
- * @description
- * 카드를 수정하기 위한 모달 컴포넌트 입니다.
- * Parallel Routes의 `@modal` 슬롯에서 `Modal` 내부에 렌더링되며,
- * 카드 수정에 필요한 입력값을 수집해 수정 요청을 트리거 합니다.
+ * The component collects assignee, title, description, due date, tags, and an image,
+ * validates required fields, sends an update request with the changed fields,
+ * refreshes the current route, and closes the modal by navigating back.
  *
- * 수정이 완료되면 현재 라우트를 갱신한 뒤
- * `router.back()`을 통해 모달을 닫고 이전 화면(route)으로 복귀 합니다.
- *
- * @example
- * <Modal size="large">
- *   <EditCard />
- * </Modal>
- *
+ * @returns The rendered EditCard modal element
  */
 
 export default function EditCard({ cards }: { cards?: CardServerResponse }) {
@@ -57,11 +49,24 @@ export default function EditCard({ cards }: { cards?: CardServerResponse }) {
   const [tags, setTags] = useState<string[]>(initialCard.tags ?? []);
   const [imageFile, setImageFile] = useState<string | null>(initialCard.imageUrl);
 
+  /**
+   * Sends an update request for a card using the provided payload (currently a placeholder that logs the payload).
+   *
+   * @param payload - Partial or full card update data to persist
+   *
+   * @remarks
+   * This function is a stub for the actual API call and should be replaced with a real network request implementation.
+   */
   async function requestUpdateCard(payload: UpdateCardRequest): Promise<void> {
     // TODO: 나중에 API 붙이면 여기만 수정
     console.log('update card payload:', payload);
   }
 
+  /**
+   * Handle the card edit form submission: validate required fields, assemble an update payload, send the update, refresh the page data, and navigate back.
+   *
+   * @param e - The form submission event
+   */
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
