@@ -3,7 +3,7 @@
 import { useRouter } from 'next/navigation';
 import DefaultModal from '@/components/Modals/DefaultModal';
 import { useState } from 'react';
-import { CardServerResponse, UpdateCardRequest } from './Card';
+import { CardServerResponse, UpdateCardRequest } from '@/components/Modals/domains/Card/ModalCard';
 import ModalButton from '@/components/Buttons/shared/ModalButton/ModalButton';
 import TextInput from '@/components/Input/domains/todo/TextInput/TextInput';
 import DateInput from '@/components/Input/domains/todo/DateInput/DateInput';
