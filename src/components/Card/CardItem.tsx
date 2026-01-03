@@ -1,18 +1,9 @@
 'use client';
 
 import Image from 'next/image';
-import { StaticImport } from 'next/dist/shared/lib/get-img-props';
 import styles from '@/components/Card/card.module.css';
 import IcCalender from '@/assets/icons/IcCalender';
-import Link from 'next/link';
-
-export type CardUI = {
-  title: string;
-  tags?: string[] | null;
-  dueDate?: string | null;
-  imageUrl?: string | StaticImport | null;
-  profileImageUrl?: string | StaticImport | null;
-};
+import { CardUI } from './CardUI.type';
 
 const dummyCardData = {
   title: '새로운 일정 관리',
@@ -41,8 +32,8 @@ export default function Card({ cardData }: { cardData?: CardUI }) {
           <div className={styles.cardInfo}>
             {card.tags && (
               <ul className={styles.tagBox}>
-                {card.tags.map((tag) => (
-                  <li key={tag} className={styles.tag}>
+                {card.tags.map((tag, index) => (
+                  <li key={`${tag}-${index}`} className={styles.tag}>
                     {tag}
                   </li>
                 ))}

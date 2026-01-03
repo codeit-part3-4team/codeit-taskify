@@ -34,7 +34,6 @@
 .cardItem .cardContent .tagBox {
   display: flex;
   gap: 10px;
-  background: cyan;
 }
 
 .cardItem .cardContent .cardFooter {
