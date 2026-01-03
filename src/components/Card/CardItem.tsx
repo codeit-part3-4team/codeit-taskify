@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import { StaticImport } from 'next/dist/shared/lib/get-img-props';
 import styles from '@/components/Card/card.module.css';
+import IcCalender from '@/assets/icons/IcCalender';
 
 export type CardUI = {
   title: string;
@@ -43,7 +44,12 @@ export default function Card({ cardData }: { cardData?: CardUI }) {
               ))}
             </ul>
           )}
-          {card.dueDate && <p className={styles.dueDate}>{card.dueDate}</p>}
+          {card.dueDate && (
+            <div className={styles.dueDate}>
+              <IcCalender />
+              <span>{card.dueDate}</span>
+            </div>
+          )}
           {card.profileImageUrl && (
             <div className={styles.profileImageBox}>
               <Image

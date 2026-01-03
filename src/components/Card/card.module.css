@@ -1,24 +1,50 @@
 .cardItem {
+  width: 314px;
+  border: solid 1px var(--gray-d9d9d9);
+  padding: 16px 20px;
+  border-radius: 6px;
 }
 
 .cardItem .imgBox {
+  border-radius: 6px;
   position: relative;
+  margin-bottom: 16px;
   width: 274px;
   height: 160px;
+  overflow: hidden;
 }
 .cardItem .cardContent {
+  position: relative;
 }
 .cardItem .cardContent .cardTitle {
+  margin-bottom: 10px;
+  color: var(--black-333236);
+  font-size: 16px;
+  font-weight: 500;
 }
 .cardItem .cardContent .tagBox {
+  display: flex;
+  gap: 10px;
+  background: cyan;
 }
 .cardItem .cardContent .tagBox .tag {
 }
 
 .cardItem .cardContent .dueDate {
+  margin-top: 11px;
+  display: flex;
+  gap: 4px;
+  color: var(--gray-787486);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 20px;
 }
 .cardItem .cardContent .profileImageBox {
-  position: relative;
+  position: absolute;
+  border-radius: 100%;
   width: 24px;
   height: 24px;
+  bottom: 0;
+  right: 0;
+  overflow: hidden;
 }
