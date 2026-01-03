@@ -1,0 +1,31 @@
+.addChip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  background-color: var(--violet-8p);
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  flex-shrink: 0;
+  padding: 0;
+}
+
+/* Active 효과 (누를 때만) */
+.addChip:active:not(:disabled) {
+  transform: scale(0.95);
+}
+
+/* Disabled 상태 */
+.addChip:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+/* Plus 아이콘 */
+.plusIcon {
+  color: var(--violet-5534da);
+}
+
+.addChip:disabled .plusIcon {
+  color: var(--gray-d9d9d9);
+}
