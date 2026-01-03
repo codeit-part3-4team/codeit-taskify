@@ -107,6 +107,7 @@ export default function ManagerSelect({
           placeholder={value ? "" : placeholder}
           onFocus={openDropdown}
           onClick={openDropdown}
+          role="combobox"
           onChange={(e) => {
             setOpen(true);
             setQuery(e.target.value);
