@@ -1,0 +1,28 @@
+.statusChip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 16px;
+  background-color: var(--violet-8p);
+  flex-shrink: 0;
+}
+
+/* 왼쪽 도트 */
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--violet-5534da);
+  flex-shrink: 0;
+}
+
+/* 라벨 텍스트 */
+.label {
+  color: var(--violet-5534da);
+  font-family: var(--font-pretendard);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 20px;
+  white-space: nowrap;
+}

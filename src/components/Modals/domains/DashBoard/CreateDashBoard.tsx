@@ -3,7 +3,7 @@
 import { useRouter } from 'next/navigation';
 import DefaultModal from '@/components/Modals/DefaultModal';
 import { useState } from 'react';
-import { DashboardCreateRequest } from '@/components/Modals/domains/DashBoard/DashBoard';
+import { DashboardCreateRequest } from '@/components/Modals/domains/DashBoard/ModalDashBoard';
 import TextInput from '@/components/Input/domains/todo/TextInput/TextInput';
 import ModalButton from '@/components/Buttons/shared/ModalButton/ModalButton';
 

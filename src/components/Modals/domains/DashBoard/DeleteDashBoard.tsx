@@ -4,6 +4,10 @@ import { useRouter } from 'next/navigation';
 import DefaultModal from '@/components/Modals/DefaultModal';
 import ModalButton from '@/components/Buttons/shared/ModalButton/ModalButton';
 
+type DeleteDashBoardProps = {
+  dashboardId: number;
+};
+
 /**
  * DeleteDashBoard 컴포넌트
  *
@@ -24,7 +28,7 @@ import ModalButton from '@/components/Buttons/shared/ModalButton/ModalButton';
  *
  */
 
-export default function DeleteDashBoard() {
+export default function DeleteDashBoard({ dashboardId }: DeleteDashBoardProps) {
   const router = useRouter();
 
   async function handleDelete(e: React.FormEvent<HTMLFormElement>) {

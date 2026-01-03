@@ -3,7 +3,7 @@
 import { useRouter } from 'next/navigation';
 import DefaultModal from '@/components/Modals/DefaultModal';
 import { useState } from 'react';
-import { ColumnCreateRequest } from '@/components/Modals/domains/Column/Columns';
+import { ColumnCreateRequest } from '@/components/Modals/domains/Column/ModalColumn';
 import ModalButton from '@/components/Buttons/shared/ModalButton/ModalButton';
 import TextInput from '@/components/Input/domains/todo/TextInput/TextInput';
 

@@ -1,0 +1,44 @@
+.colorChip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: none;
+  flex-shrink: 0;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+/* 클릭 불가능한 경우 (SideMenu 등) */
+.colorChip:not(.clickable) {
+  cursor: default;
+  pointer-events: none;
+}
+
+/* 클릭 가능한 경우 */
+.colorChip.clickable {
+  cursor: pointer;
+}
+
+.colorChip.clickable:hover {
+  transform: scale(1.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.colorChip.clickable:active {
+  transform: scale(0.95);
+}
+
+/* 선택된 상태 */
+.colorChip.selected {
+  box-shadow: 0 0 0 2px var(--white-ffffff), 0 0 0 4px currentColor;
+}
+
+/* 체크 아이콘 */
+.checkIcon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
