@@ -4,6 +4,20 @@ import styles from "@/components/CardTables/TableMembers/TableMembers.module.css
 import typo from "@/styles/typography.module.css";
 import PaginationButton from "@/components/Buttons/shared/PaginationButton/PaginationButton";
 import TextButton from "@/components/Buttons/shared/TextButton/TextButton";
+import { useEffect, useState } from 'react';
+
+function useIsMobile(breakpoint = 743) {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth <= breakpoint);
+    check();
+    window.addEventListener('resize', check);
+    return () => window.removeEventListener('resize', check);
+  }, [breakpoint]);
+
+  return isMobile;
+}
 
 
 export type Member = {
@@ -39,6 +53,7 @@ export default function TableMembers({
 }: Props) {
   const canPrev = page > 1 && !!onPrev;
   const canNext = page < totalPages && !!onNext;
+  const isMobile = useIsMobile();
 
   return (
     <section className={`${styles.card} ${className}`}>
@@ -81,11 +96,15 @@ export default function TableMembers({
             </div>
 
             <TextButton
-              size="large"
               variant="delete"
+              size={isMobile ? 'small' : 'large'}
+                  className={
+                    isMobile
+                      ? styles.cancelSmall   // 52 × 32
+                      : styles.cancelLarge   // 84 × 32
+                  }
               onClick={() => onRemove?.(m.id)}
               disabled={!onRemove}
-              className={styles.removeBtn}
             >
               삭제
             </TextButton>
