@@ -1,6 +1,6 @@
 'use client';
 
-import DashboardGnb from '@/components/gnb/variants/DashboardGnb';
+import DashboardGnb from '@/components/Gnb/variants/DashboardGnb/DashboardGnb';
 
 export default function DashboardGnbTestPage() {
   return (

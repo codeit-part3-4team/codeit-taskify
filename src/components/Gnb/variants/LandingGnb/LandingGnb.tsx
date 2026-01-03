@@ -7,9 +7,9 @@
  */
 
 import Link from 'next/link';
-import Gnb from '@/components/gnb/Gnb';
+import Gnb from '@/components/Gnb/Gnb';
 import Logo from '@/components/Logo/Logo';
-import styles from '@/components/gnb/variants/LandingGnb/LandingGnb.module.css';
+import styles from '@/components/Gnb/variants/LandingGnb/LandingGnb.module.css';
 
 
 export default function LandingGnb() {
