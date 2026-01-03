@@ -1,30 +1,30 @@
 "use client";
 
-// import TableMembers from "@/components/CardTables/TableMembers/TableMembers";
+import TableMembers from "@/components/CardTables/TableMembers/TableMembers";
 
-// const members = [
-//   { id: 1, name: "정만철", initial: "J", avatarColor: "#B9AFA3" },
-//   { id: 2, name: "김태순", initial: "K", avatarColor: "#A9D8F0" },
-//   { id: 3, name: "최주협", initial: "C", avatarColor: "#F5D35C" },
-//   { id: 4, name: "윤지현", initial: "Y", avatarColor: "#F2C35E" },
-// ];
+const members = [
+  { id: 1, name: "정만철", initial: "J", avatarColor: "#B9AFA3" },
+  { id: 2, name: "김태순", initial: "K", avatarColor: "#A9D8F0" },
+  { id: 3, name: "최주협", initial: "C", avatarColor: "#F5D35C" },
+  { id: 4, name: "윤지현", initial: "Y", avatarColor: "#F2C35E" },
+];
 
-// export default function Page() {
-//   return (
-//     <main style={{ minHeight: "100vh", padding: 40 }}>
-//       <div style={{ width: 620 }}>
-//         <TableMembers
-//           members={members}
-//           page={1}
-//           totalPages={1}
-//           onPrev={() => console.log("prev")}
-//           onNext={() => console.log("next")}
-//           onRemove={(id) => alert(`remove ${id}`)}
-//         />
-//       </div>
-//     </main>
-//   );
-// }
+export default function Page() {
+  return (
+    <main style={{ minHeight: "100vh", padding: 40 }}>
+      <div style={{ width: 620 }}>
+        <TableMembers
+          members={members}
+          page={1}
+          totalPages={1}
+          onPrev={() => console.log("prev")}
+          onNext={() => console.log("next")}
+          onRemove={(id) => alert(`remove ${id}`)}
+        />
+      </div>
+    </main>
+  );
+}
 
 // import TableInvitations from "@/components/CardTables/TableInvitations/TableInvitations";
 
@@ -126,38 +126,38 @@
 //   );
 // }
 
-import { useState } from "react";
-import PasswordChangeCard from "@/components/CardTables/PasswordChangeCard/PasswordChangeCard";
+// import { useState } from "react";
+// import PasswordChangeCard from "@/components/CardTables/PasswordChangeCard/PasswordChangeCard";
 
-export default function Page() {
-  const [currentPw, setCurrentPw] = useState("");
-  const [newPw, setNewPw] = useState("");
-  const [confirmPw, setConfirmPw] = useState("");
+// export default function Page() {
+//   const [currentPw, setCurrentPw] = useState("");
+//   const [newPw, setNewPw] = useState("");
+//   const [confirmPw, setConfirmPw] = useState("");
 
-  return (
-    <main
-      style={{
-        minHeight: "100vh",
-        padding: 40,
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "flex-start",
-      }}
-    >
-      <PasswordChangeCard
-        currentValue={currentPw}
-        newValue={newPw}
-        confirmValue={confirmPw}
-        onChangeCurrent={setCurrentPw}
-        onChangeNew={setNewPw}
-        onChangeConfirm={setConfirmPw}
-        onSubmit={() => {
-          alert(
-            `변경 클릭\n현재: ${currentPw}\n새 비번: ${newPw}\n새 비번 확인: ${confirmPw}`
-          );
-        }}
-      />
-    </main>
-  );
-}
+//   return (
+//     <main
+//       style={{
+//         minHeight: "100vh",
+//         padding: 40,
+//         display: "flex",
+//         justifyContent: "center",
+//         alignItems: "flex-start",
+//       }}
+//     >
+//       <PasswordChangeCard
+//         currentValue={currentPw}
+//         newValue={newPw}
+//         confirmValue={confirmPw}
+//         onChangeCurrent={setCurrentPw}
+//         onChangeNew={setNewPw}
+//         onChangeConfirm={setConfirmPw}
+//         onSubmit={() => {
+//           alert(
+//             `변경 클릭\n현재: ${currentPw}\n새 비번: ${newPw}\n새 비번 확인: ${confirmPw}`
+//           );
+//         }}
+//       />
+//     </main>
+//   );
+// }
 

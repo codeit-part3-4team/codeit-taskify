@@ -1,8 +1,10 @@
 "use client";
 
-import styles from "./TableMembers.module.css";
+import styles from "@/components/CardTables/TableMembers/TableMembers.module.css";
+import typo from "@/styles/typography.module.css";
+import PaginationButton from "@/components/Buttons/shared/PaginationButton/PaginationButton";
+import TextButton from "@/components/Buttons/shared/TextButton/TextButton";
 
-import typo from "../../../styles/typography.module.css";
 
 export type Member = {
   id: string | number;
@@ -49,34 +51,22 @@ export default function TableMembers({
             {page} 페이지 중 {totalPages}
           </span>
 
-          {/* pager buttons: 붙어있는 2버튼 + 가운데 선 */}
-          <div className={styles.pager} role="group" aria-label="페이지 이동">
-            <button
-              type="button"
-              className={`${styles.pagerBtn} ${styles.pagerLeft} ${styles.pagerBtn2}`}
-              onClick={onPrev}
-              disabled={!canPrev}
-              aria-label="이전 페이지"
-            >
-              ‹
-            </button>
-            <button
-              type="button"
-              className={`${styles.pagerBtn} ${styles.pagerRight}`}
-              onClick={onNext}
-              disabled={!canNext}
-              aria-label="다음 페이지"
-            >
-              ›
-            </button>
-          </div>
+          <PaginationButton
+            size="small"             
+            prevDisabled={!canPrev}
+            nextDisabled={!canNext}
+            onPrevClick={onPrev}
+            onNextClick={onNext}
+            className={styles.pager}   
+          />
+
         </div>
       </header>
 
-      {/* Table head */}
+
       <div className={`${typo.base} ${typo.textLg} ${typo.regular} ${styles.tableHead}`}>이름</div>
 
-      {/* Rows */}
+
       <ul className={styles.rows}>
         {members.map((m) => (
           <li key={m.id} className={styles.row}>
@@ -90,14 +80,15 @@ export default function TableMembers({
               <span className={`${typo.base} ${typo.textMd} ${typo.Regular}`}>{m.name}</span>
             </div>
 
-            <button
-              type="button"
-              className={`${styles.removeBtn} ${styles.removeBtn2}`}
+            <TextButton
+              size="large"
+              variant="delete"
               onClick={() => onRemove?.(m.id)}
               disabled={!onRemove}
+              className={styles.removeBtn}
             >
-              <span className={`${typo.base} ${typo.textMd} ${typo.regular} ${styles.deleteBtn}`}>삭제</span>
-            </button>
+              삭제
+            </TextButton>
           </li>
         ))}
 
