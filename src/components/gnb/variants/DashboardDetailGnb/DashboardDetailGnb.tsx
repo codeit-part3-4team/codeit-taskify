@@ -1,9 +1,34 @@
+'use client';
+
+import { useState, useEffect } from 'react';
+import Gnb from '@/components/Gnb/Gnb';
+import styles from '@/components/Gnb/Variants/DashboardDetailGnb/DashboardDetailGnb.module.css';
+
+interface Member {
+  id: number;
+  nickname: string;
+  profileImageUrl: string | null;
+}
+
+interface DashboardDetailGnbProps {
+  dashboardTitle: string;
+  dashboardColor: string;
+  members: Member[];
+  currentUser: {
+    nickname: string;
+    profileImageUrl: string | null;
+  };
+  onManageClick?: () => void;
+  onInviteClick?: () => void;
+}
+
 /**
  * @component DashboardDetailGnb
  * @description 대시보드 상세 페이지용 네비게이션 바
  * 
  * - 좌측: 대시보드 제목 + 왕관 아이콘
  * - 우측: 관리/초대하기 버튼 + 초대된 멤버들(겹침) + 내 프로필
+ * - 반응형: 모바일에서 멤버 최대 3개, 데스크탑/태블릿 4개
  * 
  * @example
  * ```tsx
@@ -18,32 +43,6 @@
  * />
  * ```
  */
-
-import Gnb from '@/components/gnb/Gnb';
-import styles from './DashboardDetailGnb.module.css';
-
-
-interface Member {
-  id: number;
-  nickname: string;
-  profileImageUrl: string | null;
-}
-
-
-interface DashboardDetailGnbProps {
-  dashboardTitle: string;
-  dashboardColor: string;
-  members: Member[];
-  currentUser: {
-    nickname: string;
-    profileImageUrl: string | null;
-  };
-
-  onManageClick?: () => void;
-  onInviteClick?: () => void;
-}
-
-
 export default function DashboardDetailGnb({
   dashboardTitle,
   dashboardColor,
@@ -52,10 +51,22 @@ export default function DashboardDetailGnb({
   onManageClick,
   onInviteClick,
 }: DashboardDetailGnbProps) {
-  // 최대 4명까지만 표시
-  const MAX_DISPLAY_MEMBERS = 4;
-  const displayMembers = members.slice(0, MAX_DISPLAY_MEMBERS);
-  const remainingCount = members.length - MAX_DISPLAY_MEMBERS;
+  // 반응형: 화면 크기에 따라 멤버 표시 개수 조정
+  const [maxDisplayMembers, setMaxDisplayMembers] = useState(4);
+
+  useEffect(() => {
+    const handleResize = () => {
+      // 모바일(767px 이하): 3개, 데스크탑/태블릿: 4개
+      setMaxDisplayMembers(window.innerWidth <= 767 ? 3 : 4);
+    };
+
+    handleResize(); // 초기 설정
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  const displayMembers = members.slice(0, maxDisplayMembers);
+  const remainingCount = members.length - maxDisplayMembers;
 
   return (
     <Gnb>
@@ -131,7 +142,7 @@ export default function DashboardDetailGnb({
                 </div>
               ))}
 
-              {/* 4명 이상일 때 "+N" 표시 */}
+              {/* 최대 표시 개수 초과 시 "+N" 표시 */}
               {remainingCount > 0 && (
                 <div
                   className={styles.moreCount}

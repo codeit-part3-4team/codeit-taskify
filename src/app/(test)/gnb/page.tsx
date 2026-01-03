@@ -1,5 +1,5 @@
 // src/app/(test)/gnb/page.tsx
-import Gnb from '@/components/gnb/Gnb';
+import Gnb from '@/components/Gnb/Gnb';
 
 export default function GnbTestPage() {
   return (

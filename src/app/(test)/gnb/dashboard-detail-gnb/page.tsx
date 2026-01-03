@@ -2,7 +2,7 @@
 
 'use client';
 
-import DashboardDetailGnb from '@/components/gnb/variants/DashboardDetailGnb';
+import DashboardDetailGnb from '@/components/Gnb/variants/DashboardDetailGnb/DashboardDetailGnb';
 
 export default function DashboardDetailGnbTestPage() {
   // Mock 데이터

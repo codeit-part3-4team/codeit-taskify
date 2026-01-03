@@ -1,27 +1,132 @@
-/* components/gnb/variants/MyPageGnb/MyPageGnb.module.css */
+/* src/components/Gnb/variants/MyPageGnb/MyPageGnb.module.css */
 
-/* ============================================================================
-   LEFT: 계정 관리 (고정)
-   ============================================================================ */
-
+/* LEFT: 계정 관리 */
 .pageTitle {
+  font-family: var(--font-pretendard);
   font-size: 20px;
   font-weight: 700;
-  color: #333236;
+  line-height: 32px;
+  color: var(--black-333236);
   margin: 0;
 }
 
-/* ============================================================================
-   RIGHT: 사용자 프로필
-   ============================================================================ */
+/* RIGHT: 액션 영역 */
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
 
-.userArea {
+/* 액션 버튼 (관리, 초대하기) */
+.actionButton {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  font-family: var(--font-pretendard);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 24px;
+  color: var(--gray-787486);
+  background-color: transparent;
+  border: 1px solid var(--gray-d9d9d9);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.actionButton:hover {
+  border-color: var(--violet-5534da);
+  color: var(--violet-5534da);
+}
+
+.actionButton:focus-visible {
+  outline: 2px solid var(--violet-5534da);
+  outline-offset: 2px;
+}
+
+.actionButton img {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+/* 구분선 */
+.divider {
+  width: 1px;
+  height: 32px;
+  background-color: var(--gray-d9d9d9);
+  flex-shrink: 0;
+}
+
+/* 초대된 멤버들 (겹쳐서 표시) */
+.membersArea {
+  display: flex;
+  align-items: center;
+}
+
+.memberChip {
+  position: relative;
+  width: 38px;
+  height: 38px;
+  flex-shrink: 0;
+}
+
+.memberImage {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 2px solid var(--white-ffffff);
+  object-fit: cover;
+}
+
+.memberInitialWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 2px solid var(--white-ffffff);
+}
+
+.memberInitial {
+  font-family: var(--font-pretendard);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 24px;
+  color: var(--white-ffffff);
+  text-transform: uppercase;
+  user-select: none;
+}
+
+/* +N 표시 */
+.moreCount {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background-color: var(--gray-fafafa);
+  border: 2px solid var(--white-ffffff);
+  font-family: var(--font-pretendard);
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 20px;
+  color: var(--gray-787486);
+  flex-shrink: 0;
+}
+
+/* 내 프로필 */
+.currentUserArea {
   display: flex;
   align-items: center;
   gap: 12px;
 }
 
-.profileChip {
+.currentUserChip {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -39,59 +144,105 @@
 }
 
 .profileInitial {
+  font-family: var(--font-pretendard);
   font-size: 16px;
   font-weight: 600;
-  color: white;
+  line-height: 26px;
+  color: var(--white-ffffff);
   text-transform: uppercase;
   user-select: none;
 }
 
 .userName {
+  font-family: var(--font-pretendard);
   font-size: 16px;
   font-weight: 500;
-  color: #333236;
+  line-height: 26px;
+  color: var(--black-333236);
   white-space: nowrap;
 }
 
-/* ============================================================================
-   반응형 - 태블릿 (768px 이하)
-   ============================================================================ */
-
-@media (max-width: 768px) {
+/* 반응형 - 태블릿 (768px ~ 1024px) */
+@media (max-width: 1024px) {
   .pageTitle {
     font-size: 18px;
+    line-height: 26px;
   }
 
-  .profileChip {
+  .actions {
+    gap: 12px;
+  }
+
+  .actionButton {
+    padding: 6px 10px;
+    font-size: 13px;
+    line-height: 22px;
+  }
+
+  .memberChip,
+  .moreCount,
+  .currentUserChip {
     width: 34px;
     height: 34px;
   }
 
+  .memberInitial {
+    font-size: 13px;
+    line-height: 22px;
+  }
+
   .profileInitial {
     font-size: 14px;
+    line-height: 24px;
   }
 
   .userName {
     font-size: 14px;
+    line-height: 24px;
   }
 }
 
-/* ============================================================================
-   반응형 - 모바일 (480px 이하)
-   ============================================================================ */
-
-@media (max-width: 480px) {
+/* 반응형 - 모바일 (767px 이하) */
+@media (max-width: 767px) {
   .pageTitle {
     font-size: 16px;
+    line-height: 26px;
   }
 
-  .profileChip {
+  .actions {
+    gap: 8px;
+  }
+
+  /* 모바일에서 버튼 아이콘 숨기기 (텍스트만 남김) */
+  .actionButton img {
+    display: none;
+  }
+
+  .actionButton {
+    padding: 6px 8px;
+    font-size: 12px;
+    line-height: 20px;
+  }
+
+  .divider {
+    height: 24px;
+  }
+
+  .memberChip,
+  .moreCount,
+  .currentUserChip {
     width: 30px;
     height: 30px;
   }
 
+  .memberInitial {
+    font-size: 12px;
+    line-height: 18px;
+  }
+
   .profileInitial {
     font-size: 13px;
+    line-height: 22px;
   }
 
   /* 모바일에서 사용자 이름 숨기기 */

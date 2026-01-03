@@ -1,3 +1,4 @@
+/* src/components/Gnb/Variants/LandingGnb/LandingGnb.module.css */
 
 .authLinks {
   display: flex;
@@ -6,16 +7,42 @@
 }
 
 .authLinks a {
+  font-family: var(--font-pretendard);
   font-weight: 400;
+  text-decoration: none;
+  transition: color 0.2s ease;
 }
 
 .login {
-  color: var(--gray-700);
+  color: var(--gray-787486);
   font-size: 14px;
+  line-height: 24px;
+}
+
+.login:hover {
+  color: var(--black-171717);
 }
 
 .signup {
-  color: var(--primary);
+  color: var(--gray-787486);
   font-weight: 600;
   font-size: 14px;
+  line-height: 24px;
+}
+
+.signup:hover {
+  opacity: 0.8;
+}
+
+/* 반응형 - 모바일 */
+@media (max-width: 480px) {
+  .authLinks {
+    gap: 16px;
+  }
+
+  .login,
+  .signup {
+    font-size: 13px;
+    line-height: 22px;
+  }
 }
