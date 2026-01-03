@@ -7,8 +7,8 @@
  * 사용자 프로필 이미지(없을 경우 대시보드 컬러 칩), 사용자 닉네임을 표시합니다.
  */
 
-import Gnb from '@/components/gnb/Gnb';
-import styles from '@/components/gnb/variants/DashboardGnb/DashboardGnb.module.css';
+import Gnb from '@/components/Gnb/Gnb';
+import styles from '@/components/Gnb/variants/DashboardGnb/DashboardGnb.module.css';
 
 interface DashboardGnbProps {
   userNickname: string;

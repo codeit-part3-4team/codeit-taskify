@@ -1,4 +1,4 @@
-import LandingGnb from '@/components/gnb/variants/LandingGnb/LandingGnb';
+import LandingGnb from '@/components/Gnb/variants/LandingGnb/LandingGnb';
 
 /**
  * @description

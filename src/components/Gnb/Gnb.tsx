@@ -14,7 +14,7 @@
  */
 
 import { ReactNode } from 'react';
-import styles from '@/components/gnb/Gnb.module.css';
+import styles from '@/components/Gnb/Gnb.module.css';
 
 interface GnbMainProps {
   children: ReactNode;
