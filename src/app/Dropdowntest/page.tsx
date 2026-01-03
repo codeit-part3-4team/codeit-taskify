@@ -25,33 +25,33 @@
 //   );
 // }
 
-// import { useState } from "react";
-// import DropdownProgress, { ProgressValue } from "@/components/Dropdown/dropdown-progress/dropdownprogress";
-
-// export default function Page() {
-//   const [value, setValue] = useState<ProgressValue>("todo");
-
-//   return (
-//     <div style={{ padding: 40 }}>
-//       <DropdownProgress value={value} onChange={setValue} />
-//     </div>
-//   );
-// }
-
 import { useState } from "react";
-import ManagerSelect, { Manager } from "@/components/Dropdown/dropdown-manager/dropdownmanager";
-
-const DUMMY: Manager[] = [
-  { id: "1", name: "배유철" },
-  { id: "2", name: "배동석" },
-];
+import DropdownProgress, { ProgressValue } from "@/components/Dropdown/dropdown-progress/dropdownprogress";
 
 export default function Page() {
-  const [selected, setSelected] = useState<Manager | null>(DUMMY[0]);
+  const [value, setValue] = useState<ProgressValue>("todo");
 
   return (
     <div style={{ padding: 40 }}>
-      <ManagerSelect managers={DUMMY} value={selected} onChange={setSelected} />
+      <DropdownProgress value={value} onChange={setValue} />
     </div>
   );
 }
+
+// import { useState } from "react";
+// import ManagerSelect, { Manager } from "@/components/Dropdown/dropdown-manager/dropdownmanager";
+
+// const DUMMY: Manager[] = [
+//   { id: "1", name: "배유철" },
+//   { id: "2", name: "배동석" },
+// ];
+
+// export default function Page() {
+//   const [selected, setSelected] = useState<Manager | null>(DUMMY[0]);
+
+//   return (
+//     <div style={{ padding: 40 }}>
+//       <ManagerSelect managers={DUMMY} value={selected} onChange={setSelected} />
+//     </div>
+//   );
+// }
