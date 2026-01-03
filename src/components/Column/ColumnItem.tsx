@@ -3,11 +3,11 @@
 import styles from '@/components/Column/column.module.css';
 
 import Link from 'next/link';
-import { columnUI } from './columnUI.type';
+import { ColumnUI } from '@/components/Column/ColumnUI.type';
 import IcSettings from '@/assets/icons/IcSettings';
 
 type ColumnItemProps = {
-  columnData: columnUI;
+  columnData: ColumnUI;
 };
 
 export default function Card({ columnData }: ColumnItemProps) {
@@ -21,12 +21,7 @@ export default function Card({ columnData }: ColumnItemProps) {
             <span className={styles.cardCount}>3</span>
           </div>
           <div className={styles.right}>
-            <Link
-              href="column/edit"
-              role="dialog"
-              aria-label="컬럼 수정 모달 열기"
-              className={styles.columnEditButton}
-            >
+            <Link href="/column/edit" aria-label="컬럼 수정" className={styles.columnEditButton}>
               <IcSettings className={styles.settingsIcon} />
             </Link>
           </div>

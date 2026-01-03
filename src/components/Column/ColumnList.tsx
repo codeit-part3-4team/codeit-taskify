@@ -2,11 +2,11 @@
 
 import ColumnItem from '@/components/Column/ColumnItem';
 import styles from '@/components/Column/column.module.css';
-import { columnUI } from './columnUI.type';
+import { ColumnUI } from '@/components/Column/ColumnUI.type';
 import Link from 'next/link';
 import AddColumnButton from '../Buttons/domains/dashboard/AddColumnButton/AddColumnButton';
 
-const mockColumns: columnUI[] = [
+const mockColumns: ColumnUI[] = [
   {
     id: 1,
     title: 'To Do',
@@ -31,7 +31,7 @@ const mockColumns: columnUI[] = [
 ];
 
 type ColumnListProps = {
-  columns?: columnUI[];
+  columns?: ColumnUI[];
 };
 
 export default function ColumnList({ columns }: ColumnListProps) {
@@ -41,7 +41,6 @@ export default function ColumnList({ columns }: ColumnListProps) {
     <>
       <div className={styles.columnList}>
         {columnList.map((columnData) => {
-          console.log(columnData);
           return <ColumnItem key={columnData.id} columnData={columnData} />;
         })}
         <div>

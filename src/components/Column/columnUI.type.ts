@@ -1,6 +1,6 @@
 
 // 서버타입
-export type columnUI ={
+export type ColumnUI ={
   id: number;
   title: string;
   teamId: string;
