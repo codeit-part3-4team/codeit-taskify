@@ -1,4 +1,4 @@
-import { CardModalUI, CardServerResponse } from "./ModalCard.type";
+import { CardModalUI, CardServerResponse } from "@/components/Modals/domains/Card/ModalCard.type";
 
 // 데이터 매핑 함수
 export function mapCardToModalUI(
