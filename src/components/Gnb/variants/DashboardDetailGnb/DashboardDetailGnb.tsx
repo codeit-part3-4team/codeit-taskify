@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Gnb from '@/components/Gnb/Gnb';
-import styles from '@/components/Gnb/Variants/DashboardDetailGnb/DashboardDetailGnb.module.css';
+import styles from '@/components/Gnb/variants/DashboardDetailGnb/DashboardDetailGnb.module.css';
 
 interface Member {
   id: number;
