@@ -1,7 +1,7 @@
 'use client';
 
 import styles from '@/components/Column/column.module.css';
-import AddColumnButton from '../Buttons/domains/dashboard/AddColumnButton/AddColumnButton';
+
 import Link from 'next/link';
 import { columnUI } from './columnUI.type';
 import IcSettings from '@/assets/icons/IcSettings';
