@@ -37,3 +37,4 @@ export async function signup(data: SignupRequest): Promise<SignupResponse> {
   return response.json();
 }
 
+
