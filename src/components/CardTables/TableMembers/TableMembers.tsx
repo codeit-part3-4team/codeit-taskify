@@ -1,8 +1,24 @@
 "use client";
 
-import styles from "./TableMembers.module.css";
+import styles from "@/components/CardTables/TableMembers/TableMembers.module.css";
+import typo from "@/styles/typography.module.css";
+import PaginationButton from "@/components/Buttons/shared/PaginationButton/PaginationButton";
+import TextButton from "@/components/Buttons/shared/TextButton/TextButton";
+import { useEffect, useState } from 'react';
 
-import typo from "../../../styles/typography.module.css";
+function useIsMobile(breakpoint = 743) {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth <= breakpoint);
+    check();
+    window.addEventListener('resize', check);
+    return () => window.removeEventListener('resize', check);
+  }, [breakpoint]);
+
+  return isMobile;
+}
+
 
 export type Member = {
   id: string | number;
@@ -37,6 +53,7 @@ export default function TableMembers({
 }: Props) {
   const canPrev = page > 1 && !!onPrev;
   const canNext = page < totalPages && !!onNext;
+  const isMobile = useIsMobile();
 
   return (
     <section className={`${styles.card} ${className}`}>
@@ -49,34 +66,22 @@ export default function TableMembers({
             {page} 페이지 중 {totalPages}
           </span>
 
-          {/* pager buttons: 붙어있는 2버튼 + 가운데 선 */}
-          <div className={styles.pager} role="group" aria-label="페이지 이동">
-            <button
-              type="button"
-              className={`${styles.pagerBtn} ${styles.pagerLeft} ${styles.pagerBtn2}`}
-              onClick={onPrev}
-              disabled={!canPrev}
-              aria-label="이전 페이지"
-            >
-              ‹
-            </button>
-            <button
-              type="button"
-              className={`${styles.pagerBtn} ${styles.pagerRight}`}
-              onClick={onNext}
-              disabled={!canNext}
-              aria-label="다음 페이지"
-            >
-              ›
-            </button>
-          </div>
+          <PaginationButton
+            size="small"             
+            prevDisabled={!canPrev}
+            nextDisabled={!canNext}
+            onPrevClick={onPrev}
+            onNextClick={onNext}
+            className={styles.pager}   
+          />
+
         </div>
       </header>
 
-      {/* Table head */}
+
       <div className={`${typo.base} ${typo.textLg} ${typo.regular} ${styles.tableHead}`}>이름</div>
 
-      {/* Rows */}
+
       <ul className={styles.rows}>
         {members.map((m) => (
           <li key={m.id} className={styles.row}>
@@ -90,14 +95,19 @@ export default function TableMembers({
               <span className={`${typo.base} ${typo.textMd} ${typo.Regular}`}>{m.name}</span>
             </div>
 
-            <button
-              type="button"
-              className={`${styles.removeBtn} ${styles.removeBtn2}`}
+            <TextButton
+              variant="delete"
+              size={isMobile ? 'small' : 'large'}
+                  className={
+                    isMobile
+                      ? styles.cancelSmall   // 52 × 32
+                      : styles.cancelLarge   // 84 × 32
+                  }
               onClick={() => onRemove?.(m.id)}
               disabled={!onRemove}
             >
-              <span className={`${typo.base} ${typo.textMd} ${typo.regular} ${styles.deleteBtn}`}>삭제</span>
-            </button>
+              삭제
+            </TextButton>
           </li>
         ))}
 
