@@ -1,0 +1,83 @@
+.columnList {
+  display: flex;
+}
+
+.columItem {
+  width: 354px;
+  max-width: 354px;
+  flex-shrink: 0;
+  padding: 20px;
+}
+
+.columItem .columInfo {
+  display: flex;
+  align-items: center;
+  margin-bottom: 25px;
+}
+.columItem .columInfo .left {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  gap: 12px;
+}
+.columItem .columInfo .right {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.columItem .columInfo .right > a {
+  height: 20px;
+}
+
+.columItem .columInfo .right .settingsIcon {
+  color: var(--gray-787486);
+}
+
+.columItem .columInfo .columnTitle {
+  position: relative;
+  padding-left: 16px;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--black-333236);
+}
+.columItem .columInfo .columnTitle:before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  margin-top: -4px;
+  display: block;
+  background: var(--violet-5534da);
+  width: 8px;
+  height: 8px;
+  border-radius: 100%;
+}
+
+.columItem .columInfo .cardCount {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--gray-eeeeee);
+  width: 20px;
+  height: 20px;
+  color: var(--gray-787486);
+  font-size: 12px;
+  font-weight: 500;
+  border-radius: 4px;
+}
+.columItem .columInfo .columnEditButton {
+}
+
+.columItem .cardAddButton {
+}
+
+@media (max-width: 744px) {
+  .columnList {
+    flex-direction: column;
+  }
+  .columItem {
+    width: 100%;
+    max-width: 100%;
+  }
+}
