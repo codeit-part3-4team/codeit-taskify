@@ -1,16 +1,9 @@
 'use client';
 
 import Image from 'next/image';
-import { StaticImport } from 'next/dist/shared/lib/get-img-props';
 import styles from '@/components/Card/card.module.css';
-
-export type CardUI = {
-  title: string;
-  tags?: string[] | null;
-  dueDate?: string | null;
-  imageUrl?: string | StaticImport | null;
-  profileImageUrl?: string | StaticImport | null;
-};
+import IcCalender from '@/assets/icons/IcCalender';
+import { CardUI } from './CardUI.type';
 
 const dummyCardData = {
   title: '새로운 일정 관리',
@@ -23,6 +16,8 @@ const dummyCardData = {
 export default function Card({ cardData }: { cardData?: CardUI }) {
   const card = cardData ?? dummyCardData;
 
+  const hasFooter = Boolean(card.dueDate || card.profileImageUrl);
+
   return (
     <>
       <div className={styles.cardItem}>
@@ -34,26 +29,39 @@ export default function Card({ cardData }: { cardData?: CardUI }) {
 
         <div className={styles.cardContent}>
           <h3 className={styles.cardTitle}>{card.title}</h3>
-          {card.tags && (
-            <ul className={styles.tagBox}>
-              {card.tags.map((tag) => (
-                <li key={tag} className={styles.tag}>
-                  {tag}
-                </li>
-              ))}
-            </ul>
-          )}
-          {card.dueDate && <p className={styles.dueDate}>{card.dueDate}</p>}
-          {card.profileImageUrl && (
-            <div className={styles.profileImageBox}>
-              <Image
-                src={card.profileImageUrl}
-                alt="profileImage"
-                fill
-                style={{ objectFit: 'cover' }}
-              />
-            </div>
-          )}
+          <div className={styles.cardInfo}>
+            {card.tags && (
+              <ul className={styles.tagBox}>
+                {card.tags.map((tag, index) => (
+                  <li key={`${tag}-${index}`} className={styles.tag}>
+                    {tag}
+                  </li>
+                ))}
+              </ul>
+            )}
+
+            {hasFooter && (
+              <div className={styles.cardFooter}>
+                {card.dueDate && (
+                  <div className={styles.dueDate}>
+                    <IcCalender />
+                    <span>{card.dueDate}</span>
+                  </div>
+                )}
+
+                {card.profileImageUrl && (
+                  <div className={styles.profileImageBox}>
+                    <Image
+                      src={card.profileImageUrl}
+                      alt="profileImage"
+                      fill
+                      style={{ objectFit: 'cover' }}
+                    />
+                  </div>
+                )}
+              </div>
+            )}
+          </div>
         </div>
       </div>
     </>

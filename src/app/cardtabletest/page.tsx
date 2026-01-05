@@ -76,24 +76,24 @@
 //   );
 // }
 
-// import TableInvitedDashboards from "@/components/CardTables/TableInvitedDashboards/TableInvitedDashboards";
+import TableInvitedDashboards from "@/components/CardTables/TableInvitedDashboards/TableInvitedDashboards";
 
-// export default function Page() {
-//   return (
-//     <div style={{ padding: 24, display: "flex", justifyContent: "center" }}>
-//       <TableInvitedDashboards
-//         items={[
-//           { id: 1, name: "프로덕트 디자인", inviter: "손동희" },
-//           { id: 2, name: "새로운 기획 문서", inviter: "안귀영" },
-//           { id: 3, name: "유닛 A", inviter: "장혁" },
-//           { id: 4, name: "유닛 B", inviter: "강나무" },
-//           { id: 5, name: "유닛 C", inviter: "김태현" },
-//           { id: 6, name: "유닛 D", inviter: "김태현" },
-//         ]}
-//       />
-//     </div>
-//   );
-// }
+export default function Page() {
+  return (
+    <div style={{ padding: 24, display: "flex", justifyContent: "center" }}>
+      <TableInvitedDashboards
+        items={[
+          { id: 1, name: "프로덕트 디자인", inviter: "손동희" },
+          { id: 2, name: "새로운 기획 문서", inviter: "안귀영" },
+          { id: 3, name: "유닛 A", inviter: "장혁" },
+          { id: 4, name: "유닛 B", inviter: "강나무" },
+          { id: 5, name: "유닛 C", inviter: "김태현" },
+          { id: 6, name: "유닛 D", inviter: "김태현" },
+        ]}
+      />
+    </div>
+  );
+}
 
 
 // import { useState } from "react";
@@ -126,38 +126,38 @@
 //   );
 // }
 
-import { useState } from "react";
-import PasswordChangeCard from "@/components/CardTables/PasswordChangeCard/PasswordChangeCard";
+// import { useState } from "react";
+// import PasswordChangeCard from "@/components/CardTables/PasswordChangeCard/PasswordChangeCard";
 
-export default function Page() {
-  const [currentPw, setCurrentPw] = useState("");
-  const [newPw, setNewPw] = useState("");
-  const [confirmPw, setConfirmPw] = useState("");
+// export default function Page() {
+//   const [currentPw, setCurrentPw] = useState("");
+//   const [newPw, setNewPw] = useState("");
+//   const [confirmPw, setConfirmPw] = useState("");
 
-  return (
-    <main
-      style={{
-        minHeight: "100vh",
-        padding: 40,
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "flex-start",
-      }}
-    >
-      <PasswordChangeCard
-        currentValue={currentPw}
-        newValue={newPw}
-        confirmValue={confirmPw}
-        onChangeCurrent={setCurrentPw}
-        onChangeNew={setNewPw}
-        onChangeConfirm={setConfirmPw}
-        onSubmit={() => {
-          alert(
-            `변경 클릭\n현재: ${currentPw}\n새 비번: ${newPw}\n새 비번 확인: ${confirmPw}`
-          );
-        }}
-      />
-    </main>
-  );
-}
+//   return (
+//     <main
+//       style={{
+//         minHeight: "100vh",
+//         padding: 40,
+//         display: "flex",
+//         justifyContent: "center",
+//         alignItems: "flex-start",
+//       }}
+//     >
+//       <PasswordChangeCard
+//         currentValue={currentPw}
+//         newValue={newPw}
+//         confirmValue={confirmPw}
+//         onChangeCurrent={setCurrentPw}
+//         onChangeNew={setNewPw}
+//         onChangeConfirm={setConfirmPw}
+//         onSubmit={() => {
+//           alert(
+//             `변경 클릭\n현재: ${currentPw}\n새 비번: ${newPw}\n새 비번 확인: ${confirmPw}`
+//           );
+//         }}
+//       />
+//     </main>
+//   );
+// }
 
