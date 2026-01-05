@@ -7,18 +7,17 @@ import { ColumnUI } from '@/components/Column/ColumnUI.type';
 import IcSettings from '@/assets/icons/IcSettings';
 
 type ColumnItemProps = {
-  columnData: ColumnUI;
+  column: ColumnUI;
 };
 
-export default function Card({ columnData }: ColumnItemProps) {
+export default function Card({ column }: ColumnItemProps) {
   return (
     <>
       <div className={styles.columItem}>
         <div className={styles.columInfo}>
           <div className={styles.left}>
-            <h3 className={styles.columnTitle}>{columnData.title}</h3>
-            {/* 데이터로 바뀌어야 함. */}
-            <span className={styles.cardCount}>3</span>
+            <h3 className={styles.columnTitle}>{column.title}</h3>
+            <span className={styles.cardCount}>{column.cardCount}</span>
           </div>
           <div className={styles.right}>
             <Link href="/column/edit" aria-label="컬럼 수정" className={styles.columnEditButton}>
