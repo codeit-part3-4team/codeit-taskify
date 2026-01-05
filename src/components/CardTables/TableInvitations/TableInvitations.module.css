@@ -40,37 +40,6 @@
   color: var(--black-333236);
 }
 
-/* Pager */
-.pager {
-  display: inline-flex;
-  border: 1px solid var(--gray-d9d9d9);
-  border-radius: 4px;
-  overflow: hidden;
-  background: var(--white-ffffff);
-}
-
-.pagerBtn {
-  width: 40px;
-  height: 40px;
-  border: 0;
-  background: transparent;
-  cursor: pointer;
-  color: var(--gray-787486);
-  font-size: 18px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.pagerLeft {
-  border-right: 1px solid var(--gray-d9d9d9);
-}
-
-.pagerBtn:disabled {
-  opacity: 0.35;
-  cursor: not-allowed;
-}
-
 /* SubHeader: "이메일" + (모바일)초대하기 */
 .subHeader {
   display: flex;
@@ -146,20 +115,17 @@
   color: var(--black-333236);
 }
 
-/* 취소 버튼 */
-.cancelBtn {
-  width: 84px;
-  height: 32px;
-  border-radius: 4px;
-  border: 1px solid var(--gray-d9d9d9);
-  background: var(--white-ffffff);
-  color: var(--violet-5534da);
-  cursor: pointer;
+.cancelSmall {
+  width: 52px !important;
+  height: 32px !important;
+  padding: 0 !important;
 }
 
-.cancelBtn:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
+/* PC: large → 84 x 32 */
+.cancelLarge {
+  width: 84px !important;
+  height: 32px !important;
+  padding: 0 !important;
 }
 
 /* empty */
@@ -244,11 +210,11 @@
     padding: 16px 16px;
   }
 
-  .cancelBtn {
+  /* .cancelBtn {
     font-size: 14px !important;
     line-height: 24px !important;
     width: 52px;;
-  }
+  } */
 
   .email {
     font-size: 14px !important;

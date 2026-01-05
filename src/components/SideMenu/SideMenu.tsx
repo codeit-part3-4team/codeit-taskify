@@ -1,125 +1,122 @@
+'use client';
+
+import { useState } from 'react';
+import Logo from '@/components/Logo/Logo';
+import PaginationButton from '@/components/Buttons/shared/PaginationButton/PaginationButton';
+import DashboardItem from '@/components/SideMenu/DashboardItem/DashboardItem';
 import styles from '@/components/SideMenu/SideMenu.module.css';
 
-
-type DashboardDTO = {
+interface Dashboard {
   id: number;
   title: string;
   color: string;
   createdByMe: boolean;
-  createdAt: string;
-  updatedAt: string;
-};
+}
 
-type SideMenuProps = {
-  dashboards: DashboardDTO[];
-  totalCount: number;
-  currentPage: number;
-  onPageChange: (page: number) => void;
-  currentDashboardId?: number;
-  onDashboardClick?: (dashboardId: number) => void;
-};
+interface SideMenuProps {
+  /** 전체 대시보드 목록 */
+  dashboards: Dashboard[];
+  /** 대시보드 클릭 이벤트 */
+  onDashboardClick?: (id: number) => void;
+  /** 대시보드 추가 버튼 클릭 이벤트 */
+  onAddDashboardClick?: () => void;
+  /** 현재 선택된 대시보드 ID (선택 상태 표시용) */
+  selectedDashboardId?: number;
+}
 
 /**
- * 대시보드 목록을 표시하는 사이드 메뉴 컴포넌트
- * - 대시보드 리스트 표시
- * - 내가 만든 대시보드는 왕관(👑) 아이콘 표시
- * - 페이지네이션 (15개씩 표시)
+ * @component SideMenu
+ * @description 대시보드 목록을 표시하는 사이드 메뉴
+ * 
+ * @example
+ * ```tsx
+ * <SideMenu
+ *   dashboards={dashboards}
+ *   onDashboardClick={(id) => router.push(`/dashboard/${id}`)}
+ *   onAddDashboardClick={() => setModalOpen(true)}
+ *   selectedDashboardId={currentDashboardId}
+ * />
+ * ```
  */
-export function SideMenu({
+export default function SideMenu({
   dashboards,
-  totalCount,
-  currentPage,
-  onPageChange,
-  currentDashboardId,
   onDashboardClick,
+  onAddDashboardClick,
+  selectedDashboardId,
 }: SideMenuProps) {
-  const itemsPerPage = 15;
-  const totalPages = Math.ceil(totalCount / itemsPerPage);
-  const hasPrevPage = currentPage > 1;
-  const hasNextPage = currentPage < totalPages;
+  const ITEMS_PER_PAGE = 15;
+  const [currentPage, setCurrentPage] = useState(1);
 
+  // 페이지네이션 계산
+  const totalPages = Math.ceil(dashboards.length / ITEMS_PER_PAGE);
+  const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+  const endIndex = startIndex + ITEMS_PER_PAGE;
+  const currentDashboards = dashboards.slice(startIndex, endIndex);
+
+  // 페이지 변경
   const handlePrevPage = () => {
-    if (hasPrevPage) {
-      onPageChange(currentPage - 1);
+    if (currentPage > 1) {
+      setCurrentPage(currentPage - 1);
     }
   };
 
   const handleNextPage = () => {
-    if (hasNextPage) {
-      onPageChange(currentPage + 1);
+    if (currentPage < totalPages) {
+      setCurrentPage(currentPage + 1);
     }
   };
 
-  const handleDashboardClick = (dashboardId: number) => {
-    if (onDashboardClick) {
-      onDashboardClick(dashboardId);
-    }
-  };
+  // Pagination 표시 여부 (16개 이상일 때만)
+  const showPagination = dashboards.length > ITEMS_PER_PAGE;
 
   return (
     <aside className={styles.sideMenu}>
-      <div className={styles.MainlogoSection}>
-        {/* TODO: Logo 컴포넌트 import 필요 */}
-        <div>Taskify Logo</div>
+      {/* 상단: Logo */}
+      <div className={styles.logoArea}>
+        <Logo />
       </div>
 
-      {/* 대시보드 리스트 영역 */}
+      {/* 중단: 대시보드 목록 */}
       <div className={styles.dashboardSection}>
-        <div className={styles.dashboardHeader}>
-          <h2 className={styles.dashboardTitle}>Dash Boards</h2>
-          {/* TODO: 대시보드 추가 버튼 필요시 */}
+        {/* Dash Boards 헤더 */}
+        <div className={styles.header}>
+          <h2 className={styles.title}>Dash Boards</h2>
+          <button
+            type="button"
+            className={styles.addButton}
+            onClick={onAddDashboardClick}
+            aria-label="새 대시보드 추가"
+          >
+            <img src="/icons/ic-invite.svg" alt="" aria-hidden="true" />
+          </button>
         </div>
 
+        {/* 대시보드 리스트 */}
         <ul className={styles.dashboardList}>
-          {dashboards.map((dashboard) => {
-            const isActive = dashboard.id === currentDashboardId;
-
-            return (
-              <li
-                key={dashboard.id}
-                className={`${styles.dashboardItem} ${isActive ? styles.active : ''}`}
-                onClick={() => handleDashboardClick(dashboard.id)}
-              >
-                {/* 색상 Chip */}
-                <span
-                  className={styles.colorChip}
-                  style={{ backgroundColor: dashboard.color }}
-                />
-
-                {/* 대시보드 이름 */}
-                <span className={styles.dashboardName}>
-                  {dashboard.title}
-                </span>
-
-                {/* 왕관 아이콘 (내가 만든 대시보드) */}
-                {dashboard.createdByMe && (
-                  <span className={styles.crownIcon}>👑</span>
-                )}
-              </li>
-            );
-          })}
+          {currentDashboards.map((dashboard) => (
+            <DashboardItem
+              key={dashboard.id}
+              id={dashboard.id}
+              title={dashboard.title}
+              color={dashboard.color}
+              createdByMe={dashboard.createdByMe}
+              isSelected={selectedDashboardId === dashboard.id}
+              onClick={onDashboardClick}
+            />
+          ))}
         </ul>
       </div>
 
-      {/* 페이지네이션 영역 */}
-      {totalPages > 1 && (
-        <div className={styles.paginationSection}>
-          <button
-            className={styles.paginationButton}
-            onClick={handlePrevPage}
-            disabled={!hasPrevPage}
-            aria-label="이전 페이지"
-          >
-            ←
-          </button>
-          <button
-            className={styles.paginationButton}
-            onClick={handleNextPage}
-            disabled={!hasNextPage}
-            aria-label="다음 페이지"
-          >
-            →
-          </button>
+      {/* 하단: Pagination (16개 이상일 때만) */}
+      {showPagination && (
+        <div className={styles.paginationArea}>
+          <PaginationButton
+            size="small"
+            prevDisabled={currentPage === 1}
+            nextDisabled={currentPage === totalPages}
+            onPrevClick={handlePrevPage}
+            onNextClick={handleNextPage}
+          />
         </div>
       )}
     </aside>
