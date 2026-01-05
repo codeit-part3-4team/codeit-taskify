@@ -1,7 +1,24 @@
 "use client";
 
-import styles from "./TableInvitations.module.css";
+import styles from "@/components/CardTables/TableInvitations/TableInvitations.module.css";
 import typo from "@/styles/typography.module.css";
+import PaginationButton from "@/components/Buttons/shared/PaginationButton/PaginationButton";
+import ModalButton from '@/components/Buttons/shared/ModalButton/ModalButton';
+import { useEffect, useState } from 'react';
+
+function useIsMobile(breakpoint = 360) {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth <= breakpoint);
+    check();
+    window.addEventListener('resize', check);
+    return () => window.removeEventListener('resize', check);
+  }, [breakpoint]);
+
+  return isMobile;
+}
+
 
 export type Invitation = {
   id: number | string;
@@ -35,8 +52,10 @@ export default function TableInvitations({
   onInvite,
   onCancel,
 }: Props) {
-  const isPrevDisabled = page <= 1;
-  const isNextDisabled = page >= totalPages;
+  const canPrev = page > 1 && !!onPrev;
+  const canNext = page < totalPages && !!onNext;
+  const isMobile = useIsMobile();
+
 
   return (
     <div className={styles.cardWrapper}>
@@ -52,26 +71,14 @@ export default function TableInvitations({
               {page} 페이지 중 {totalPages}
             </span>
 
-            <div className={styles.pager}>
-              <button
-                type="button"
-                className={`${styles.pagerBtn} ${styles.pagerLeft}`}
-                onClick={onPrev}
-                disabled={isPrevDisabled}
-                aria-label="이전 페이지"
-              >
-                ‹
-              </button>
-              <button
-                type="button"
-                className={styles.pagerBtn}
-                onClick={onNext}
-                disabled={isNextDisabled}
-                aria-label="다음 페이지"
-              >
-                ›
-              </button>
-            </div>
+            <PaginationButton
+              size="small"             
+              prevDisabled={!canPrev}
+              nextDisabled={!canNext}
+              onPrevClick={onPrev}
+              onNextClick={onNext}
+              className={styles.pager}   
+            />
 
             {/* ✅ PC 전용 초대하기 버튼 (모바일에서는 숨김) */}
             <button
@@ -105,7 +112,7 @@ export default function TableInvitations({
             초대하기
           </button>
         </div>
-
+        
         {/* Rows */}
         <ul className={styles.rows}>
           {invitations.length === 0 ? (
@@ -121,13 +128,18 @@ export default function TableInvitations({
                   {inv.email}
                 </span>
 
-                <button
-                  type="button"
-                  className={`${styles.cancelBtn} ${typo.base} ${typo.textMd} ${typo.medium}`}
+                <ModalButton
+                  variant="secondary"
+                  size={isMobile ? 'small' : 'large'}
+                  className={
+                    isMobile
+                      ? styles.cancelSmall   // 52 × 32
+                      : styles.cancelLarge   // 84 × 32
+                  }
                   onClick={() => onCancel?.(inv.id)}
                 >
                   취소
-                </button>
+                </ModalButton>
               </li>
             ))
           )}
