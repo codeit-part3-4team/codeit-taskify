@@ -34,6 +34,10 @@
   opacity: 0.8;
 }
 
+.landingGnb {
+  border-bottom: none
+}
+
 /* 반응형 - 모바일 */
 @media (max-width: 480px) {
   .authLinks {
