@@ -1,5 +1,6 @@
 import { getCards, getColumns } from './dashboard.api';
 
+// dashboard/17226 에서 작업
 export default async function DashboardDetailPage({
   params,
 }: {

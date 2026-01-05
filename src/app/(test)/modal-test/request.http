@@ -14,7 +14,7 @@ Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjQ4NywidGVhbUlkIjoiMjAtNCIsImlhdCI6MTc2Njc0NDY0NSwiaXNzIjoic3AtdGFza2lmeSJ9.HOjAslVpV5SaFhwCb1ankip7UyjIQ3hEDPgQHrKCnFg
 
 {
-  "title": "컬럼 테스트",
+  "title": "컬럼 테스트-4",
   "dashboardId": 17226
 }
 
@@ -27,7 +27,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjQ4NywidGVhb
 {
   "dashboardId": 17226,
   "columnId": 58140,
-  "title": "카드 테스트",
+  "title": "카드 테스트-8",
   "description": "컬럼에 카드 생성"
 }
 
