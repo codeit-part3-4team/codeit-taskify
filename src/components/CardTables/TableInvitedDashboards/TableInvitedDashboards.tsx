@@ -2,6 +2,7 @@
 
 import styles from "./TableInvitedDashboards.module.css";
 import typo from "@/styles/typography.module.css";
+import ActionButton from "@/components/Buttons/shared/ActionButton/ActionButton";
 
 import Image from "next/image";
 import searchIcon from "./search.svg";
@@ -78,21 +79,23 @@ export default function TableInvitedDashboards({
             </span>
 
             <div className={styles.actions}>
-              <button
-                type="button"
-                className={`${styles.primaryBtn} ${typo.base} ${typo.textMd} ${typo.medium}`}
+              <ActionButton
+                size="desktop"
+                variant="confirm"
                 onClick={() => onAccept?.(it.id)}
               >
                 수락
-              </button>
-              <button
-                type="button"
-                className={`${styles.ghostBtn} ${typo.base} ${typo.textMd} ${typo.medium}`}
+              </ActionButton>
+
+              <ActionButton
+                size="desktop"
+                variant="deny"
                 onClick={() => onReject?.(it.id)}
               >
                 거절
-              </button>
+              </ActionButton>
             </div>
+
 
             {/* Mobile layout (only visible on <=360) */}
             <div className={styles.mobileBlock}>
@@ -119,20 +122,21 @@ export default function TableInvitedDashboards({
             </div>
 
             <div className={styles.mobileActions}>
-                <button
-                type="button"
-                className={`${styles.mobilePrimaryBtn} ${typo.base} ${typo.textMd} ${typo.medium}`}
+              <ActionButton
+                size="mobile"
+                variant="confirm"
                 onClick={() => onAccept?.(it.id)}
-                >
+              >
                 수락
-                </button>
-                <button
-                type="button"
-                className={`${styles.mobileGhostBtn} ${typo.base} ${typo.textMd} ${typo.medium}`}
+              </ActionButton>
+
+              <ActionButton
+                size="mobile"
+                variant="deny"
                 onClick={() => onReject?.(it.id)}
-                >
+              >
                 거절
-                </button>
+              </ActionButton>
             </div>
             </div>
           </li>
