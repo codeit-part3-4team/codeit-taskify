@@ -1,0 +1,74 @@
+/* src/components/SideMenu/DashboardItem/DashboardItem.module.css */
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 12px 24px;
+  background: none;
+  border: none;
+  border-left: 3px solid transparent;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: left;
+}
+
+.item:hover {
+  background-color: var(--gray-fafafa);
+}
+
+.item.selected {
+  background-color: var(--violet-8p);
+  border-left-color: var(--violet-5534da);
+}
+
+.title {
+  flex: 1;
+  font-family: var(--font-pretendard);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 26px;
+  color: var(--black-171717);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.crown {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+/* ========== 반응형 - 태블릿 ========== */
+@media (max-width: 1024px) {
+  .item {
+    padding: 12px;
+    gap: 8px;
+  }
+
+  .title {
+    font-size: 14px;
+    line-height: 24px;
+  }
+
+  .crown {
+    width: 14px;
+    height: 14px;
+  }
+}
+
+/* ========== 반응형 - 모바일 ========== */
+@media (max-width: 767px) {
+  .item {
+    justify-content: center;
+    padding: 12px 8px;
+  }
+
+  /* 제목과 왕관 숨김 */
+  .title,
+  .crown {
+    display: none;
+  }
+}
