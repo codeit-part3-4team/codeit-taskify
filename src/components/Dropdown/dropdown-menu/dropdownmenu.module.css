@@ -1,0 +1,75 @@
+.root {
+  position: relative;
+  display: inline-block;
+  font-family: var(--font-pretendard);
+}
+
+/* 테스트용 트리거(필요하면 너희 Button 컴포넌트로 교체) */
+.trigger {
+  height: 32px;
+  padding: 0 10px;
+  border-radius: 8px;
+  border: 1px solid var(--gray-d9d9d9);
+  background: var(--white-ffffff);
+  color: var(--black-171717);
+  cursor: pointer;
+}
+
+/* ====== 메뉴 전체: 93 x 82 고정 ====== */
+.menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  width: 93px;
+  height: 82px;
+  background: var(--white-ffffff);
+  border: 1px solid var(--gray-eeeeee);
+  border-radius: 6px;
+  padding: 7px 6px;
+}
+
+.alignLeft {
+  left: 0;
+}
+
+.alignRight {
+  right: 0;
+}
+
+.itemsWrap {
+  width: 81px;
+  height: 68px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+
+.item {
+  width: 81px;
+  height: 32px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-pretendard);
+  font-size: 14px;
+  line-height: 24px;
+  font-weight: 400;
+  color: var(--black-333236);
+}
+
+.item:hover {
+  background: var(--gray-fafafa);
+}
+.itemHighlighted {
+  background: var(--violet-8p);
+  color: var(--violet-5534da);
+}
+
+.itemDanger:hover {
+  background: rgba(214, 23, 58, 0.08);
+}
