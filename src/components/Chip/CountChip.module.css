@@ -1,0 +1,19 @@
+/* src/components/Chip/CountChip.module.css */
+
+.countChip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 6px;
+  border-radius: 4px;
+  background-color: var(--gray-eeeeee);
+  color: var(--gray-787486);
+  font-family: var(--font-pretendard);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 20px;
+  text-align: center;
+  flex-shrink: 0;
+}
