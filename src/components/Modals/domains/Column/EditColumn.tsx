@@ -2,7 +2,7 @@
 
 import { useRouter } from 'next/navigation';
 import DefaultModal from '@/components/Modals/DefaultModal';
-import { ColumnUpdateRequest } from '@/components/Modals/domains/Column/ModalColumn';
+import { ColumnUpdateRequest } from '@/components/Modals/domains/Column/ModalColumn.type';
 import { useState } from 'react';
 import ModalButton from '@/components/Buttons/shared/ModalButton/ModalButton';
 import TextInput from '@/components/Input/domains/todo/TextInput/TextInput';
