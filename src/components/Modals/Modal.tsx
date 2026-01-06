@@ -9,6 +9,7 @@ import {
 } from 'react';
 import styles from '@/components/Modals/Modal.module.css';
 import { useRouter } from 'next/navigation';
+import { useEscapeClose } from '@/hooks/useEscapeClose';
 
 type ModalProps = {
   type?: 'default' | 'alim';
@@ -77,20 +78,20 @@ export default function Modal({
   className = '',
 }: ModalProps) {
   const router = useRouter();
-  const [mounted, setMounted] = useState(false);
+  const [modalOpenReady, setModalOpenReady] = useState(false);
   const overlayRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     requestAnimationFrame(() => {
-      setMounted(true);
+      setModalOpenReady(true);
     });
   }, []);
 
   useEffect(() => {
-    if (mounted) {
+    if (modalOpenReady) {
       overlayRef.current?.focus();
     }
-  }, [mounted]);
+  }, [modalOpenReady]);
 
   const closeModal = () => {
     router.back();
@@ -103,16 +104,7 @@ export default function Modal({
     }
   };
 
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') {
-        closeModal();
-      }
-    };
-
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, []);
+  useEscapeClose(closeModal);
 
   const stopPropagation = (e: MouseEvent) => {
     e.stopPropagation();
@@ -131,7 +123,7 @@ export default function Modal({
         role="dialog"
         aria-label="모달 닫기"
         tabIndex={0}
-        className={`${styles.overlay} ${mounted ? styles.open : ''} ${className}`}
+        className={`${styles.overlay} ${modalOpenReady ? styles.open : ''} ${className}`}
       >
         <div
           style={style}
