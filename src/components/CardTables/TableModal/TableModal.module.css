@@ -1,0 +1,33 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px; 
+}
+
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-top: 24px;
+}
+
+.button {
+  width: 100%; 
+}
+
+.label {
+  font-family: var(--font-pretendard);
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--black-333236);
+}
+
+
+.chipRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 40px;
+  flex-wrap: wrap; 
+}
