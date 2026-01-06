@@ -111,6 +111,15 @@
   margin-top: 32px;
 }
 
+.chipRow {
+  margin-top: 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+}
+
 /* Mobile 대응 (743px 이하) */
 @media (max-width: 743px) {
   .modal {

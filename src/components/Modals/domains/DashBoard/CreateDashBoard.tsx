@@ -6,6 +6,8 @@ import { useState } from 'react';
 import { DashboardCreateRequest } from '@/components/Modals/domains/DashBoard/ModalDashBoard.type';
 import TextInput from '@/components/Input/domains/todo/TextInput/TextInput';
 import ModalButton from '@/components/Buttons/shared/ModalButton/ModalButton';
+import { ColorChip, DASHBOARD_COLORS } from '@/components/Chip/ColorChip';
+import styles from '@/components/Modals/Modal.module.css';
 
 /**
  * CreateDashBoard 컴포넌트
@@ -30,8 +32,8 @@ import ModalButton from '@/components/Buttons/shared/ModalButton/ModalButton';
 export default function CreateDashBoard() {
   const router = useRouter();
 
-  const [title, setTitle] = useState('');
-  const [color, setColor] = useState('#AbDA7D');
+  const [title, setTitle] = useState<string>('');
+  const [selectedColor, setSelectedColor] = useState<string>('#AbDA7D');
 
   async function requestCreateDashboard(payload: DashboardCreateRequest): Promise<void> {
     // TODO: 나중에 API 붙이면 여기만 수정
@@ -40,7 +42,7 @@ export default function CreateDashBoard() {
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    await requestCreateDashboard({ title, color });
+    await requestCreateDashboard({ title, color: selectedColor });
 
     router.refresh(); // 페이지에서 (GET) 다시 실행
     router.back();
@@ -69,7 +71,17 @@ export default function CreateDashBoard() {
             onChange={(e) => setTitle(e.target.value)}
           />
           {/* 컴포넌트로 변경 */}
-          <input type="color" value={color} onChange={(e) => setColor(e.target.value)} />{' '}
+          <div className={styles.chipRow} aria-label="색상 선택">
+            {DASHBOARD_COLORS.map((color) => (
+              <ColorChip
+                key={color}
+                color={color}
+                size="medium"
+                selected={selectedColor === color}
+                onClick={() => setSelectedColor(color)}
+              />
+            ))}
+          </div>
         </form>
       </DefaultModal>
     </>
