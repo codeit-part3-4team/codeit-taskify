@@ -87,10 +87,29 @@
   cursor: pointer;
 }
 
+.avatarBox {
+  position: relative;      /* ⭐ fill 이미지의 기준 */
+  width: 160px;            /* 원하는 크기로 조절 */
+  height: 160px;           /* ⭐ 반드시 높이 있어야 함 */
+  border-radius: 8px;
+  overflow: hidden;        /* ⭐ 박스 밖으로 못 나가게 */
+  background: var(--gray-eeeeee); /* 없으면 제거 가능 */
+  border: 1px solid var(--gray-d9d9d9);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;
+}
+
+.previewImg {
+  object-fit: cover;       /* ⭐ 박스 안을 꽉 채우되 잘라내기 */
+}
+
 .addIconImg {
-  width: 28px;
-  height: 28px;
-  display: block;
+  width: 24px;
+  height: 24px;
 }
 
 
@@ -148,4 +167,5 @@
     font-size: 14px !important;
     margin-top: 0 !important;
   }
+
 }
