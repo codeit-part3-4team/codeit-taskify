@@ -28,3 +28,47 @@
   border-radius: 8px;
   padding: 32px;
 }
+
+.sideArea {
+  padding-left: 8px; 
+}
+
+
+.sidePagination {
+  margin-top: 12px;    
+  align-self: flex-start; 
+}
+
+.deleteSection {
+  margin-top: 24px;
+  margin-bottom: 50px;
+}
+
+/* 돌아가기 버튼 */
+.backRow {
+  width: fit-content;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  background: transparent;
+  border: 0;
+  padding: 0;
+
+  cursor: pointer;
+
+  margin-bottom: 4px;
+}
+
+.backIcon {
+  font-size: 28px;
+  line-height: 1;
+  color: var(--black-333236);
+  transform: translateY(-1px);
+}
+
+.backText {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--black-333236);
+}

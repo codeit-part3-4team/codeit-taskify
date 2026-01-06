@@ -6,6 +6,7 @@ import PaginationButton from "@/components/Buttons/shared/PaginationButton/Pagin
 import ModalButton from '@/components/Buttons/shared/ModalButton/ModalButton';
 import { useEffect, useState } from 'react';
 
+
 function useIsMobile(breakpoint = 360) {
   const [isMobile, setIsMobile] = useState(false);
 
