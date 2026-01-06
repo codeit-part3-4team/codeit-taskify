@@ -1,6 +1,6 @@
 /* 카드 컨테이너 */
 .card {
-  width: 620px;
+  max-width: 622px;
   height: 404px;
   background: var(--white-ffffff);
   border: 1px solid var(--gray-eeeeee);

@@ -62,7 +62,6 @@ export default function DashboardSettingsEditClient() {
 
   return (
     <div className={styles.layout}>
-      {/* ✅ 왼쪽 사이드 메뉴 + 페이지네이션 */}
       <div className={styles.sideArea}>
         <SideMenu
           dashboards={dashboards}

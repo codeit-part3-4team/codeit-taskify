@@ -5,6 +5,7 @@
   background-color: #fafafa;
 }
 
+
 .mainArea {
   flex: 1;
   display: flex;
@@ -22,20 +23,21 @@
 }
 
 .card {
-  width: 622px;
   background: var(--white-ffffff);
   border: 1px solid var(--gray-eeeeee);
   border-radius: 8px;
   padding: 32px;
+  max-width: 622px;
 }
 
-.sideArea {
+/* .sideArea {
   padding-left: 8px; 
-}
+} */
 
 
 .sidePagination {
-  margin-top: 12px;    
+  margin-top: 12px;   
+  padding-left: 8px;  
   align-self: flex-start; 
 }
 

@@ -31,3 +31,15 @@
   margin-bottom: 40px;
   flex-wrap: wrap; 
 }
+
+.modalBody {
+  width: 622px;     /* 데스크탑: 고정 */
+  max-width: 100%;  /* 혹시 부모가 더 작으면 넘치지 않게 */
+}
+
+/* ✅ 화면이 작아지면 100%로 */
+@media (max-width: 622px) {
+  .modalBody {
+    width: 100%;
+  }
+}

@@ -14,7 +14,7 @@ type Props = {
 };
 
 export default function VbridgeEditModal({
-  defaultName = '뉴프로젝트',
+  defaultName = '',
   defaultColor = DASHBOARD_COLORS[0],
   onSubmit,
 }: Props) {
@@ -27,37 +27,41 @@ export default function VbridgeEditModal({
   }
 
   return (
-    <DefaultModal
-      title="비브리지"
-      actionsButton={
-        <ModalButton className={styles.button} type="submit" form="vbridge-edit-form">
-          변경
-        </ModalButton>
-      }
-    >
-      <form id="vbridge-edit-form" onSubmit={handleSubmit} className={styles.form}>
-        <div className={styles.field}>
-          <p className={styles.label}>대시보드 이름</p>
-          <TextInput
-            label=""
-            placeholder="뉴프로젝트"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          />
-        </div>
-
-        <div className={styles.chipRow} aria-label="색상 선택">
-          {DASHBOARD_COLORS.map((color) => (
-            <ColorChip
-              key={color}
-              color={color}
-              size="medium"
-              selected={selectedColor === color}
-              onClick={() => setSelectedColor(color)}
+  <DefaultModal
+    title="비브리지"
+    actionsButton={
+      <ModalButton className={styles.button} type="submit" form="vbridge-edit-form">
+        변경
+      </ModalButton>
+    }
+  >
+    <div className={styles.cardWrapper}>
+      <div className={styles.card}>
+        <form id="vbridge-edit-form" onSubmit={handleSubmit} className={styles.form}>
+          <div className={styles.field}>
+            <p className={styles.label}>대시보드 이름</p>
+            <TextInput
+              label=""
+              placeholder="뉴프로젝트"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
             />
-          ))}
-        </div>
-      </form>
-    </DefaultModal>
-  );
+          </div>
+
+          <div className={styles.chipRow} aria-label="색상 선택">
+            {DASHBOARD_COLORS.map((color) => (
+              <ColorChip
+                key={color}
+                color={color}
+                size="medium"
+                selected={selectedColor === color}
+                onClick={() => setSelectedColor(color)}
+              />
+            ))}
+          </div>
+        </form>
+      </div>
+    </div>
+  </DefaultModal>
+);
 }
