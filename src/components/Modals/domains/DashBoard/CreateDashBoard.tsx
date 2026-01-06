@@ -70,7 +70,6 @@ export default function CreateDashBoard() {
             value={title}
             onChange={(e) => setTitle(e.target.value)}
           />
-          {/* 컴포넌트로 변경 */}
           <div className={styles.chipRow} aria-label="색상 선택">
             {DASHBOARD_COLORS.map((color) => (
               <ColorChip
