@@ -4,7 +4,7 @@ import { useState } from 'react';
 import DefaultModal from '@/components/Modals/DefaultModal';
 import TextInput from '@/components/Input/domains/todo/TextInput/TextInput';
 import ModalButton from '@/components/Buttons/shared/ModalButton/ModalButton';
-import { ColorChip, DASHBOARD_COLORS } from '@/components/Chip/ColorChip'; // ✅ 경로 맞춰줘
+import { ColorChip, DASHBOARD_COLORS } from '@/components/Chip/ColorChip';
 import styles from './TableModal.module.css';
 
 type Props = {
