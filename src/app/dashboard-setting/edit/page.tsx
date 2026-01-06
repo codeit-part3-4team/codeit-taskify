@@ -9,7 +9,7 @@ import TableMembers, { Member } from '@/components/CardTables/TableMembers/Table
 import TableInvitations, { Invitation } from '@/components/CardTables/TableInvitations/TableInvitations';
 import PaginationButton from '@/components/Buttons/shared/PaginationButton/PaginationButton';
 import DeleteDashboardButton from '@/components/Buttons/domains/dashboard/DeleteDashboardButton/DeleteDashboardButton';
-
+import TableModal from '@/components/CardTables/TableModal/TableModal';
 import styles from './page.module.css';
 
 export default function DashboardSettingsEditClient() {
@@ -57,9 +57,7 @@ export default function DashboardSettingsEditClient() {
   ];
 
   const handleBack = () => {
-    // ✅ 추천: settings/edit로 진입한 이전 경로가 애매하면 고정 경로로 보내는 게 안전
     router.back();
-    // router.push('/dashboard'); // 필요하면 이걸로 교체
   };
 
   return (
@@ -85,6 +83,7 @@ export default function DashboardSettingsEditClient() {
 
       {/* ✅ 오른쪽 메인 영역 */}
       <div className={styles.mainArea}>
+        <div className={styles.gnbSpacer}>
         <DashboardDetailGnb
           dashboardTitle="대시보드"
           dashboardColor="#5534DA"
@@ -93,6 +92,7 @@ export default function DashboardSettingsEditClient() {
           onManageClick={() => console.log('관리 클릭')}
           onInviteClick={() => console.log('초대 클릭')}
         />
+        </div>
 
         <main className={styles.content}>
           {/* ✅ 돌아가기 (하얀 카드들 위) */}
@@ -103,8 +103,7 @@ export default function DashboardSettingsEditClient() {
             <span className={styles.backText}>돌아가기</span>
           </button>
 
-          {/* 1️⃣ 새로운 대시보드 생성(추후 TableModal 들어갈 자리) */}
-          <section className={styles.card}>{/* <TableModal /> */}</section>
+          <section className={styles.card}><TableModal /></section>
 
           {/* 2️⃣ 구성원 내역 */}
           <TableMembers
@@ -127,7 +126,6 @@ export default function DashboardSettingsEditClient() {
             onCancel={(id) => console.log('초대 취소:', id)}
           />
 
-          {/* ✅ 초대 내역 아래 24px 갭 + 삭제 버튼 */}
           <div className={styles.deleteSection}>
             <DeleteDashboardButton
               size="desktop"

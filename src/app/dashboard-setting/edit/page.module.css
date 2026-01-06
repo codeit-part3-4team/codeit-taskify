@@ -44,7 +44,10 @@
   margin-bottom: 50px;
 }
 
-/* 돌아가기 버튼 */
+.gnbSpacer {
+  height: 70px; /* GNB 높이와 동일하게 설정 */
+}
+
 .backRow {
   width: fit-content;
   display: inline-flex;
