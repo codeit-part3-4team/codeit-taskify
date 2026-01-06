@@ -5,17 +5,11 @@ import styles from '@/components/Card/card.module.css';
 import IcCalender from '@/assets/icons/IcCalender';
 import { CardUI } from './CardUI.type';
 
-const dummyCardData = {
-  title: '새로운 일정 관리',
-  tags: ['프로젝트', '백엔드', '상'],
-  dueDate: '2025.12.31',
-  imageUrl: 'https://picsum.photos/200/200',
-  profileImageUrl: 'https://picsum.photos/50/50',
+type CardProps = {
+  card: CardUI;
 };
 
-export default function Card({ cardData }: { cardData?: CardUI }) {
-  const card = cardData ?? dummyCardData;
-
+export default function Card({ card }: CardProps) {
   const hasFooter = Boolean(card.dueDate || card.profileImageUrl);
 
   return (

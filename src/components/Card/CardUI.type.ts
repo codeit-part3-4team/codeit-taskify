@@ -1,4 +1,4 @@
-// 서버타입
+
 export type CardUI = {
   id: number;
   title: string;

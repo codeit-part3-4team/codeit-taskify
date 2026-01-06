@@ -5,12 +5,15 @@ import styles from '@/components/Column/column.module.css';
 import Link from 'next/link';
 import { ColumnUI } from '@/components/Column/ColumnUI.type';
 import IcSettings from '@/assets/icons/IcSettings';
+import { CardUI } from '@/components/Card/CardUI.type';
+import CardList from '@/components/Card/CardList';
 
 type ColumnItemProps = {
   column: ColumnUI;
+  cards: CardUI[];
 };
 
-export default function Card({ column }: ColumnItemProps) {
+export default function Card({ column, cards }: ColumnItemProps) {
   return (
     <>
       <div className={styles.columItem}>
@@ -25,7 +28,9 @@ export default function Card({ column }: ColumnItemProps) {
             </Link>
           </div>
         </div>
-        {/* 카드리스트 들어올 자리 */}
+        <div className={styles.CardList}>
+          <CardList cards={cards} />
+        </div>
       </div>
     </>
   );
