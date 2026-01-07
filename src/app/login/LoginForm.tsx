@@ -4,6 +4,7 @@ import { useState, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
 import LoginInput from '@/components/Input/domains/login/LoginInput/LoginInput';
 import LoginButton from '@/components/Buttons/domains/login/LoginButton/LoginButton';
+import AlertModal from '@/components/Modals/domains/Alim/AlertModal';
 import { login } from './api/login';
 import styles from './page.module.css';
 
@@ -14,6 +15,8 @@ export default function LoginForm() {
   const [emailError, setEmailError] = useState('');
   const [passwordError, setPasswordError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+  const [modalMessage, setModalMessage] = useState('');
 
   // 이메일 유효성 검사
   const validateEmail = (value: string) => {
@@ -78,10 +81,11 @@ export default function LoginForm() {
     } catch (error) {
       if (error instanceof Error) {
         if (error.message.includes('비밀번호')) {
-          alert('비밀번호가 일치하지 않습니다.');
+          setModalMessage('비밀번호가 일치하지 않습니다.');
         } else {
-          alert(error.message);
+          setModalMessage(error.message);
         }
+        setShowModal(true);
       }
     } finally {
       setIsLoading(false);
@@ -89,38 +93,47 @@ export default function LoginForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit} className={styles.form}>
-      <div className={styles.inputGroup}>
-        <LoginInput
-          label="이메일"
-          type="email"
-          placeholder="이메일을 입력해 주세요"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          onBlur={handleEmailBlur}
-          error={emailError}
-        />
-        <LoginInput
-          label="비밀번호"
-          type="password"
-          placeholder="비밀번호를 입력해 주세요"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          onBlur={handlePasswordBlur}
-          error={passwordError}
-        />
-      </div>
+    <>
+      <form onSubmit={handleSubmit} className={styles.form}>
+        <div className={styles.inputGroup}>
+          <LoginInput
+            label="이메일"
+            type="email"
+            placeholder="이메일을 입력해 주세요"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            onBlur={handleEmailBlur}
+            error={emailError}
+          />
+          <LoginInput
+            label="비밀번호"
+            type="password"
+            placeholder="비밀번호를 입력해 주세요"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            onBlur={handlePasswordBlur}
+            error={passwordError}
+          />
+        </div>
 
-      <div className={styles.buttonWrapper}>
-        <LoginButton
-          type="submit"
-          variant={isButtonActive ? 'active' : 'inactive'}
-          fullWidth
-          disabled={!isButtonActive || isLoading}
-        >
-          {isLoading ? '로그인 중...' : '로그인'}
-        </LoginButton>
-      </div>
-    </form>
+        <div className={styles.buttonWrapper}>
+          <LoginButton
+            type="submit"
+            variant={isButtonActive ? 'active' : 'inactive'}
+            fullWidth
+            disabled={!isButtonActive || isLoading}
+          >
+            {isLoading ? '로그인 중...' : '로그인'}
+          </LoginButton>
+        </div>
+      </form>
+
+      {/* 알림 모달 */}
+      <AlertModal
+        isOpen={showModal}
+        onClose={() => setShowModal(false)}
+        message={modalMessage}
+      />
+    </>
   );
 }
