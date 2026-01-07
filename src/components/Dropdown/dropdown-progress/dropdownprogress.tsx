@@ -2,6 +2,7 @@
 
 import { useEffect, useId, useMemo, useRef, useState } from "react";
 import styles from "./dropdownprogress.module.css";
+import { StatusChip } from "@/components/Chip/StatusChip";
 
 export type ProgressValue = "todo" | "inprogress" | "done";
 
@@ -86,10 +87,7 @@ export default function DropdownProgress({
         onClick={toggle}
         disabled={disabled}
       >
-        <span className={styles.chip}>
-          <span className={styles.dot} aria-hidden="true" />
-          <span className="text-md-regular">{selected.label}</span>
-        </span>
+        <StatusChip label={selected.label} className={styles.chip} />
 
         <span
           className={`${styles.caret} ${open ? styles.caretUp : ""}`}
@@ -117,10 +115,7 @@ export default function DropdownProgress({
                     {isSelected && <span className={styles.checkIcon}>✓</span>}
                     </span>
 
-                    <span className={styles.chip}>
-                    <span className={styles.dot} aria-hidden="true" />
-                    <span className="text-md-regular">{opt.label}</span>
-                    </span>
+                    <StatusChip label={opt.label} className={styles.chip} />
                 </div>
                 <span className={styles.smallCaret} aria-hidden="true" />
               </button>
