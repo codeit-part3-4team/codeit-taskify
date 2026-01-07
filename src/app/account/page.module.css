@@ -21,24 +21,9 @@
   box-sizing: border-box;
 }
 
-.card {
-  width: 622px;
-  background: var(--white-ffffff);
-  border: 1px solid var(--gray-eeeeee);
-  border-radius: 8px;
-  padding: 32px;
-  max-width: 622px;
-}
-
-/* .sideArea {
-  padding-left: 8px; 
+/* .card {
+  padding: 24px;
 } */
-
-
-.sidePagination {
-  margin-top: 12px;   
-  padding-left: 8px;  
-}
 
 .sideArea {
   padding-left: 8px; 
@@ -50,10 +35,10 @@
   align-self: flex-start; 
 }
 
-.deleteSection {
+/* .deleteSection {
   margin-top: 24px;
   margin-bottom: 50px;
-}
+} */
 
 .gnbSpacer {
   height: 70px; /* GNB 높이와 동일하게 설정 */
@@ -86,3 +71,4 @@
   font-weight: 500;
   color: var(--black-333236);
 }
+
