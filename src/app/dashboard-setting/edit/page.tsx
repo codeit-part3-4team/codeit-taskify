@@ -11,16 +11,19 @@ import PaginationButton from '@/components/Buttons/shared/PaginationButton/Pagin
 import DeleteDashboardButton from '@/components/Buttons/domains/dashboard/DeleteDashboardButton/DeleteDashboardButton';
 import TableModal from '@/components/CardTables/TableModal/TableModal';
 import styles from './page.module.css';
-import { deleteDashboard } from '@/app/dashboard-setting/api/dashboardsetting';
-
 
 import {
+  deleteDashboard,
   getDashboardInvitations,
   cancelInvitation,
   getDashboardMembers,
 } from '@/app/dashboard-setting/api/dashboardsetting';
 
 export default function DashboardSettingsEditClient() {
+  function handleOpenInvite() {
+  router.push(`/dashboard-setting/invite?dashboardId=${selectedDashboardId}`);
+}
+
   const router = useRouter();
 
   const dashboards = useMemo(
@@ -131,29 +134,44 @@ export default function DashboardSettingsEditClient() {
       prev.filter((inv) => Number(inv.id) !== Number(invitationId))
     );
   }
+
   async function handleDeleteDashboard() {
-  if (!selectedDashboard.createdByMe) {
-    alert('대시보드 생성자만 삭제할 수 있어요.');
-    return;
-  }
+    if (!selectedDashboard.createdByMe) {
+      alert('대시보드 생성자만 삭제할 수 있어요.');
+      return;
+    }
 
-  const ok = confirm(
-    `"${selectedDashboard.title}" 대시보드를 정말 삭제할까요?\n삭제하면 복구할 수 없어요.`
-  );
-  if (!ok) return;
+    const ok = confirm(
+      `"${selectedDashboard.title}" 대시보드를 정말 삭제할까요?\n삭제하면 복구할 수 없어요.`
+    );
+    if (!ok) return;
 
-  try {
-    await deleteDashboard(selectedDashboard.id);
-
-    alert('대시보드가 삭제되었습니다.');
-    router.push('/dashboard');
-  } catch (error) {
-    if (error instanceof Error) {
-      alert(error.message);
-    } else {
-      alert('대시보드 삭제에 실패했어요 😢');
+    try {
+      await deleteDashboard(selectedDashboard.id);
+      alert('대시보드가 삭제되었습니다.');
+      router.push('/dashboard');
+    } catch (error) {
+      if (error instanceof Error) {
+        alert(error.message);
+      } else {
+        alert('대시보드 삭제에 실패했어요 😢');
+      }
     }
   }
+
+  /* =====================
+     🔙 돌아가기 버튼 로직 (추가된 부분)
+  ===================== */
+  function handleBack() {
+    router.push(`/dashboard/${selectedDashboardId}`);
+  }
+
+//   function handleOpenInviteModal() {
+//   router.push('/dashboard-setting/edit/invite-modal?dashboardId=' + selectedDashboardId);
+// }
+
+function handleOpenColumnModal() {
+  router.push('/dashboard-setting/edit/column-modal');
 }
 
   return (
@@ -180,12 +198,17 @@ export default function DashboardSettingsEditClient() {
           dashboardColor={selectedDashboard.color}
           members={membersForGnb}
           currentUser={currentUser}
-          onManageClick={() => {}}
-          onInviteClick={() => {}}
+          onManageClick={handleOpenColumnModal}
+          onInviteClick={handleOpenInvite}
         />
 
         <main className={styles.content}>
-          <button className={styles.backRow} onClick={() => router.back()}>
+          {/* 🔙 돌아가기 버튼 (수정된 부분) */}
+          <button
+            className={styles.backRow}
+            onClick={handleBack}
+            type="button"
+          >
             ‹ 돌아가기
           </button>
 
@@ -212,6 +235,7 @@ export default function DashboardSettingsEditClient() {
             totalPages={inviteTotalPages}
             onPrev={() => setInvitePage((p) => Math.max(1, p - 1))}
             onNext={() => setInvitePage((p) => Math.min(inviteTotalPages, p + 1))}
+            onInvite={handleOpenInvite}
             onCancel={handleCancelInvite}
           />
 

@@ -36,6 +36,15 @@ export type GetMembersResponse = {
   members: MemberItem[];
   totalCount: number;
 };
+
+export type ColumnItem = {
+  id: number;
+  title: string;
+  teamId: string;
+  createdAt: string;
+  updatedAt: string;
+};
+
 export async function getDashboards(): Promise<GetDashboardsResponse> {
   // ✅ 키 이름을 넣어야 함 (너 LocalStorage에서 본 키)
   const token = localStorage.getItem('accessToken');
@@ -211,6 +220,22 @@ export async function getDashboardMembers(
       },
     }
   );
+
+  await handleError(response);
+  return response.json();
+}
+
+export async function updateColumn(columnId: number, payload: { title: string }): Promise<ColumnItem> {
+  const token = getAccessToken();
+
+  const response = await fetch(`${BASE_URL}/${TEAM_ID}/columns/${columnId}`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+      ...(token ? { Authorization: `Bearer ${token}` } : {}),
+    },
+    body: JSON.stringify(payload),
+  });
 
   await handleError(response);
   return response.json();
