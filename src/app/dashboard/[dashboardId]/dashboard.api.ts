@@ -1,4 +1,4 @@
-import { GetCardsResponse } from "./card.type";
+import { CardServerResponse, GetCardsResponse, UpdateCardRequest } from "./card.type";
 import { ColumnListResponse } from "./column.type";
 
 const API_URL = "https://sp-taskify-api.vercel.app/20-4";
@@ -50,3 +50,32 @@ export async function getCards(
 
   return res.json();
 }
+
+
+
+// 카드 수정 API
+export async function updateCard(
+  cardId: number,
+  body: UpdateCardRequest,
+): Promise<CardServerResponse> {
+  const response = await fetch(
+    `${API_URL}/cards/${cardId}`,
+    {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${TASKIFY_ACCESS_TOKEN}`,
+      },
+      body: JSON.stringify(body),
+    },
+  );
+
+
+  if (!response.ok) {
+    const error = await response.json();
+    throw new Error(error.message ?? '카드 수정 실패');
+  }
+
+  return response.json();
+}
+

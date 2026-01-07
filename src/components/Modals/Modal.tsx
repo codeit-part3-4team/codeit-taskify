@@ -1,15 +1,10 @@
 'use client';
 
-import {
-  KeyboardEvent as ReactKeyboardEvent,
-  MouseEvent,
-  useEffect,
-  useRef,
-  useState,
-} from 'react';
+import { KeyboardEvent as ReactKeyboardEvent, MouseEvent, useEffect, useRef } from 'react';
 import styles from '@/components/Modals/Modal.module.css';
 import { useRouter } from 'next/navigation';
 import { useEscapeClose } from '@/hooks/useEscapeClose';
+import { useMountedReady } from '@/hooks/useMountedReady';
 
 type ModalProps = {
   type?: 'default' | 'alim';
@@ -78,14 +73,9 @@ export default function Modal({
   className = '',
 }: ModalProps) {
   const router = useRouter();
-  const [modalOpenReady, setModalOpenReady] = useState(false);
   const overlayRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    requestAnimationFrame(() => {
-      setModalOpenReady(true);
-    });
-  }, []);
+  const modalOpenReady = useMountedReady();
 
   useEffect(() => {
     if (modalOpenReady) {

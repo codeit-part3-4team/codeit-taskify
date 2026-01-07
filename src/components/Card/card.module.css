@@ -1,4 +1,7 @@
-.cardList > li:not(:last-child) {
+.cardListBox {
+}
+
+.cardListBox > li:not(:last-child) {
   margin-bottom: 15px;
 }
 
@@ -19,9 +22,11 @@
   height: 160px;
   overflow: hidden;
 }
+
 .cardItem .cardContent {
   position: relative;
 }
+
 .cardItem .cardContent .cardTitle {
   margin-bottom: 10px;
   color: var(--black-333236);

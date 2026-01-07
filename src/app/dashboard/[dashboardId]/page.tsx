@@ -1,10 +1,10 @@
-import ColumnList from '@/components/Column/ColumnList';
 import { getCards, getColumns } from './dashboard.api';
 import { ColumnUI } from '@/components/Column/ColumnUI.type';
 import { mapCardServerToUI } from '@/components/Card/helper';
 import SideMenu from '@/components/SideMenu/SideMenu';
 import styles from '@/app/dashboard/[dashboardId]/dashboardDetail.module.css';
 import DashboardDetailGnb from '@/components/Gnb/variants/DashboardDetailGnb/DashboardDetailGnb';
+import DashboardDetailClient from '@/app/dashboard/[dashboardId]/_components/DashboardDetailClient';
 
 // dashboard/17226 에서 작업
 export default async function DashboardDetailPage({
@@ -20,6 +20,8 @@ export default async function DashboardDetailPage({
   const responseColumData = await getColumns(dashboardId);
   const columns = responseColumData.data;
 
+  console.log(responseColumData);
+
   // 2. 컬럼별 카드 조회
   const responseCardData = await Promise.all(columns.map((column) => getCards(column.id)));
 
@@ -34,6 +36,10 @@ export default async function DashboardDetailPage({
     title: column.title,
     cardCount: cardCounts[index],
   }));
+
+  // 카드 조회
+  const getCardsData = await getCards(58140);
+  console.log(getCardsData);
 
   // 5. Card UI 데이터(컬럼 순서와 동일)
   const columnCardsUI = columnCards.map((cardsInColumn) => cardsInColumn.map(mapCardServerToUI));
@@ -53,8 +59,6 @@ export default async function DashboardDetailPage({
       createdByMe: false,
     },
   ];
-
-  // const currentDashboardId = params?.dashboardId ? Number(params.dashboardId) : undefined;
 
   return (
     <div>
@@ -79,13 +83,13 @@ export default async function DashboardDetailPage({
               currentUser={{ nickname: '공상우', profileImageUrl: null }}
             />
           </div>
-          <div className={styles.columnSection}>
-            <ColumnList
-              columns={columnUIList}
-              cardsByColumn={columnCardsUI}
-              dashboardId={Number(dashboardId)}
-            />
-          </div>
+
+          {/* Drag & Drop UI */}
+          <DashboardDetailClient
+            columns={columnUIList}
+            cardsByColumn={columnCardsUI}
+            dashboardId={Number(dashboardId)}
+          />
         </div>
       </div>
 

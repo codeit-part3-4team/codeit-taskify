@@ -8,6 +8,7 @@ import IcSettings from '@/assets/icons/IcSettings';
 import { CardUI } from '@/components/Card/CardUI.type';
 import CardList from '@/components/Card/CardList';
 import AddTodoButton from '../Buttons/domains/dashboard/AddTodoButton/AddTodoButton';
+import { useDroppable } from '@dnd-kit/core';
 
 type ColumnItemProps = {
   column: ColumnUI;
@@ -16,6 +17,12 @@ type ColumnItemProps = {
 };
 
 export default function ColumnItem({ column, cards, dashboardId }: ColumnItemProps) {
+  const columnId = column.id;
+
+  const { setNodeRef, isOver } = useDroppable({
+    id: columnId,
+  });
+
   return (
     <>
       <div className={styles.columItem}>
@@ -36,7 +43,13 @@ export default function ColumnItem({ column, cards, dashboardId }: ColumnItemPro
             <AddTodoButton onClick={() => console.log('할 일 추가')} />
           </Link>
         </div>
-        <div className={styles.cardList}>
+        <div
+          className={styles.cardList}
+          ref={setNodeRef}
+          style={{
+            background: isOver ? 'rgba(85, 52, 218, 0.08)' : '#fafafa',
+          }}
+        >
           <CardList cards={cards} dashboardId={dashboardId} columnId={column.id} />
         </div>
       </div>

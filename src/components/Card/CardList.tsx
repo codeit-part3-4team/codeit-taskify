@@ -11,7 +11,7 @@ type CardListProps = {
 export default function CardList({ cards, dashboardId, columnId }: CardListProps) {
   return (
     <>
-      <ul className={styles.cardList}>
+      <ul className={styles.cardListBox}>
         {cards.map((cardData) => (
           <li key={cardData.id}>
             <CardItem card={cardData} dashboardId={dashboardId} columnId={columnId} />

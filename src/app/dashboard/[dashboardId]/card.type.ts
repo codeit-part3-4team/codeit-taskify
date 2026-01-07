@@ -21,3 +21,14 @@ export interface GetCardsResponse {
   totalCount: number;
   cards: CardServerResponse[];
 }
+
+
+export interface UpdateCardRequest {
+  columnId: number,
+  title?: string;
+  description?: string;
+  assigneeUserId?: number;
+  dueDate?: string;
+  tags?: string[];
+  imageUrl?: string;
+};
