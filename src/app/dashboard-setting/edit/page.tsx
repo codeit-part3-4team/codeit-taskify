@@ -20,11 +20,12 @@ import {
 } from '@/app/dashboard-setting/api/dashboardsetting';
 
 export default function DashboardSettingsEditClient() {
+
+  const router = useRouter();
+
   function handleOpenInvite() {
   router.push(`/dashboard-setting/invite?dashboardId=${selectedDashboardId}`);
 }
-
-  const router = useRouter();
 
   const dashboards = useMemo(
     () => [
