@@ -9,6 +9,9 @@ import TextInput from '@/components/Input/domains/todo/TextInput/TextInput';
 
 import styles from '@/components/Modals/Modal.module.css';
 
+export const dynamic = 'force-dynamic';
+
+
 export default function InviteModalPage() {
   const router = useRouter();
   const searchParams = useSearchParams();
