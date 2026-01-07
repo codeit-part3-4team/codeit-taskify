@@ -11,10 +11,9 @@ import Gnb from '@/components/Gnb/Gnb';
 import Logo from '@/components/Logo/Logo';
 import styles from '@/components/Gnb/variants/LandingGnb/LandingGnb.module.css';
 
-
 export default function LandingGnb() {
   return (
-    <Gnb className={styles.gnb}>
+    <Gnb className={styles.landingGnb}>
       <Gnb.Left>
         <Logo />
       </Gnb.Left>
