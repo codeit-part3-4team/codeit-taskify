@@ -1,0 +1,97 @@
+.cardItem {
+  width: 314px;
+  border: solid 1px var(--gray-d9d9d9);
+  padding: 16px 20px;
+  border-radius: 6px;
+  background: var(--white-ffffff);
+}
+
+.cardItem:not(:last-child) {
+  margin-bottom: 15px;
+}
+
+.cardItem .imgBox {
+  border-radius: 6px;
+  position: relative;
+  margin-bottom: 16px;
+  width: 274px;
+  height: 160px;
+  overflow: hidden;
+}
+.cardItem .cardContent {
+  position: relative;
+}
+.cardItem .cardContent .cardTitle {
+  margin-bottom: 10px;
+  color: var(--black-333236);
+  font-size: 16px;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.cardItem .cardContent .tagBox {
+  display: flex;
+  gap: 10px;
+}
+
+.cardItem .cardContent .cardFooter {
+  margin-top: 11px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cardItem .cardContent .dueDate {
+  display: flex;
+  gap: 4px;
+  color: var(--gray-787486);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 20px;
+}
+.cardItem .cardContent .profileImageBox {
+  position: relative;
+  margin-left: auto;
+  border-radius: 100%;
+  width: 24px;
+  height: 24px;
+  overflow: hidden;
+}
+
+@media (max-width: 544px) {
+  .cardItem {
+    width: 100%;
+    padding: 20px 20px 16px 20px;
+    display: flex;
+    gap: 20px;
+  }
+  .cardItem .imgBox {
+    flex-shrink: 0;
+    margin-bottom: 0;
+    width: 90px;
+    height: 53px;
+  }
+  .cardItem .cardContent {
+    display: block;
+    flex: 1;
+    gap: 16px;
+    overflow: hidden;
+  }
+
+  .cardItem .cardInfo {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .cardItem .cardContent .tagBox {
+    flex-shrink: 0;
+  }
+
+  .cardItem .cardContent .cardFooter {
+    margin-top: 0;
+    flex: 1;
+  }
+}

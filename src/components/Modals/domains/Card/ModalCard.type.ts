@@ -41,22 +41,7 @@ export interface CardModalUI {
 }
 
 
-// 데이터 매핑 함수
-export function mapCardToModalUI(
-  card: CardServerResponse
-): CardModalUI {
-  return {
-    title: card.title,
-    description: card.description,
-    tags: card.tags ?? null,
-    dueDateText: card.dueDate ?? null,
-    assigneeName: card.assignee?.nickname ?? null,
-    assigneeProfileUrl: card.assignee?.profileImageUrl ?? null,
-    imageUrl: card.imageUrl ?? null,
-  };
-}
-
-
+// 카드 생성 리퀘스트 타입
 export type CardCreateRequest = {
   dashboardId: number;
   columnId: number;
@@ -68,6 +53,7 @@ export type CardCreateRequest = {
   imageUrl?: string;
 };
 
+// 카드 업데이트 리퀘스트 타입
 export type UpdateCardRequest = {
   title?: string;
   description?: string;
