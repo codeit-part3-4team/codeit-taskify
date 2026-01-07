@@ -16,6 +16,7 @@
 .inputWrapper {
   position: relative;
   width: 100%;
+  cursor: pointer;
 }
 
 .icon {
@@ -47,6 +48,7 @@
   color: var(--black-333236);
   background: var(--white-ffffff);
   transition: border-color 0.2s;
+  cursor: pointer;
 }
 
 .input::placeholder {
@@ -58,9 +60,15 @@
   border-color: var(--violet-5534da);
 }
 
-/* Date input의 캘린더 아이콘 숨기기 */
+/* 브라우저 기본 캘린더 아이콘을 투명하게 만들고, 커스텀 아이콘 위치에 겹치게 확장 */
 .input::-webkit-calendar-picker-indicator {
-  opacity: 0;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  color: transparent;
   cursor: pointer;
+  z-index: 2;
 }
-

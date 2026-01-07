@@ -63,17 +63,15 @@
   width: 100% !important;
 }
 
-/* Responsive: Mobile (max-width: 767px) */
-@media (max-width: 767px) {
+/* Responsive: Mobile (max-width: 374px) */
+@media (max-width: 374px) {
   .button {
     width: 100%;
-    max-width: 351px;
     padding: 14px 20px;
   }
 
   .large,
   .small {
     width: 100%;
-    max-width: 351px;
   }
 }
