@@ -1,7 +1,8 @@
 /* 카드 래퍼 */
 .cardWrapper {
   display: flex;
-  justify-content: center;
+  justify-content: start;
+  padding-right: 10px;
 }
 
 /* 카드 */

@@ -1,0 +1,77 @@
+.layout {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  background-color: #fafafa;
+}
+
+.mainArea {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 24px;
+  background-color: #fafafa;
+  box-sizing: border-box;
+}
+
+.card {
+  width: 622px;
+  background: var(--white-ffffff);
+  border: 1px solid var(--gray-eeeeee);
+  border-radius: 8px;
+  padding: 32px;
+}
+
+.sideArea {
+  padding-left: 8px; 
+}
+
+
+.sidePagination {
+  margin-top: 12px;    
+  align-self: flex-start; 
+}
+
+.deleteSection {
+  margin-top: 24px;
+  margin-bottom: 50px;
+}
+
+.gnbSpacer {
+  height: 70px; /* GNB 높이와 동일하게 설정 */
+}
+
+.backRow {
+  width: fit-content;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  background: transparent;
+  border: 0;
+  padding: 0;
+
+  cursor: pointer;
+
+  margin-bottom: 4px;
+}
+
+.backIcon {
+  font-size: 28px;
+  line-height: 1;
+  color: var(--black-333236);
+  transform: translateY(-1px);
+}
+
+.backText {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--black-333236);
+}
