@@ -4,6 +4,7 @@ import { useState, useCallback, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import LoginInput from '@/components/Input/domains/login/LoginInput/LoginInput';
 import LoginButton from '@/components/Buttons/domains/login/LoginButton/LoginButton';
+import AlertModal from '@/components/Modals/domains/Alim/AlertModal';
 import { signup } from './api/signup';
 import styles from './page.module.css';
 
@@ -23,6 +24,7 @@ export default function SignupForm() {
   const [isLoading, setIsLoading] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [modalMessage, setModalMessage] = useState('');
+  const [shouldRedirect, setShouldRedirect] = useState(false);
 
   // 이메일 유효성 검사
   const validateEmail = (value: string) => {
@@ -132,16 +134,18 @@ export default function SignupForm() {
     try {
       await signup({ email, nickname, password });
       
-      alert('가입이 완료되었습니다');
-      router.push('/login');
+      setModalMessage('가입이 완료되었습니다!');
+      setShouldRedirect(true);
+      setShowModal(true);
     } catch (error) {
       if (error instanceof Error) {
         if (error.message.includes('이미 사용중인 이메일')) {
-          setModalMessage('이미 사용중인 이메일입니다');
-          setShowModal(true);
+          setModalMessage('이미 사용 중인 이메일입니다.');
         } else {
-          alert(error.message);
+          setModalMessage(error.message);
         }
+        setShouldRedirect(false);
+        setShowModal(true);
       }
     } finally {
       setIsLoading(false);
@@ -214,20 +218,13 @@ export default function SignupForm() {
         </div>
       </form>
 
-      {/* 모달 */}
-      {showModal && (
-        <div className={styles.modalOverlay} onClick={() => setShowModal(false)}>
-          <div className={styles.modal} onClick={(e) => e.stopPropagation()}>
-            <p className={styles.modalText}>{modalMessage}</p>
-            <button 
-              className={styles.modalButton}
-              onClick={() => setShowModal(false)}
-            >
-              확인
-            </button>
-          </div>
-        </div>
-      )}
+      {/* 알림 모달 */}
+      <AlertModal
+        isOpen={showModal}
+        onClose={() => setShowModal(false)}
+        message={modalMessage}
+        onConfirm={shouldRedirect ? () => router.push('/login') : undefined}
+      />
     </>
   );
 }
