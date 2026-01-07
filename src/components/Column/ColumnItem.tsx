@@ -11,9 +11,10 @@ import CardList from '@/components/Card/CardList';
 type ColumnItemProps = {
   column: ColumnUI;
   cards: CardUI[];
+  dashboardId: number;
 };
 
-export default function Card({ column, cards }: ColumnItemProps) {
+export default function ColumnItem({ column, cards, dashboardId }: ColumnItemProps) {
   return (
     <>
       <div className={styles.columItem}>
@@ -29,7 +30,7 @@ export default function Card({ column, cards }: ColumnItemProps) {
           </div>
         </div>
         <div className={styles.CardList}>
-          <CardList cards={cards} />
+          <CardList cards={cards} dashboardId={dashboardId} columnId={column.id} />
         </div>
       </div>
     </>

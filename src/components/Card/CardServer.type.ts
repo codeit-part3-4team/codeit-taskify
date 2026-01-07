@@ -2,14 +2,14 @@ export interface CardServerResponse {
   id: number;
   title: string;
   description: string;
-  tags: string[];
-  dueDate: string;
+  tags: string[] | null;
+  dueDate: string | null;
   assignee: {
     id: number;
     nickname: string;
     profileImageUrl: string;
   } | null;
-  imageUrl: string;
+  imageUrl: string | null;
   teamId: string;
   columnId: number;
   createdAt: string;

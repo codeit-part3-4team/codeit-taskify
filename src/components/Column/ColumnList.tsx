@@ -8,14 +8,20 @@ import { CardUI } from '@/components/Card/CardUI.type';
 type ColumnListProps = {
   columns: ColumnUI[];
   cardsByColumn: CardUI[][];
+  dashboardId: number;
 };
 
-export default function ColumnList({ columns, cardsByColumn }: ColumnListProps) {
+export default function ColumnList({ columns, cardsByColumn, dashboardId }: ColumnListProps) {
   return (
     <>
       <div className={styles.columnList}>
         {columns.map((column, index) => (
-          <ColumnItem key={column.id} column={column} cards={cardsByColumn[index]} />
+          <ColumnItem
+            key={column.id}
+            column={column}
+            cards={cardsByColumn[index]}
+            dashboardId={dashboardId}
+          />
         ))}
         <div>
           <Link href={'/column/create'}>

@@ -1,8 +1,6 @@
-// 서버타입
 export interface CardServerResponse {
   id: number;
   title: string;
-  dashboardId: number
   description: string;
   tags: string[] | null;
   dueDate: string | null;

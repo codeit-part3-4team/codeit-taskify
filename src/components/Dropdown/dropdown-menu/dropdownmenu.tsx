@@ -1,12 +1,12 @@
-"use client";
+'use client';
 
-import { useEffect, useId, useRef, useState } from "react";
-import styles from "././dropdownmenu.module.css";
+import { useEffect, useId, useRef, useState } from 'react';
+import styles from '././dropdownmenu.module.css';
 
 export type DropdownItem = {
   id: string;
   label: string;
-  variant?: "default" | "danger";
+  variant?: 'default' | 'danger';
 };
 
 type Props = {
@@ -17,18 +17,21 @@ type Props = {
   highlightedId?: string;
 
   /** 테스트용 트리거 라벨 */
-  triggerLabel?: string;
+  triggerLabel?: React.ReactNode;
 
   /** 메뉴 정렬 */
-  align?: "left" | "right";
+  align?: 'left' | 'right';
+
+  className?: string;
 };
 
 export default function DropdownMenu({
   items,
   onSelect,
   highlightedId,
-  triggerLabel = "dropdown",
-  align = "left",
+  triggerLabel = 'dropdown',
+  align = 'left',
+  className = '',
 }: Props) {
   const [open, setOpen] = useState(false);
   const rootRef = useRef<HTMLDivElement | null>(null);
@@ -45,17 +48,17 @@ export default function DropdownMenu({
     };
 
     const onKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape") {
+      if (e.key === 'Escape') {
         setOpen(false);
         buttonRef.current?.focus();
       }
     };
 
-    window.addEventListener("pointerdown", onPointerDown);
-    window.addEventListener("keydown", onKeyDown);
+    window.addEventListener('pointerdown', onPointerDown);
+    window.addEventListener('keydown', onKeyDown);
     return () => {
-      window.removeEventListener("pointerdown", onPointerDown);
-      window.removeEventListener("keydown", onKeyDown);
+      window.removeEventListener('pointerdown', onPointerDown);
+      window.removeEventListener('keydown', onKeyDown);
     };
   }, [open]);
 
@@ -66,7 +69,7 @@ export default function DropdownMenu({
   };
 
   return (
-    <div ref={rootRef} className={styles.root}>
+    <div ref={rootRef} className={`${styles.root} ${className}`}>
       <button
         ref={buttonRef}
         type="button"
@@ -84,14 +87,12 @@ export default function DropdownMenu({
           id={menuId}
           role="menu"
           aria-label="dropdown menu"
-          className={`${styles.menu} ${
-            align === "right" ? styles.alignRight : styles.alignLeft
-          }`}
+          className={`${styles.menu} ${align === 'right' ? styles.alignRight : styles.alignLeft}`}
         >
           <div className={styles.itemsWrap}>
             {items.map((item) => {
               const isHighlighted = highlightedId === item.id;
-              const isDanger = item.variant === "danger";
+              const isDanger = item.variant === 'danger';
 
               return (
                 <button
@@ -100,9 +101,9 @@ export default function DropdownMenu({
                   role="menuitem"
                   className={[
                     styles.item,
-                    isHighlighted ? styles.itemHighlighted : "",
-                    isDanger ? styles.itemDanger : "",
-                  ].join(" ")}
+                    isHighlighted ? styles.itemHighlighted : '',
+                    isDanger ? styles.itemDanger : '',
+                  ].join(' ')}
                   onClick={() => handleSelect(item)}
                 >
                   {item.label}

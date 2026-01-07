@@ -35,7 +35,11 @@ export default async function DashboardDetailPage({
 
   return (
     <div>
-      <ColumnList columns={columnUIList} cardsByColumn={columnCardsUI} />
+      <ColumnList
+        columns={columnUIList}
+        cardsByColumn={columnCardsUI}
+        dashboardId={Number(dashboardId)}
+      />
 
       {columns.map((column) => (
         <p key={column.id}>{column.title}</p>

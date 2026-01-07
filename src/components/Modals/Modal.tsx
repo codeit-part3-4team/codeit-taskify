@@ -97,12 +97,22 @@ export default function Modal({
     router.back();
   };
 
-  const handleOverlayKeyDown = (e: ReactKeyboardEvent<HTMLDivElement>) => {
-    if (e.key === 'Enter' || e.key === ' ') {
-      e.preventDefault();
-      closeModal();
-    }
-  };
+  // const handleOverlayKeyDown = (e: ReactKeyboardEvent<HTMLDivElement>) => {
+  //   if (e.key === 'Enter' || e.key === ' ') {
+  //     e.preventDefault();
+  //     closeModal();
+  //   }
+  // };
+
+  useEffect(() => {
+    const originalOverflow = document.body.style.overflow;
+
+    document.body.style.overflow = 'hidden';
+
+    return () => {
+      document.body.style.overflow = originalOverflow;
+    };
+  }, []);
 
   useEscapeClose(closeModal);
 
@@ -119,7 +129,7 @@ export default function Modal({
       <div
         ref={overlayRef}
         onClick={closeModal}
-        onKeyDown={handleOverlayKeyDown}
+        // onKeyDown={handleOverlayKeyDown}
         role="dialog"
         aria-label="모달 닫기"
         tabIndex={0}

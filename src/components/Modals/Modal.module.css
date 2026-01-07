@@ -15,6 +15,8 @@
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.3s ease;
+
+  overflow-y: auto;
 }
 
 .overlay.open {
@@ -25,7 +27,10 @@
 /* Modal 기본 구조 + 애니메이션 */
 .modal {
   width: 568px;
+  max-height: calc(100vh - 10%);
   padding: 24px;
+
+  overflow-y: auto;
 
   background: #fff;
   border-radius: 16px;
