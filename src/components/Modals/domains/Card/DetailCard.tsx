@@ -91,11 +91,9 @@ export default function DetailCard({ cardData: card, columnTitle, routeParams }:
   }
 
   async function handleUpdateComment(commentId: number) {
-    console.log('들어옴?');
     if (!editContent.trim()) return;
 
     try {
-      console.log('여기는?');
       const updatedComment = await updateComment(commentId, editContent);
 
       setComments((prev) =>

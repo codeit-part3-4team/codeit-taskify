@@ -7,6 +7,7 @@ import { ColumnUI } from '@/components/Column/ColumnUI.type';
 import IcSettings from '@/assets/icons/IcSettings';
 import { CardUI } from '@/components/Card/CardUI.type';
 import CardList from '@/components/Card/CardList';
+import AddTodoButton from '../Buttons/domains/dashboard/AddTodoButton/AddTodoButton';
 
 type ColumnItemProps = {
   column: ColumnUI;
@@ -29,7 +30,13 @@ export default function ColumnItem({ column, cards, dashboardId }: ColumnItemPro
             </Link>
           </div>
         </div>
-        <div className={styles.CardList}>
+
+        <div className={styles.cardAddButton}>
+          <Link href={'/card/create'}>
+            <AddTodoButton onClick={() => console.log('할 일 추가')} />
+          </Link>
+        </div>
+        <div className={styles.cardList}>
           <CardList cards={cards} dashboardId={dashboardId} columnId={column.id} />
         </div>
       </div>

@@ -11,8 +11,8 @@ import TagInput from '@/components/Input/domains/todo/TagInput/TagInput';
 import styles from '@/components/Modals/Modal.module.css';
 
 type CreateCardProps = {
-  dashboardId: number;
-  columnId: number;
+  dashboardId?: number;
+  columnId?: number;
 };
 
 /**
@@ -33,7 +33,7 @@ type CreateCardProps = {
  *
  */
 
-export default function CreateCard({ dashboardId, columnId }: CreateCardProps) {
+export default function CreateCard({ dashboardId = '', columnId = '' }: CreateCardProps) {
   const router = useRouter();
 
   const [assigneeUserId, setAssigneeUserId] = useState<number>(0);

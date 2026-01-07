@@ -5,6 +5,7 @@ import styles from '@/components/Card/card.module.css';
 import IcCalender from '@/assets/icons/IcCalender';
 import { CardUI } from './CardUI.type';
 import Link from 'next/link';
+import { TagChip } from '../Chip/TagChip';
 
 type CardProps = {
   card: CardUI;
@@ -38,15 +39,15 @@ export default function Card({ card, dashboardId, columnId }: CardProps) {
           <div className={styles.cardContent}>
             <h3 className={styles.cardTitle}>{card.title}</h3>
             <div className={styles.cardInfo}>
-              {card.tags && (
-                <ul className={styles.tagBox}>
-                  {card.tags.map((tag, index) => (
-                    <li key={`${tag}-${index}`} className={styles.tag}>
-                      {tag}
+              {card.tags?.length ? (
+                <ul className={styles.tags}>
+                  {card.tags.map((tag) => (
+                    <li key={tag}>
+                      <TagChip label={tag} />
                     </li>
                   ))}
                 </ul>
-              )}
+              ) : null}
 
               {hasFooter && (
                 <div className={styles.cardFooter}>

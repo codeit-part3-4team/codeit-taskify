@@ -9,12 +9,18 @@ type ColumnListProps = {
   columns: ColumnUI[];
   cardsByColumn: CardUI[][];
   dashboardId: number;
+  className?: string;
 };
 
-export default function ColumnList({ columns, cardsByColumn, dashboardId }: ColumnListProps) {
+export default function ColumnList({
+  columns,
+  cardsByColumn,
+  className = '',
+  dashboardId,
+}: ColumnListProps) {
   return (
     <>
-      <div className={styles.columnList}>
+      <div className={`${styles.columnList} ${className}`}>
         {columns.map((column, index) => (
           <ColumnItem
             key={column.id}
@@ -23,7 +29,7 @@ export default function ColumnList({ columns, cardsByColumn, dashboardId }: Colu
             dashboardId={dashboardId}
           />
         ))}
-        <div>
+        <div className={styles.columnAddButtonBox}>
           <Link href={'/column/create'}>
             <AddColumnButton />
           </Link>
