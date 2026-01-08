@@ -25,18 +25,17 @@ export default function DashboardDetailClient({
   const mounted = useMountedReady();
 
   const [cardsState, setCardsState] = useState<CardUI[][]>(cardsByColumn);
-  const [activeCard, setActiveCard] = useState<CardUI | null>(null);
+  const [activeCard, setActiveCard] = useState<{ card: CardUI; columnId: number } | null>(null);
 
-  function handleDragStart(event: DragStartEvent, cardsByColumn: CardUI[][]) {
+  function handleDragStart(event: DragStartEvent) {
     const activeId = event.active.id;
 
-    for (const columnCards of cardsByColumn) {
+    cardsState.forEach((columnCards, colIndex) => {
       const found = columnCards.find((card) => card.id === activeId);
       if (found) {
-        setActiveCard(found);
-        return;
+        setActiveCard({ card: found, columnId: columns[colIndex].id });
       }
-    }
+    });
   }
 
   // 더 나은 방법: 별도의 에러 상태를 관리
@@ -58,6 +57,7 @@ export default function DashboardDetailClient({
     // console.log('over:', event.over?.id);
     // active: 옮긴 카드
     // over: 놔둔 자리
+    const prevCardsState = cardsState;
     const { active, over } = event;
     if (!over) return;
 
@@ -112,7 +112,7 @@ export default function DashboardDetailClient({
     updateCard(cardId, { columnId: toColumnId }).catch((error) => {
       console.error('카드 이동 실패:', error);
       // 실패 시 이전 상태로 롤백
-      setCardsState(prev);
+      setCardsState(prevCardsState);
       // TODO: 사용자에게 에러 토스트 표시
     });
 
@@ -124,7 +124,7 @@ export default function DashboardDetailClient({
     <div>
       {mounted && (
         <DndContext
-          onDragStart={(e) => handleDragStart(e, cardsState)}
+          onDragStart={handleDragStart}
           onDragEnd={handleDragEnd}
           onDragCancel={() => setActiveCard(null)}
         >
@@ -133,7 +133,14 @@ export default function DashboardDetailClient({
           </div>
 
           <DragOverlay>
-            {activeCard ? <CardItem card={activeCard} dashboardId={dashboardId} isOverlay /> : null}
+            {activeCard ? (
+              <CardItem
+                card={activeCard.card}
+                dashboardId={dashboardId}
+                columnId={activeCard.columnId}
+                isOverlay
+              />
+            ) : null}
           </DragOverlay>
         </DndContext>
       )}
