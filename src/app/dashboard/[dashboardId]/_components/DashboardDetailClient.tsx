@@ -39,9 +39,23 @@ export default function DashboardDetailClient({
     }
   }
 
+  // 더 나은 방법: 별도의 에러 상태를 관리
+  // const [error, setError] = useState<string | null>(null);
+
+  // // handleDragEnd 내부:
+  // try {
+  //   await updateCard(cardId, { columnId: toColumnId });
+  //   setActiveCard(null);
+  // } catch (error) {
+  //   console.error('카드 이동 실패:', error);
+  //   setCardsState(cardsByColumn); // 초기 상태로 롤백
+  //   setError('카드 이동에 실패했습니다.');
+  //   // 토스트 알림 표시
+  // }
+
   function handleDragEnd(event: DragEndEvent) {
-    console.log('active:', event.active.id);
-    console.log('over:', event.over?.id);
+    // console.log('active:', event.active.id);
+    // console.log('over:', event.over?.id);
     // active: 옮긴 카드
     // over: 놔둔 자리
     const { active, over } = event;
@@ -95,7 +109,15 @@ export default function DashboardDetailClient({
     });
 
     // 2. 서버에 반영
-    updateCard(cardId, { columnId: toColumnId });
+    updateCard(cardId, { columnId: toColumnId }).catch((error) => {
+      console.error('카드 이동 실패:', error);
+      // 실패 시 이전 상태로 롤백
+      setCardsState(prev);
+      // TODO: 사용자에게 에러 토스트 표시
+    });
+
+    // activeCard 정리
+    setActiveCard(null);
   }
 
   return (

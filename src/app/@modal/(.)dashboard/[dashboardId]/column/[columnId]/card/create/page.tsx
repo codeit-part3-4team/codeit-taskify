@@ -11,11 +11,18 @@ export default async function CreateCardModal({
   }>;
 }) {
   const { dashboardId, columnId } = await params;
-  console.log(dashboardId, columnId);
+
+  // 유효성 검증 추가
+  const numericDashboardId = Number(dashboardId);
+  const numericColumnId = Number(columnId);
+
+  if (isNaN(numericDashboardId) || isNaN(numericColumnId)) {
+    throw new Error('Invalid dashboard or column ID');
+  }
 
   return (
     <Modal size="large">
-      <CreateCard dashboardId={Number(dashboardId)} columnId={Number(columnId)} />
+      <CreateCard dashboardId={numericDashboardId} columnId={numericColumnId} />
     </Modal>
   );
 }

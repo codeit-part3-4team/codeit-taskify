@@ -1,3 +1,5 @@
+import React from 'react';
+
 /**
  * 더보기(⋮) 아이콘 컴포넌트
  *
@@ -6,15 +8,10 @@
  * SVG 기반 아이콘으로, 크기 조절 및 클릭 이벤트를 지원합니다.
  *
  * @example
+ *
  * ```tsx
  * // 기본 사용
  * <IcLabel />
- *
- * // 클래스 적용
- * <IcLabel className={styles.icon} />
- *
- * // 클릭 이벤트
- * <IcLabel onClick={handleOpenMenu} />
  * ```
  */
 export default function IcLabel({ className, ...props }: React.SVGProps<SVGSVGElement>) {
