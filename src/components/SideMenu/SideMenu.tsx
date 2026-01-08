@@ -5,13 +5,7 @@ import Logo from '@/components/Logo/Logo';
 import PaginationButton from '@/components/Buttons/shared/PaginationButton/PaginationButton';
 import DashboardItem from '@/components/SideMenu/DashboardItem/DashboardItem';
 import styles from '@/components/SideMenu/SideMenu.module.css';
-
-interface Dashboard {
-  id: number;
-  title: string;
-  color: string;
-  createdByMe: boolean;
-}
+import { Dashboard } from '@/types/dashboard';
 
 interface SideMenuProps {
   /** 전체 대시보드 목록 */
