@@ -26,7 +26,11 @@ interface SideMenuProps {
 
 /**
  * @component SideMenu
- * @description 대시보드 목록을 표시하는 사이드 메뉴
+ * @description 대시보드 목록을 표시하는 사이드 메뉴입니다.
+ * 
+ * - 상단: Logo
+ * - 중단: 대시보드 목록 (15개씩 페이지네이션)
+ * - 하단: Pagination 버튼 (16개 이상일 때만 표시)
  * 
  * @example
  * ```tsx

@@ -16,6 +16,7 @@ interface DashboardGnbProps {
   profileImageUrl?: string | null;
   onManageClick?: () => void;
   onInviteClick?: () => void;
+  showActions?: boolean;
 }
 
 export default function DashboardGnb({
@@ -24,6 +25,7 @@ export default function DashboardGnb({
   profileImageUrl,
   onManageClick,
   onInviteClick,
+  showActions = true,
 }: DashboardGnbProps) {
   return (
     <Gnb>
@@ -32,25 +34,29 @@ export default function DashboardGnb({
       </Gnb.Left>
 
       <Gnb.Right>
-        <button
-          type="button"
-          className={styles.actionButton}
-          onClick={onManageClick}
-        >
-          <img src="/icons/ic-setting.svg" alt="" aria-hidden />
-          관리
-        </button>
+      {showActions && ( 
+          <>
+            <button
+              type="button"
+              className={styles.actionButton}
+              onClick={onManageClick}
+            >
+              <img src="/icons/ic-setting.svg" alt="" aria-hidden />
+              관리
+            </button>
 
-        <button
-          type="button"
-          className={styles.actionButton}
-          onClick={onInviteClick}
-        >
-          <img src="/icons/ic-invite.svg" alt="" aria-hidden />
-          초대하기
-        </button>
+            <button
+              type="button"
+              className={styles.actionButton}
+              onClick={onInviteClick}
+            >
+              <img src="/icons/ic-invite.svg" alt="" aria-hidden />
+              초대하기
+            </button>
 
-        <span className={styles.divider} />
+            <span className={styles.divider} />
+          </>
+        )}
 
         {profileImageUrl ? (
           <img
