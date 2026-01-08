@@ -16,7 +16,6 @@ import styles from '@/components/Modals/Modal.module.css';
 const dummyCard: CardServerResponse = {
   id: 14842,
   title: '카드 테스트',
-  dashboardId: 17226,
   description: '컬럼에 카드 생성',
   tags: [],
   dueDate: null,

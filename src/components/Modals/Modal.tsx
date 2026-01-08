@@ -1,15 +1,10 @@
 'use client';
 
-import {
-  KeyboardEvent as ReactKeyboardEvent,
-  MouseEvent,
-  useEffect,
-  useRef,
-  useState,
-} from 'react';
+import { KeyboardEvent as ReactKeyboardEvent, MouseEvent, useEffect, useRef } from 'react';
 import styles from '@/components/Modals/Modal.module.css';
 import { useRouter } from 'next/navigation';
 import { useEscapeClose } from '@/hooks/useEscapeClose';
+import { useMountedReady } from '@/hooks/useMountedReady';
 
 type ModalProps = {
   type?: 'default' | 'alim';
@@ -78,14 +73,9 @@ export default function Modal({
   className = '',
 }: ModalProps) {
   const router = useRouter();
-  const [modalOpenReady, setModalOpenReady] = useState(false);
   const overlayRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    requestAnimationFrame(() => {
-      setModalOpenReady(true);
-    });
-  }, []);
+  const modalOpenReady = useMountedReady();
 
   useEffect(() => {
     if (modalOpenReady) {
@@ -97,12 +87,22 @@ export default function Modal({
     router.back();
   };
 
-  const handleOverlayKeyDown = (e: ReactKeyboardEvent<HTMLDivElement>) => {
-    if (e.key === 'Enter' || e.key === ' ') {
-      e.preventDefault();
-      closeModal();
-    }
-  };
+  // const handleOverlayKeyDown = (e: ReactKeyboardEvent<HTMLDivElement>) => {
+  //   if (e.key === 'Enter' || e.key === ' ') {
+  //     e.preventDefault();
+  //     closeModal();
+  //   }
+  // };
+
+  useEffect(() => {
+    const originalOverflow = document.body.style.overflow;
+
+    document.body.style.overflow = 'hidden';
+
+    return () => {
+      document.body.style.overflow = originalOverflow;
+    };
+  }, []);
 
   useEscapeClose(closeModal);
 
@@ -119,7 +119,7 @@ export default function Modal({
       <div
         ref={overlayRef}
         onClick={closeModal}
-        onKeyDown={handleOverlayKeyDown}
+        // onKeyDown={handleOverlayKeyDown}
         role="dialog"
         aria-label="모달 닫기"
         tabIndex={0}

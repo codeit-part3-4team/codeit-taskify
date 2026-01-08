@@ -1,15 +1,38 @@
+import { getColumns } from '@/app/dashboard/[dashboardId]/dashboard.api';
 import DefaultModal from '@/components/Modals/DefaultModal';
 import Modal from '@/components/Modals/Modal';
 
-// 이 공간에서 CARD get요청을 다시 함.
-// 그리고 parmas로 cardId를 받아서 받아온 데이터 cards[]중 현재 parmas로 받은 id의 데이터를 가져와서 뿌려줌.
-// ui 그려야 함.
-export default async function DetailCardModal() {
+type DetailCardModalProps = {
+  dashboardId: string;
+  columnId: string;
+  cardId: string;
+};
+
+export default async function DetailCardModal({
+  params,
+}: {
+  params: Promise<DetailCardModalProps>;
+}) {
+  const { dashboardId, columnId, cardId } = await params;
+
+  // 서버 컴포넌트 콘솔 (터미널에 찍힘)
+  console.log('params:', dashboardId, columnId, cardId);
+
+  // 테스트용 API
+  const responseColumData = await getColumns(dashboardId);
+  const columns = responseColumData.data;
+
   return (
-    <div>
-      <Modal>
-        <DefaultModal title="카드 상세 모달 입니다." />
-      </Modal>
-    </div>
+    <Modal>
+      <DefaultModal title="카드 상세 모달 테스트">
+        <div>
+          <p>dashboardId: {dashboardId}</p>
+          <p>columnId: {columnId}</p>
+          <p>cardId: {cardId}</p>
+
+          <pre style={{ maxHeight: 300, overflow: 'auto' }}>{JSON.stringify(columns, null, 2)}</pre>
+        </div>
+      </DefaultModal>
+    </Modal>
   );
 }
