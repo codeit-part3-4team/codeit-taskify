@@ -1,6 +1,7 @@
 # TASKIFY — 커뮤니티 기반 일정·할 일 협업 관리 서비스
 
-[서비스 이미지]
+<img width="1900" height="863" alt="image" src="https://github.com/user-attachments/assets/f73353e4-892e-4c8c-a6b4-1874f037fb03" />
+
 
 ## 프로젝트에 대한 소개
 일정과 할 일은 여러 사람이 함께 관리할수록 쉽게 흩어지고 누락된다.
