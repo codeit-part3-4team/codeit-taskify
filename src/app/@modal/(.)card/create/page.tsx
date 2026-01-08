@@ -1,7 +1,7 @@
 import CreateCard from '@/components/Modals/domains/Card/CreateCard';
 import Modal from '@/components/Modals/Modal';
 
-// 대시보드상세페이지에서 coumnId, dashboardId를 props로 받아와야 함.
+// url로의 params로 받는다.
 export default async function CreateCardModal() {
   // 임시 코드래빗 에러 방지
   const dashboardId = 11;

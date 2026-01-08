@@ -43,7 +43,10 @@ export default function ColumnItem({ column, cards, dashboardId }: ColumnItemPro
         </div>
 
         <div className={styles.cardAddButton}>
-          <Link href={'/card/create'} aria-label="카드 추가">
+          <Link
+            href={`/dashboard/${dashboardId}/column/${columnId}/card/create`}
+            aria-label="카드 추가"
+          >
             <AddTodoButton />
           </Link>
         </div>
