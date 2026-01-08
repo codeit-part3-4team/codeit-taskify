@@ -61,8 +61,13 @@ export default function DashboardDetailClient({
     const { active, over } = event;
     if (!over) return;
 
-    const cardId = active.id as number;
-    const toColumnId = over.id as number;
+    const cardId = typeof active.id === 'number' ? active.id : Number(active.id);
+    const toColumnId = typeof over.id === 'number' ? over.id : Number(over.id);
+
+    if (isNaN(cardId) || isNaN(toColumnId)) {
+      console.error('Invalid card or column ID');
+      return;
+    }
 
     // 1. UI 상태 먼저 변경
     setCardsState((prev) => {

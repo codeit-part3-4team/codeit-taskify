@@ -65,7 +65,6 @@ export default async function DashboardDetailPage({
       <div className={styles.dashboardDetailSection}>
         <div className={styles.leftBox}>
           <SideMenu
-            dashboards={dashboards}
             // onDashboardClick={(id) => Router.push(`/dashboard/${id}`)}
             // onAddDashboardClick={() => Router.push(`/dashboard/create`)}
             selectedDashboardId={currentDashboardId}
