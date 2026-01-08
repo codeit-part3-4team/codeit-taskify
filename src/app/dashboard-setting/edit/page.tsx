@@ -11,6 +11,28 @@ import PaginationButton from '@/components/Buttons/shared/PaginationButton/Pagin
 import DeleteDashboardButton from '@/components/Buttons/domains/dashboard/DeleteDashboardButton/DeleteDashboardButton';
 import TableModal from '@/components/CardTables/TableModal/TableModal';
 import styles from './page.module.css';
+import { Dashboard } from '@/types/dashboard';
+
+const mockDashboards: Dashboard[] = [
+  {
+    id: 1,
+    title: '대시보드 설정',
+    color: '#5534DA',
+    userId: 1,
+    createdAt: '',
+    updatedAt: '',
+    createdByMe: true,
+  },
+  {
+    id: 2,
+    title: '개인 대시보드',
+    color: '#7AC555',
+    userId: 1,
+    createdAt: '',
+    updatedAt: '',
+    createdByMe: true,
+  },
+];
 
 import {
   deleteDashboard,
@@ -179,6 +201,7 @@ function handleOpenColumnModal() {
     <div className={styles.layout}>
       <div className={styles.sideArea}>
         <SideMenu
+          dashboards={mockDashboards} 
           selectedDashboardId={selectedDashboardId}
           onDashboardClick={handleSelectDashboard}
           onAddDashboardClick={() => console.log('대시보드 추가')}
