@@ -32,27 +32,6 @@
   cursor: not-allowed;
 }
 
-/* chip: 높이 32, 너비는 글씨 따라 자동 */
-.chip {
-  height: 32px;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-
-  padding: 0 10px;
-  border-radius: 999px;
-
-  background: var(--violet-8p);
-  color: var(--violet-5534da);
-}
-/* chip 안의 보라색 동그라미 */
-.dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--violet-5534da);
-}
-
 /* 버튼 오른쪽 화살표 */
 .caret {
   width: 0;
@@ -67,11 +46,10 @@
   transform: rotate(180deg);
 }
 
-/* ✅ 목록 패널: 버튼 "아래"로 뜨게 (겹치지 않게) */
-/* ✅ 높이 144px */
+
 .panel {
   position: absolute;
-  top: calc(100% + 8px); /* 버튼 아래로 8px 떨어져서 */
+  top: calc(100% + 8px); 
   left: 0;
 
   width: 217px;
@@ -103,14 +81,14 @@
 .leftGroup {
   display: flex;
   align-items: center;
-  gap: 8px; /* 체크표시랑 chip 간격 */
+  gap: 8px; 
 }
 
 .row:hover {
   background: var(--gray-fafafa);
 }
 
-/* 왼쪽 체크 영역 */
+
 .checkArea {
   width: 22px;
   height: 22px;
@@ -125,7 +103,7 @@
   line-height: 1;
 }
 
-/* 각 row 오른쪽 작은 화살표 */
+
 .smallCaret {
   width: 0;
   height: 0;

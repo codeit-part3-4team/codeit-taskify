@@ -89,9 +89,9 @@
   color: var(--red-d6173a);
 }
 
-/* Responsive: Mobile (max-width: 767px) */
-@media (max-width: 767px) {
+/* Responsive: Mobile (max-width: 374px) */
+@media (max-width: 374px) {
   .container {
-    max-width: 351px;
+    max-width: 100%;
   }
 }
