@@ -76,6 +76,8 @@ export default function LoginForm() {
       // 액세스 토큰 저장
       localStorage.setItem('accessToken', response.accessToken);
 
+      localStorage.setItem('user', JSON.stringify(response.user));
+
       // mydashboard로 이동
       router.push('/mydashboard');
     } catch (error) {

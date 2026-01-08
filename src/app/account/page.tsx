@@ -8,8 +8,30 @@ import DashboardDetailGnb from '@/components/Gnb/variants/DashboardDetailGnb/Das
 import ProfileSettingCard from '@/components/CardTables/ProfileSettingCard/ProfileSettingCard';
 import PasswordChangeCard from '@/components/CardTables/PasswordChangeCard/PasswordChangeCard';
 import PaginationButton from '@/components/Buttons/shared/PaginationButton/PaginationButton';
+import { Dashboard } from '@/types/dashboard';
 
 import styles from './page.module.css';
+
+const mockDashboards: Dashboard[] = [
+  {
+    id: 1,
+    title: '계정 관리',
+    color: '#5534DA',
+    userId: 1,
+    createdAt: '',
+    updatedAt: '',
+    createdByMe: true,
+  },
+  {
+    id: 2,
+    title: '개인 대시보드',
+    color: '#7AC555',
+    userId: 1,
+    createdAt: '',
+    updatedAt: '',
+    createdByMe: true,
+  },
+];
 
 export default function DashboardSettingsEditClient() {
   const [imageFile, setImageFile] = useState<File | null>(null);
@@ -120,6 +142,7 @@ export default function DashboardSettingsEditClient() {
       {/* 왼쪽 사이드 메뉴 */}
       <div className={styles.sideArea}>
         <SideMenu
+          dashboards={mockDashboards} 
           selectedDashboardId={selectedDashboardId}
           onDashboardClick={(id) => setSelectedDashboardId(id)}
           onAddDashboardClick={() => console.log('대시보드 추가 클릭')}

@@ -3,6 +3,22 @@
   align-items: center;
   text-decoration: none;
   flex-shrink: 0;
+  cursor: pointer; 
+  transition: opacity 0.2s ease; 
+}
+
+/* 호버 효과 (클릭 가능할 때만) */
+a.logoLink:hover {
+  opacity: 0.8;
+}
+
+/* /mydashboard에서는 커서 기본값 */
+div.logoLink {
+  cursor: default;
+}
+
+div.logoLink:hover {
+  opacity: 1;
 }
 
 .logo {

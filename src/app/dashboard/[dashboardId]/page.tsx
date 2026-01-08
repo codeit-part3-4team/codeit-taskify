@@ -5,6 +5,7 @@ import SideMenu from '@/components/SideMenu/SideMenu';
 import styles from '@/app/dashboard/[dashboardId]/dashboardDetail.module.css';
 import DashboardDetailGnb from '@/components/Gnb/variants/DashboardDetailGnb/DashboardDetailGnb';
 import DashboardDetailClient from '@/app/dashboard/[dashboardId]/_components/DashboardDetailClient';
+import { Dashboard } from '@/types/dashboard';
 
 // dashboard/17226 에서 작업
 export default async function DashboardDetailPage({
@@ -45,26 +46,34 @@ export default async function DashboardDetailPage({
   const columnCardsUI = columnCards.map((cardsInColumn) => cardsInColumn.map(mapCardServerToUI));
 
   // 대시보드 목업데이터
-  const dashboards = [
-    {
-      id: 1,
-      title: '내 대시보드',
-      color: '#7AC555',
-      createdByMe: true,
-    },
-    {
-      id: 2,
-      title: '팀 대시보드',
-      color: '#FFA500',
-      createdByMe: false,
-    },
-  ];
+      const dashboards = [
+        {
+          id: 1,
+          title: '내 대시보드',
+          color: '#7AC555',
+          createdByMe: true,
+          userId: 1,
+          createdAt: '',
+          updatedAt: '',
+        },
+        {
+          id: 2,
+          title: '팀 대시보드',
+          color: '#FFA500',
+          createdByMe: false,
+          userId: 1,
+          createdAt: '',
+          updatedAt: '',
+        },
+      ];
+
 
   return (
     <div>
       <div className={styles.dashboardDetailSection}>
         <div className={styles.leftBox}>
           <SideMenu
+            dashboards={dashboards}
             // onDashboardClick={(id) => Router.push(`/dashboard/${id}`)}
             // onAddDashboardClick={() => Router.push(`/dashboard/create`)}
             selectedDashboardId={currentDashboardId}

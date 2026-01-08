@@ -1,0 +1,12 @@
+.container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+/* 반응형 - 모바일 */
+@media (max-width: 768px) {
+  .container {
+    padding: 0;
+  }
+}
