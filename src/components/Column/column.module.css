@@ -93,6 +93,11 @@
   .columnList {
     flex-direction: column;
   }
+
+  .columItem .cardList {
+    height: 100%;
+  }
+
   .columItem {
     width: 100%;
     max-width: 100%;

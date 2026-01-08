@@ -71,6 +71,15 @@
   gap: 6px;
 }
 
+@media (max-width: 767px) {
+  .cardItem {
+    width: 100%;
+  }
+  .cardItem .imgBox {
+    width: 100%;
+  }
+}
+
 @media (max-width: 544px) {
   .cardItem {
     width: 100%;

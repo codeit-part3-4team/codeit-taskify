@@ -1,3 +1,4 @@
+// 서버타입
 export interface CardServerResponse {
   id: number;
   title: string;
@@ -15,10 +16,6 @@ export interface CardServerResponse {
   createdAt: string;
   updatedAt: string;
 }
-
-
-
-
 export interface GetCardsResponse {
   cursorId: number;
   totalCount: number;

@@ -32,15 +32,19 @@ export default function ColumnItem({ column, cards, dashboardId }: ColumnItemPro
             <span className={styles.cardCount}>{column.cardCount}</span>
           </div>
           <div className={styles.right}>
-            <Link href="/column/edit" aria-label="컬럼 수정" className={styles.columnEditButton}>
+            <Link
+              href={`/column/${columnId}/edit`}
+              aria-label="컬럼 수정"
+              className={styles.columnEditButton}
+            >
               <IcSettings className={styles.settingsIcon} />
             </Link>
           </div>
         </div>
 
         <div className={styles.cardAddButton}>
-          <Link href={'/card/create'}>
-            <AddTodoButton onClick={() => console.log('할 일 추가')} />
+          <Link href={'/card/create'} aria-label="카드 추가">
+            <AddTodoButton />
           </Link>
         </div>
         <div
