@@ -1,4 +1,3 @@
-import Input from '@/app/components/Input';
 import ImageInputDefault from '@/components/Input/domains/todo/ImageInput/ImageInputDefault';
 
 export default function InputTestPage() {

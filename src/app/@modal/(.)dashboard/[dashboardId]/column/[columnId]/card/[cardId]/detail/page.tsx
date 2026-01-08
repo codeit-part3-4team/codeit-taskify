@@ -3,7 +3,7 @@ import DetailCard from '@/components/Modals/domains/Card/DetailCard';
 import { mapCardToModalUI } from '@/components/Modals/domains/Card/helper';
 import Modal from '@/components/Modals/Modal';
 import styles from '@/components/Modals/domains/Card/modalCard.module.css';
-import { getCards, getColumns } from '@/app/dashboard/[dashboardId]/dashboard.api';
+import { getColumns } from '@/app/dashboard/[dashboardId]/dashboard.api';
 import { ColumnUI } from '@/components/Column/ColumnUI.type';
 
 // 나중에 dashboardId, columnId 지우고
