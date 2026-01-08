@@ -1,0 +1,307 @@
+.cardDetailModal > div {
+  width: 730px;
+  height: 100%;
+  padding: 30px 28px 30px 18px;
+}
+
+.cardDetail .cardDetailBox {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.cardDetailBox .cardDetailHeader {
+  display: flex;
+  gap: 40px;
+  flex-shrink: 0;
+}
+
+.cardDetailBox .title {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--black-333236);
+  width: 450px;
+}
+
+.cardDetailBox .cardDetailContent {
+  max-width: 450px;
+  margin-top: 18px;
+}
+
+.cardDetailBox .cardDetailContent .imageUrl {
+  position: relative;
+  border-radius: 6px;
+  width: 450px;
+  height: 260px;
+  overflow: hidden;
+}
+
+.cardDetail .cardDetailBox .left {
+  width: 450px;
+  flex: 1;
+}
+.cardDetail .cardDetailBox .right {
+  flex-shrink: 0;
+  width: 180px;
+}
+
+.cardDetailBox .left .statusBox {
+  display: flex;
+  margin-top: 24px;
+  gap: 40px;
+}
+
+.cardDetailBox .statusBox .tags {
+  position: relative;
+  display: flex;
+  gap: 6px;
+}
+
+.cardDetailBox .statusBox .tags:before {
+  content: '';
+  display: block;
+  position: absolute;
+  width: 1px;
+  height: 20px;
+  left: -20px;
+  top: 50%;
+  margin-top: -10px;
+  background: var(--gray-d9d9d9);
+}
+
+.cardDetailBox .left .desciptionBox {
+  margin-top: 26px;
+  padding-left: 10px;
+}
+
+.cardDetailBox .left .description {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--black-000000);
+}
+
+.cardDetailBox .cardDetailContent .commentInputBox {
+  margin-top: 16px;
+}
+
+.commentSection {
+  overflow-y: auto;
+  height: 150px;
+}
+
+.cardDetailBox .commentListBox {
+  margin-top: 24px;
+}
+
+.commentListBox > ul .commentBox {
+  display: flex;
+  gap: 12px;
+}
+.commentListBox > ul .commentBox:not(:first-child) {
+  margin-top: 15px;
+}
+.commentBox .commentUser {
+  flex-shrink: 0;
+  position: relative;
+  width: 32px;
+  height: 32px;
+  border-radius: 100%;
+  overflow: hidden;
+}
+
+.commentBox .commentInfo .infoBox {
+  display: flex;
+  gap: 8px;
+}
+.commentInfo .infoBox .nickname {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--black-333236);
+}
+.commentInfo .infoBox .createTime {
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--gray-9fa6b2);
+}
+.commentInfo .comment {
+  margin-top: 6px;
+  color: var(--black-333236);
+  font-size: 14px;
+  font-weight: 400;
+}
+.commentInfo .ButtonBox {
+  margin-top: 6px;
+  display: flex;
+  gap: 14px;
+}
+.commentInfo .ButtonBox .commentButton {
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--gray-9fa6b2);
+  background: transparent;
+}
+.commentInfo .ButtonBox .commentButton:hover,
+.commentInfo .ButtonBox .commentButton:focus {
+  text-decoration: underline;
+}
+
+.cardDetail .right .assigneeBox {
+  margin-top: 24px;
+  border-radius: 8px;
+  border: solid 1px var(--gray-d9d9d9);
+  padding: 14px 16px;
+}
+
+.cardDetail .right .assigneeBox > *:not(:first-child) {
+  margin-top: 16px;
+}
+
+.cardDetail .assigneeBox .assigneeTitle {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--black-000000);
+}
+
+.cardDetail .assigneeBox .assigneeNameBox {
+  display: flex;
+  margin-top: 8px;
+  gap: 8px;
+  align-items: center;
+}
+
+.assigneeBox .assigneeNameBox .assigneeProfile {
+  position: relative;
+  width: 32px;
+  height: 32px;
+  border-radius: 100%;
+  overflow: hidden;
+}
+
+.assigneeBox .assigneeNameBox .assigneeName {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--black-333236);
+}
+
+.assigneeBox .dueDateBox .dueDateTitle {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--black-000000);
+}
+
+.assigneeBox .dueDateBox .dueDateText {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--black-333236);
+}
+
+.assigneeBox .dueDateBox .dueDate {
+  margin-top: 4px;
+}
+
+.cardDetail .ButtonMenus {
+  position: absolute;
+  gap: 24px;
+  top: 0;
+  right: 10px;
+  display: flex;
+}
+.cardDetail .cardDetailMenu {
+  width: 32px;
+  height: 32px;
+}
+
+.cardDetail .cardDetailMenu .ButtonMenu > button {
+  border: 0;
+  display: flex;
+  align-items: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  justify-content: center;
+}
+
+.cardDetail .closeButtonBox {
+  position: relative;
+  width: 32px;
+  height: 32px;
+}
+
+.cardDetail .closeButtonBox button {
+  background: transparent;
+}
+
+.cardDetail .closeButtonBox svg {
+  width: 32px;
+  height: 32px;
+}
+
+@media (max-width: 744px) {
+  .cardDetailBox .cardDetailHeader {
+    flex-direction: column-reverse;
+    gap: 16px;
+  }
+
+  .cardDetailModal > div {
+    width: 100%;
+    padding: 56px 16px 16px 16px;
+  }
+
+  .cardDetail .right .assigneeBox {
+    margin-top: 8px;
+  }
+
+  .cardDetailBox .left .desciptionBox {
+    margin-top: 16px;
+    padding-left: 0;
+  }
+
+  .cardDetail .cardDetailBox .left {
+    width: 100%;
+  }
+
+  .cardDetail .cardDetailBox .right {
+    flex: 1;
+    width: 100%;
+  }
+
+  .cardDetailBox .left .statusBox {
+    margin-top: 0;
+  }
+
+  .cardDetailBox .cardDetailContent {
+    max-width: 100%;
+    padding: 10px;
+    margin-top: 32px;
+    max-height: calc(100vh - 400px);
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+
+  .cardDetailBox .cardDetailContent .imageUrl {
+    width: 100%;
+  }
+
+  .cardDetailBox .cardDetailContent .commentInputBox {
+    margin-top: 24px;
+  }
+
+  .commentInputBox .commentInput > div {
+    width: auto;
+  }
+
+  .commentInputBox .commentInput > div > textarea {
+    width: 100%;
+  }
+
+  .cardDetail .ButtonMenus {
+    gap: 16px;
+    top: -38px;
+    right: 0;
+  }
+
+  .commentSection {
+    overflow-y: auto;
+    height: auto;
+  }
+}

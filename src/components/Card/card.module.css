@@ -1,13 +1,14 @@
+.cardListBox > li:not(:last-child) {
+  margin-bottom: 15px;
+}
+
 .cardItem {
   width: 314px;
+  min-height: 128px;
   border: solid 1px var(--gray-d9d9d9);
   padding: 16px 20px;
   border-radius: 6px;
   background: var(--white-ffffff);
-}
-
-.cardItem:not(:last-child) {
-  margin-bottom: 15px;
 }
 
 .cardItem .imgBox {
@@ -18,9 +19,11 @@
   height: 160px;
   overflow: hidden;
 }
+
 .cardItem .cardContent {
   position: relative;
 }
+
 .cardItem .cardContent .cardTitle {
   margin-bottom: 10px;
   color: var(--black-333236);
@@ -58,6 +61,20 @@
   width: 24px;
   height: 24px;
   overflow: hidden;
+}
+
+.cardItem .cardInfo .tags {
+  display: flex;
+  gap: 6px;
+}
+
+@media (max-width: 767px) {
+  .cardItem {
+    width: 100%;
+  }
+  .cardItem .imgBox {
+    width: 100%;
+  }
 }
 
 @media (max-width: 544px) {

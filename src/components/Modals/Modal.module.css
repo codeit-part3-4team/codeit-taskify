@@ -15,6 +15,8 @@
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.3s ease;
+
+  overflow-y: auto;
 }
 
 .overlay.open {
@@ -25,7 +27,11 @@
 /* Modal 기본 구조 + 애니메이션 */
 .modal {
   width: 568px;
+  max-height: calc(100vh - 10%);
   padding: 24px;
+
+  overflow-y: auto;
+  overflow-x: hidden;
 
   background: #fff;
   border-radius: 16px;
@@ -109,6 +115,15 @@
 /* Form 내부 간격 */
 .cardForm > * {
   margin-top: 32px;
+}
+
+.chipRow {
+  margin-top: 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
 }
 
 /* Mobile 대응 (743px 이하) */

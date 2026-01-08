@@ -1,50 +1,36 @@
-'use client';
-
 import ColumnItem from '@/components/Column/ColumnItem';
 import styles from '@/components/Column/column.module.css';
 import { ColumnUI } from '@/components/Column/ColumnUI.type';
 import Link from 'next/link';
-import AddColumnButton from '../Buttons/domains/dashboard/AddColumnButton/AddColumnButton';
-
-const mockColumns: ColumnUI[] = [
-  {
-    id: 1,
-    title: 'To Do',
-    teamId: 'team-20-4',
-    createdAt: '2026-01-01T09:00:00.000Z',
-    updatedAt: '2026-01-01T09:00:00.000Z',
-  },
-  {
-    id: 2,
-    title: 'In Progress',
-    teamId: 'team-20-4',
-    createdAt: '2026-01-01T09:05:00.000Z',
-    updatedAt: '2026-01-02T10:30:00.000Z',
-  },
-  {
-    id: 3,
-    title: 'Done',
-    teamId: 'team-20-4',
-    createdAt: '2026-01-01T09:10:00.000Z',
-    updatedAt: '2026-01-03T14:20:00.000Z',
-  },
-];
+import AddColumnButton from '@/components/Buttons/domains/dashboard/AddColumnButton/AddColumnButton';
+import { CardUI } from '@/components/Card/CardUI.type';
 
 type ColumnListProps = {
-  columns?: ColumnUI[];
+  columns: ColumnUI[];
+  cardsByColumn: CardUI[][];
+  dashboardId: number;
+  className?: string;
 };
 
-export default function ColumnList({ columns }: ColumnListProps) {
-  const columnList = columns ?? mockColumns;
-
+export default function ColumnList({
+  columns,
+  cardsByColumn,
+  className = '',
+  dashboardId,
+}: ColumnListProps) {
   return (
     <>
-      <div className={styles.columnList}>
-        {columnList.map((columnData) => {
-          return <ColumnItem key={columnData.id} columnData={columnData} />;
-        })}
-        <div>
-          <Link href={'/column/create'}>
+      <div className={`${styles.columnList} ${className}`}>
+        {columns.map((column, index) => (
+          <ColumnItem
+            key={column.id}
+            column={column}
+            cards={cardsByColumn[index]}
+            dashboardId={dashboardId}
+          />
+        ))}
+        <div className={styles.columnAddButtonBox}>
+          <Link href={`${dashboardId}/column/create`}>
             <AddColumnButton />
           </Link>
         </div>

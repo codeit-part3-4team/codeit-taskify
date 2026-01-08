@@ -14,15 +14,9 @@ import styles from './page.module.css';
 export default function DashboardSettingsEditClient() {
   const [imageFile, setImageFile] = useState<File | null>(null);
 
-
   const router = useRouter();
 
   /* ---------------- 사이드 메뉴 ---------------- */
-  const dashboards = [
-    { id: 1, title: '대시보드', color: '#5534DA', createdByMe: true },
-    { id: 2, title: '팀 프로젝트', color: '#76A5EA', createdByMe: false },
-  ];
-
   const [selectedDashboardId, setSelectedDashboardId] = useState(1);
 
   /* ---------------- 사이드메뉴 페이지네이션 ---------------- */
@@ -54,7 +48,6 @@ export default function DashboardSettingsEditClient() {
   const [email] = useState('johndoe@gmail.com'); // 이메일은 수정 불가
   const [nickname, setNickname] = useState('배유철');
 
-  
   // 비밀번호 변경 input
   const [currentPw, setCurrentPw] = useState('');
   const [newPw, setNewPw] = useState('');
@@ -67,10 +60,7 @@ export default function DashboardSettingsEditClient() {
   };
 
   /** ✅ 프로필 저장 (닉네임 + 이미지) */
-  const handleSaveProfile = (payload: {
-    nickname: string;
-    imageFile: File | null;
-  }) => {
+  const handleSaveProfile = (payload: { nickname: string; imageFile: File | null }) => {
     setNickname(payload.nickname);
 
     console.log('프로필 저장됨:', {
@@ -82,44 +72,44 @@ export default function DashboardSettingsEditClient() {
   };
 
   const handleChangePassword = () => {
-  // 1️⃣ 현재 비밀번호 틀린 경우 → 모달
-  if (currentPw !== realPassword) {
+    // 1️⃣ 현재 비밀번호 틀린 경우 → 모달
+    if (currentPw !== realPassword) {
+      router.push(
+        '/account/alim?message=' +
+          encodeURIComponent('현재 비밀번호가 틀립니다') +
+          '&buttonText=' +
+          encodeURIComponent('확인')
+      );
+      return;
+    }
+
+    // 2️⃣ 새 비밀번호 확인 불일치 (안전망)
+    if (newPw !== confirmPw) {
+      router.push(
+        '/account/alim?message=' +
+          encodeURIComponent('비밀번호가 일치하지 않습니다') +
+          '&buttonText=' +
+          encodeURIComponent('확인')
+      );
+      return;
+    }
+
+    // 3️⃣ 맞으면 비밀번호 변경
+    setRealPassword(newPw);
+
+    // (선택) 성공 모달
     router.push(
       '/account/alim?message=' +
-        encodeURIComponent('현재 비밀번호가 틀립니다') +
+        encodeURIComponent('비밀번호가 변경되었습니다') +
         '&buttonText=' +
         encodeURIComponent('확인')
     );
-    return;
-  }
 
-  // 2️⃣ 새 비밀번호 확인 불일치 (안전망)
-  if (newPw !== confirmPw) {
-    router.push(
-      '/account/alim?message=' +
-        encodeURIComponent('비밀번호가 일치하지 않습니다') +
-        '&buttonText=' +
-        encodeURIComponent('확인')
-    );
-    return;
-  }
-
-  // 3️⃣ 맞으면 비밀번호 변경
-  setRealPassword(newPw);
-
-  // (선택) 성공 모달
-  router.push(
-    '/account/alim?message=' +
-      encodeURIComponent('비밀번호가 변경되었습니다') +
-      '&buttonText=' +
-      encodeURIComponent('확인')
-  );
-
-  // 4️⃣ input 초기화
-  setCurrentPw('');
-  setNewPw('');
-  setConfirmPw('');
-};
+    // 4️⃣ input 초기화
+    setCurrentPw('');
+    setNewPw('');
+    setConfirmPw('');
+  };
 
   /* ===============================
      렌더링
@@ -130,7 +120,6 @@ export default function DashboardSettingsEditClient() {
       {/* 왼쪽 사이드 메뉴 */}
       <div className={styles.sideArea}>
         <SideMenu
-          dashboards={dashboards}
           selectedDashboardId={selectedDashboardId}
           onDashboardClick={(id) => setSelectedDashboardId(id)}
           onAddDashboardClick={() => console.log('대시보드 추가 클릭')}
@@ -179,7 +168,6 @@ export default function DashboardSettingsEditClient() {
             onSave={handleSaveProfile}
             saveText="저장"
           />
-
 
           {/* 비밀번호 변경 카드 */}
           <section className={styles.card}>

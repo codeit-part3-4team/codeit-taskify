@@ -2,7 +2,6 @@
 export interface CardServerResponse {
   id: number;
   title: string;
-  dashboardId: number
   description: string;
   tags: string[] | null;
   dueDate: string | null;
@@ -17,10 +16,6 @@ export interface CardServerResponse {
   createdAt: string;
   updatedAt: string;
 }
-
-
-
-
 export interface GetCardsResponse {
   cursorId: number;
   totalCount: number;
