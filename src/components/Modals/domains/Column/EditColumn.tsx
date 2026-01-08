@@ -7,7 +7,7 @@ import ModalButton from '@/components/Buttons/shared/ModalButton/ModalButton';
 import TextInput from '@/components/Input/domains/todo/TextInput/TextInput';
 
 type EditColumnProps = {
-  columnId: number;
+  columnId?: number;
   initialTitle: string;
 };
 
