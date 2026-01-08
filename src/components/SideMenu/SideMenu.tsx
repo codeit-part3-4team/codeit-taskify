@@ -5,6 +5,8 @@ import Logo from '@/components/Logo/Logo';
 import PaginationButton from '@/components/Buttons/shared/PaginationButton/PaginationButton';
 import DashboardItem from '@/components/SideMenu/DashboardItem/DashboardItem';
 import styles from '@/components/SideMenu/SideMenu.module.css';
+import Image from 'next/image';
+
 
 import { getDashboards, Dashboard } from '@/app/dashboard-setting/api/dashboardsetting';
 
@@ -87,7 +89,13 @@ export default function SideMenu({
             onClick={onAddDashboardClick}
             aria-label="새 대시보드 추가"
           >
-            <img src="/icons/ic-invite.svg" alt="" aria-hidden="true" />
+            <Image
+              src="/icons/ic-invite.svg"
+              alt=""
+              width={16}
+              height={16}
+              aria-hidden="true"
+            />
           </button>
         </div>
 
