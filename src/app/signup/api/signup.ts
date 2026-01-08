@@ -1,5 +1,5 @@
 const BASE_URL = 'https://sp-taskify-api.vercel.app';
-const TEAM_ID = '20-3';
+const TEAM_ID = '20-4';
 
 interface SignupRequest {
   email: string;
@@ -36,5 +36,3 @@ export async function signup(data: SignupRequest): Promise<SignupResponse> {
 
   return response.json();
 }
-
-

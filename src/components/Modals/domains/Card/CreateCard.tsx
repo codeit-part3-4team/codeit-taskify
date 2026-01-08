@@ -2,17 +2,18 @@
 
 import { useRouter } from 'next/navigation';
 import DefaultModal from '@/components/Modals/DefaultModal';
-import { useState } from 'react';
+import { ChangeEvent, useState } from 'react';
 import { CardCreateRequest } from '@/components/Modals/domains/Card/ModalCard.type';
 import ModalButton from '@/components/Buttons/shared/ModalButton/ModalButton';
 import TextInput from '@/components/Input/domains/todo/TextInput/TextInput';
 import DateInput from '@/components/Input/domains/todo/DateInput/DateInput';
 import TagInput from '@/components/Input/domains/todo/TagInput/TagInput';
 import styles from '@/components/Modals/Modal.module.css';
+import ImageInput from '@/components/Input/domains/todo/ImageInput/ImageInput';
 
 type CreateCardProps = {
-  dashboardId?: number;
-  columnId?: number;
+  dashboardId: number;
+  columnId: number;
 };
 
 /**
@@ -33,7 +34,7 @@ type CreateCardProps = {
  *
  */
 
-export default function CreateCard({ dashboardId = '', columnId = '' }: CreateCardProps) {
+export default function CreateCard({ dashboardId, columnId }: CreateCardProps) {
   const router = useRouter();
 
   const [assigneeUserId, setAssigneeUserId] = useState<number>(0);
@@ -67,6 +68,10 @@ export default function CreateCard({ dashboardId = '', columnId = '' }: CreateCa
 
     router.refresh(); // 페이지에서 (GET) 다시 실행
     router.back();
+  }
+
+  function handleImageChange(file: File | null) {
+    setImageFile(file);
   }
 
   return (
@@ -109,7 +114,6 @@ export default function CreateCard({ dashboardId = '', columnId = '' }: CreateCa
             onChange={(e) => setDescription(e.target.value)}
             required
           />
-          {/* 추후 datepicker */}
           <DateInput
             label="마감일"
             placeholder="날짜를 입력해 주세요"
@@ -119,8 +123,7 @@ export default function CreateCard({ dashboardId = '', columnId = '' }: CreateCa
           <TagInput label="태그" placeholder="입력 후 Enter" tags={tags} onTagsChange={setTags} />
 
           {/* 컴포넌트로 교체 */}
-          <label htmlFor="card-image">이미지</label>
-          <input id="card-image" type="file" />
+          <ImageInput label="이미지" onChange={handleImageChange} />
         </form>
       </DefaultModal>
     </>
