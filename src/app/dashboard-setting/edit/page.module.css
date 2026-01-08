@@ -27,6 +27,17 @@
   border: 1px solid var(--gray-eeeeee);
   border-radius: 8px;
   padding: 32px;
+  max-width: 622px;
+}
+
+/* .sideArea {
+  padding-left: 8px; 
+} */
+
+
+.sidePagination {
+  margin-top: 12px;   
+  padding-left: 8px;  
 }
 
 .sideArea {
