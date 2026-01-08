@@ -3,10 +3,14 @@ import Modal from '@/components/Modals/Modal';
 
 // 대시보드상세페이지에서 coumnId, dashboardId를 props로 받아와야 함.
 export default async function CreateCardModal() {
+  // 임시 코드래빗 에러 방지
+  const dashboardId = 11;
+  const columnId = 11;
+
   return (
     <>
       <Modal size="large">
-        <CreateCard />
+        <CreateCard dashboardId={dashboardId} columnId={columnId} />
       </Modal>
     </>
   );

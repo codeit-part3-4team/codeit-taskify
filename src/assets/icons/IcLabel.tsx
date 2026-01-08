@@ -1,18 +1,20 @@
 /**
- * X (DropdownMenu 열기) 아이콘
+ * 더보기(⋮) 아이콘 컴포넌트
  *
- * @description DropdownMenu을 열때 사용하는 아이콘입니다.
+ * @description
+ * DropdownMenu를 열기 위해 사용하는 세로 점 3개(ellipsis) 아이콘입니다.
+ * SVG 기반 아이콘으로, 크기 조절 및 클릭 이벤트를 지원합니다.
  *
  * @example
  * ```tsx
  * // 기본 사용
- * <IcX />
+ * <IcLabel />
  *
- * // 크기 변경
- * <IcX width={32} height={32} />
+ * // 클래스 적용
+ * <IcLabel className={styles.icon} />
  *
  * // 클릭 이벤트
- * <IcX onClick={handleClose} />
+ * <IcLabel onClick={handleOpenMenu} />
  * ```
  */
 export default function IcLabel({ className, ...props }: React.SVGProps<SVGSVGElement>) {

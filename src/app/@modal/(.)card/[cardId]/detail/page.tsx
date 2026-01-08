@@ -8,8 +8,12 @@ type DetailCardModalProps = {
   cardId: string;
 };
 
-export default async function DetailCardModal({ params }: { params: DetailCardModalProps }) {
-  const { dashboardId, columnId, cardId } = params;
+export default async function DetailCardModal({
+  params,
+}: {
+  params: Promise<DetailCardModalProps>;
+}) {
+  const { dashboardId, columnId, cardId } = await params;
 
   // 서버 컴포넌트 콘솔 (터미널에 찍힘)
   console.log('params:', dashboardId, columnId, cardId);

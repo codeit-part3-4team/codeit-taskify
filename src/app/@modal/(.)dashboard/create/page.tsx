@@ -6,6 +6,7 @@ import Modal from '@/components/Modals/Modal';
 export default function CreateDashBoardModal() {
   return (
     <div>
+      여기아니냐?
       <Modal>
         <CreateDashBoard />
       </Modal>

@@ -102,7 +102,7 @@ export default function DashboardDetailClient({
     <div>
       {mounted && (
         <DndContext
-          onDragStart={(e) => handleDragStart(e, cardsByColumn)}
+          onDragStart={(e) => handleDragStart(e, cardsState)}
           onDragEnd={handleDragEnd}
           onDragCancel={() => setActiveCard(null)}
         >
