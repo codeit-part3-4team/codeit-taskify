@@ -161,7 +161,6 @@
     padding-top: 5px;;
   }
 
-  /* 오른쪽: 페이지 텍스트 + 페이저만 (PC용 초대하기는 숨김) */
   .headerRight {
     gap: 10px;
   }
@@ -177,12 +176,11 @@
     font-size: 16px;
   }
 
-  /* ✅ 모바일: header 안의 초대하기 버튼 숨김 */
+
   .inviteBtnDesktop {
     display: none;
   }
 
-  /* ✅ 모바일: subHeader에서 "이메일" + "초대하기" 한 줄 */
   .subHeader {
     padding-left: 16px;
     padding-right: 16px;

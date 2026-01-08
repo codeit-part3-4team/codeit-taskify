@@ -36,11 +36,11 @@ export default function SideMenuTestPage() {
         </h2>
         <div className={styles.caseContent}>
           <SideMenu
-            dashboards={mockDashboards.slice(0, 15)}
             selectedDashboardId={1}
             onDashboardClick={handleDashboardClick}
             onAddDashboardClick={handleAddDashboard}
           />
+
           <div className={styles.info}>
             <h3>📊 테스트 정보</h3>
             <ul>
@@ -65,11 +65,11 @@ export default function SideMenuTestPage() {
         </h2>
         <div className={styles.caseContent}>
           <SideMenu
-            dashboards={mockDashboards.slice(0, 50)}
             selectedDashboardId={1}
             onDashboardClick={handleDashboardClick}
             onAddDashboardClick={handleAddDashboard}
           />
+
           <div className={styles.info}>
             <h3>📊 테스트 정보</h3>
             <ul>
