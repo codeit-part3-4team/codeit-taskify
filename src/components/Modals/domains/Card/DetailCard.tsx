@@ -286,11 +286,15 @@ export default function DetailCard({ cardData: card, columnTitle, routeParams }:
                   align="left"
                   onSelect={(item) => {
                     if (item.id === 'edit') {
-                      router.push(`/card/${cardId}/edit`);
+                      router.push(
+                        `/dashboard/${dashboardId}/column/${columnId}/card/${cardId}/edit`,
+                      );
                     }
 
                     if (item.id === 'delete') {
-                      router.push(`/card/${cardId}/delete-card`);
+                      router.push(
+                        `/dashboard/${dashboardId}/column/${columnId}/card/${cardId}/delete-card`,
+                      );
                     }
                   }}
                 />

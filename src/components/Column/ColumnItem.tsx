@@ -33,7 +33,7 @@ export default function ColumnItem({ column, cards, dashboardId }: ColumnItemPro
           </div>
           <div className={styles.right}>
             <Link
-              href={`/column/${columnId}/edit`}
+              href={`${dashboardId}/column/${columnId}/edit`}
               aria-label="컬럼 수정"
               className={styles.columnEditButton}
             >
@@ -43,10 +43,7 @@ export default function ColumnItem({ column, cards, dashboardId }: ColumnItemPro
         </div>
 
         <div className={styles.cardAddButton}>
-          <Link
-            href={`/dashboard/${dashboardId}/column/${columnId}/card/create`}
-            aria-label="카드 추가"
-          >
+          <Link href={`${dashboardId}/column/${columnId}/card/create`} aria-label="카드 추가">
             <AddTodoButton />
           </Link>
         </div>

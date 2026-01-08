@@ -30,7 +30,7 @@ export default function ColumnList({
           />
         ))}
         <div className={styles.columnAddButtonBox}>
-          <Link href={'/column/create'}>
+          <Link href={`${dashboardId}/column/create`}>
             <AddColumnButton />
           </Link>
         </div>

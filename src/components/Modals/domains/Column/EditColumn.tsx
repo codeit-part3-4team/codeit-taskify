@@ -2,10 +2,14 @@
 
 import { useRouter } from 'next/navigation';
 import DefaultModal from '@/components/Modals/DefaultModal';
-import { ColumnUpdateRequest } from '@/components/Modals/domains/Column/ModalColumn.type';
 import { useState } from 'react';
 import ModalButton from '@/components/Buttons/shared/ModalButton/ModalButton';
 import TextInput from '@/components/Input/domains/todo/TextInput/TextInput';
+
+type EditColumnProps = {
+  columnId: number;
+  initialTitle: string;
+};
 
 /**
  * EditColumn 컴포넌트
@@ -27,7 +31,7 @@ import TextInput from '@/components/Input/domains/todo/TextInput/TextInput';
  *
  */
 
-export default function EditColumn({ initialTitle }: ColumnUpdateRequest) {
+export default function EditColumn({ columnId, initialTitle }: EditColumnProps) {
   const router = useRouter();
 
   const [title, setTitle] = useState(initialTitle);
