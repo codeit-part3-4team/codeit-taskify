@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
 import styles from './page.module.css';
 import SideMenuWrapper from '@/app/_components/mydashboard/SideMenuWrapper';
@@ -11,6 +11,8 @@ import InvitedSection from '@/app/_components/mydashboard/InvitedSection/Invited
 import { getDashboards } from '@/lib/api/dashboards';
 import { Dashboard, User } from '@/types/dashboard';
 
+const DASHBOARD_UPDATED_EVENT = 'dashboard:updated';
+
 export default function MyDashboardPage() {
   const router = useRouter();
   const [dashboards, setDashboards] = useState<Dashboard[]>([]);
@@ -19,48 +21,51 @@ export default function MyDashboardPage() {
   const [loading, setLoading] = useState(true);
   const itemsPerPage = 5;
 
-  useEffect(() => {
-    async function fetchData() {
-      try {
-        const userStr = localStorage.getItem('user');
+  const fetchData = useCallback(async () => {
+    try {
+      const userStr = localStorage.getItem('user');
+      if (!userStr) throw new Error('로그인 정보 없음');
 
-        if (!userStr) {
-          throw new Error('로그인 정보 없음');
-        }
+      const parsedUser = JSON.parse(userStr);
+      setCurrentUser(parsedUser);
 
-        const parsedUser = JSON.parse(userStr);
-        setCurrentUser(parsedUser);
+      const data = await getDashboards({
+        navigationMethod: 'pagination',
+        page: 1,
+        size: 100,
+      });
 
-        const data = await getDashboards({
-          navigationMethod: 'pagination',
-          page: 1,
-          size: 100,
-        });
-
-        setDashboards(data.dashboards);
-      } catch (err) {
-        console.error('데이터 조회 실패:', err);
-        localStorage.removeItem('user');
-      } finally {
-        setLoading(false);
-      }
+      setDashboards(data.dashboards);
+    } catch (err) {
+      console.error('데이터 조회 실패:', err);
+      localStorage.removeItem('user');
+    } finally {
+      setLoading(false);
     }
-
-    fetchData();
   }, []);
+
+  useEffect(() => {
+    fetchData();
+  }, [fetchData]);
+
+  useEffect(() => {
+    const onUpdated = () => {
+      setLoading(true);
+      fetchData();
+    };
+    window.addEventListener(DASHBOARD_UPDATED_EVENT, onUpdated);
+    return () => window.removeEventListener(DASHBOARD_UPDATED_EVENT, onUpdated);
+  }, [fetchData]);
 
   const totalPages = Math.max(Math.ceil(dashboards.length / itemsPerPage), 1);
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
   const currentDashboards = dashboards.slice(startIndex, endIndex);
 
-  const handlePageChange = (page: number) => {
-    setCurrentPage(page);
-  };
+  const handlePageChange = (page: number) => setCurrentPage(page);
 
   const handleAddDashboard = () => {
-    // ✅ 임시로 콘솔만 출력 (모달 연결 전)
-    router.push('/root/mydashboard/create')
+    router.push('/root/mydashboard/create');
   };
 
   const handleDashboardClick = (id: number) => {
