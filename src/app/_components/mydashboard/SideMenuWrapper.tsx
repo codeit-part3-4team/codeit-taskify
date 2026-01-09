@@ -40,7 +40,7 @@ export default function SideMenuWrapper() {
 
   const handleAddDashboard = () => {
     // ✅ 임시로 콘솔만 출력
-    console.log('대시보드 생성 모달 열기');
+    router.push('/root/mydashboard/create');
   };
 
   if (loading) {

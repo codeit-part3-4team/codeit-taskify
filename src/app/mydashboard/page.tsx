@@ -60,7 +60,7 @@ export default function MyDashboardPage() {
 
   const handleAddDashboard = () => {
     // ✅ 임시로 콘솔만 출력 (모달 연결 전)
-    console.log('대시보드 생성 모달 열기');
+    router.push('/root/mydashboard/create')
   };
 
   const handleDashboardClick = (id: number) => {
