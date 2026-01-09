@@ -1,0 +1,34 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px 12px;
+  max-width: 1200px;
+}
+
+/* 버튼들이 그리드 셀 너비에 맞도록 강제 */
+.grid > * {
+  width: 100% !important;
+  max-width: none !important;
+}
+
+/* 반응형 - 태블릿 */
+@media (max-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px 10px;
+  }
+}
+
+/* 반응형 - 모바일 */
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    max-width: 332px;
+    margin: 0 auto;
+  }
+
+  .grid > * {
+    width: 332px !important;
+  }
+}

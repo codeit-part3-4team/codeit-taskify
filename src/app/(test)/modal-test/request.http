@@ -1,0 +1,72 @@
+POST https://sp-taskify-api.vercel.app/20-4/dashboards
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjQ4NywidGVhbUlkIjoiMjAtNCIsImlhdCI6MTc2Njc0NDY0NSwiaXNzIjoic3AtdGFza2lmeSJ9.HOjAslVpV5SaFhwCb1ankip7UyjIQ3hEDPgQHrKCnFg
+
+{
+  "title": "대시보드 테스트",
+  "color": "#1fECe4"
+}
+
+###
+
+POST https://sp-taskify-api.vercel.app/20-4/columns
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjQ4NywidGVhbUlkIjoiMjAtNCIsImlhdCI6MTc2Njc0NDY0NSwiaXNzIjoic3AtdGFza2lmeSJ9.HOjAslVpV5SaFhwCb1ankip7UyjIQ3hEDPgQHrKCnFg
+
+{
+  "title": "컬럼 테스트-4",
+  "dashboardId": 17226
+}
+
+
+###
+POST https://sp-taskify-api.vercel.app/20-4/cards
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjQ4NywidGVhbUlkIjoiMjAtNCIsImlhdCI6MTc2Njc0NDY0NSwiaXNzIjoic3AtdGFza2lmeSJ9.HOjAslVpV5SaFhwCb1ankip7UyjIQ3hEDPgQHrKCnFg
+
+{
+  "dashboardId": 17226,
+  "columnId": 58140,
+  "title": "태그 테스트",
+  "description": "태그 UI 확인",
+  "tags": ["frontend", "bug"]
+}
+
+###
+POST https://sp-taskify-api.vercel.app/20-4/users
+Content-Type: application/json
+
+{
+  "email": "test100@test.com",
+  "nickname": "test100",
+  "password": "test100!"
+}
+
+###
+
+POST https://sp-taskify-api.vercel.app/20-4/auth/login
+Content-Type: application/json
+
+{
+  "email": "test100@test.com",
+  "password": "test100!"
+}
+
+###
+
+DELETE https://sp-taskify-api.vercel.app/20-4/cards/14856
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjQ4NywidGVhbUlkIjoiMjAtNCIsImlhdCI6MTc2Njc0NDY0NSwiaXNzIjoic3AtdGFza2lmeSJ9.HOjAslVpV5SaFhwCb1ankip7UyjIQ3hEDPgQHrKCnFg
+
+###
+
+POST https://sp-taskify-api.vercel.app/20-4/comments
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjQ4NywidGVhbUlkIjoiMjAtNCIsImlhdCI6MTc2Njc0NDY0NSwiaXNzIjoic3AtdGFza2lmeSJ9.HOjAslVpV5SaFhwCb1ankip7UyjIQ3hEDPgQHrKCnFg
+
+{
+  "content": "댓글 테스트",
+  "cardId": 14857,
+  "columnId": 58140,
+  "dashboardId": 17226
+}

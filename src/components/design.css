@@ -1,0 +1,196 @@
+/* ========== Text-3xl (32 / 42) ========== */
+.text-3xl-bold {
+  font-family: var(--font-pretendard);
+  font-size: 32px;
+  line-height: 42px;
+  font-weight: 700;
+}
+
+.text-3xl-semibold {
+  font-family: var(--font-pretendard);
+  font-size: 32px;
+  line-height: 42px;
+  font-weight: 600;
+}
+
+/* ========== Text-2xl (24 / 32) ========== */
+.text-2xl-bold {
+  font-family: var(--font-pretendard);
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: 700;
+}
+
+.text-2xl-semibold {
+  font-family: var(--font-pretendard);
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: 600;
+}
+
+.text-2xl-medium {
+  font-family: var(--font-pretendard);
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: 500;
+}
+
+.text-2xl-regular {
+  font-family: var(--font-pretendard);
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: 400;
+}
+
+/* ========== Text-xl (20 / 32) ========== */
+.text-xl-bold {
+  font-family: var(--font-pretendard);
+  font-size: 20px;
+  line-height: 32px;
+  font-weight: 700;
+}
+
+.text-xl-semibold {
+  font-family: var(--font-pretendard);
+  font-size: 20px;
+  line-height: 32px;
+  font-weight: 600;
+}
+
+.text-xl-medium {
+  font-family: var(--font-pretendard);
+  font-size: 20px;
+  line-height: 32px;
+  font-weight: 500;
+}
+
+.text-xl-regular {
+  font-family: var(--font-pretendard);
+  font-size: 20px;
+  line-height: 32px;
+  font-weight: 400;
+}
+
+/* ========== Text-2lg (18 / 26) ========== */
+.text-2lg-bold {
+  font-family: var(--font-pretendard);
+  font-size: 18px;
+  line-height: 26px;
+  font-weight: 700;
+}
+
+.text-2lg-semibold {
+  font-family: var(--font-pretendard);
+  font-size: 18px;
+  line-height: 26px;
+  font-weight: 600;
+}
+
+.text-2lg-medium {
+  font-family: var(--font-pretendard);
+  font-size: 18px;
+  line-height: 26px;
+  font-weight: 500;
+}
+
+.text-2lg-regular {
+  font-family: var(--font-pretendard);
+  font-size: 18px;
+  line-height: 26px;
+  font-weight: 400;
+}
+
+/* ========== Text-lg (16 / 26) ========== */
+.text-lg-bold {
+  font-family: var(--font-pretendard);
+  font-size: 16px;
+  line-height: 26px;
+  font-weight: 700;
+}
+
+.text-lg-semibold {
+  font-family: var(--font-pretendard);
+  font-size: 16px;
+  line-height: 26px;
+  font-weight: 600;
+}
+
+.text-lg-medium {
+  font-family: var(--font-pretendard);
+  font-size: 16px;
+  line-height: 26px;
+  font-weight: 500;
+}
+
+.text-lg-regular {
+  font-family: var(--font-pretendard);
+  font-size: 16px;
+  line-height: 26px;
+  font-weight: 400;
+}
+
+/* ========== Text-md (14 / 24) ========== */
+.text-md-bold {
+  font-family: var(--font-pretendard);
+  font-size: 14px;
+  line-height: 24px;
+  font-weight: 700;
+}
+
+.text-md-semibold {
+  font-family: var(--font-pretendard);
+  font-size: 14px;
+  line-height: 24px;
+  font-weight: 600;
+}
+
+.text-md-medium {
+  font-family: var(--font-pretendard);
+  font-size: 14px;
+  line-height: 24px;
+  font-weight: 500;
+}
+
+.text-md-regular {
+  font-family: var(--font-pretendard);
+  font-size: 14px;
+  line-height: 24px;
+  font-weight: 400;
+}
+
+/* ========== Text-sm (13 / 22) ========== */
+.text-sm-semibold {
+  font-family: var(--font-pretendard);
+  font-size: 13px;
+  line-height: 22px;
+  font-weight: 600;
+}
+
+.text-sm-medium {
+  font-family: var(--font-pretendard);
+  font-size: 13px;
+  line-height: 22px;
+  font-weight: 500;
+}
+
+/* ========== Text-xs (12) ========== */
+.text-xs-semibold {
+  font-family: var(--font-pretendard);
+  font-size: 12px;
+  line-height: 20px;
+  font-weight: 600;
+}
+
+.text-xs-medium {
+  font-family: var(--font-pretendard);
+  font-size: 12px;
+  line-height: 18px;
+  font-weight: 500;
+}
+
+.text-xs-regular {
+  font-family: var(--font-pretendard);
+  font-size: 12px;
+  line-height: 18px;
+  font-weight: 400;
+}

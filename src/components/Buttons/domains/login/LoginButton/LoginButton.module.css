@@ -1,0 +1,77 @@
+/* Base Button Styles */
+.button {
+  font-family: var(--font-pretendard);
+  border: none;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  font-weight: 500;
+  height: 50px;
+  padding: 14px 20px;
+  font-size: 18px;
+  line-height: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.button:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* Size Variants */
+.large {
+  width: 520px;
+}
+
+.small {
+  width: 351px;
+}
+
+/* Color Variants */
+.active {
+  background-color: var(--violet-5534da);
+  color: var(--white-ffffff);
+}
+
+.active:hover:not(:disabled) {
+  background-color: #6545e0;
+}
+
+.active:active:not(:disabled) {
+  background-color: #4423c9;
+}
+
+.inactive {
+  background-color: var(--gray-9fa6b2);
+  color: var(--white-ffffff);
+}
+
+.inactive:hover:not(:disabled) {
+  background-color: #8a929e;
+}
+
+.inactive:active:not(:disabled) {
+  background-color: #7a8291;
+}
+
+/* Full Width */
+.fullWidth {
+  width: 100% !important;
+}
+
+/* Responsive: Mobile (max-width: 374px) */
+@media (max-width: 374px) {
+  .button {
+    width: 100%;
+    padding: 14px 20px;
+  }
+
+  .large,
+  .small {
+    width: 100%;
+  }
+}

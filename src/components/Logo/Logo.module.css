@@ -1,0 +1,46 @@
+.logoLink {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  flex-shrink: 0;
+  cursor: pointer; 
+  transition: opacity 0.2s ease; 
+}
+
+/* 호버 효과 (클릭 가능할 때만) */
+a.logoLink:hover {
+  opacity: 0.8;
+}
+
+/* /mydashboard에서는 커서 기본값 */
+div.logoLink {
+  cursor: default;
+}
+
+div.logoLink:hover {
+  opacity: 1;
+}
+
+.logo {
+  object-fit: contain;
+}
+
+/* 데스크탑: 메인 로고 표시 */
+.desktop {
+  display: block;
+}
+
+.mobile {
+  display: none;
+}
+
+/* 모바일 (768px 이하): 심볼만 표시 */
+@media (max-width: 768px) {
+  .desktop {
+    display: none;
+  }
+
+  .mobile {
+    display: block;
+  }
+}

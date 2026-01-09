@@ -1,0 +1,74 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.label {
+  font-family: var(--font-pretendard);
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 26px;
+  color: var(--black-333236);
+  margin-bottom: 10px;
+}
+
+.inputWrapper {
+  position: relative;
+  width: 100%;
+  cursor: pointer;
+}
+
+.icon {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  color: var(--gray-9fa6b2);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.iconActive {
+  color: var(--black-4b4b4b);
+}
+
+.input {
+  width: 100%;
+  height: 50px;
+  padding: 15px 16px 15px 46px;
+  border: 1px solid var(--gray-d9d9d9);
+  border-radius: 8px;
+  font-family: var(--font-pretendard);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 26px;
+  color: var(--black-333236);
+  background: var(--white-ffffff);
+  transition: border-color 0.2s;
+  cursor: pointer;
+}
+
+.input::placeholder {
+  color: var(--gray-9fa6b2);
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--violet-5534da);
+}
+
+/* 브라우저 기본 캘린더 아이콘을 투명하게 만들고, 커스텀 아이콘 위치에 겹치게 확장 */
+.input::-webkit-calendar-picker-indicator {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  color: transparent;
+  cursor: pointer;
+  z-index: 2;
+}

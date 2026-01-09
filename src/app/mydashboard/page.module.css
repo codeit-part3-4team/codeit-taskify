@@ -1,0 +1,68 @@
+/* ========== 레이아웃: SideMenu + Main ========== */
+.layout {
+  display: flex;
+  min-height: 100vh;
+  background-color: var(--gray-fafafa);
+}
+
+/* ========== 메인 영역 ========== */
+.main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+/* ========== 컨텐츠 영역 (GNB 아래) ========== */
+.container {
+  flex: 1;
+  padding: 40px 80px;
+  overflow-y: auto;
+}
+
+.content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+/* ========== 반응형 - 태블릿 ========== */
+@media (max-width: 1024px) {
+  .container {
+    padding: 32px 40px;
+  }
+
+  .content {
+    gap: 40px;
+  }
+}
+
+/* ========== 반응형 - 모바일 (FIGMA 기준) ========== */
+@media (max-width: 768px) {
+
+
+  /* 사이드메뉴를 레일처럼 고정 */
+  .layout aside {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 56px;           
+    height: 100vh;
+    z-index: 100;
+  }
+
+  /* 메인 콘텐츠를 사이드메뉴 옆으로 밀기 */
+  .main {
+    margin-left: 56px;
+  }
+
+  .container {
+    padding: 24px 20px;
+  }
+
+  .content {
+    gap: 32px;
+  }
+}
